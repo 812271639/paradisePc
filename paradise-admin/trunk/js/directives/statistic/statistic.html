@@ -1,0 +1,64 @@
+    <div class="pd-top-2">
+        <div class="row">
+            <div class="statistic-header">
+                <!-- <div class="pagetable col-sm-3 col-lg-3">页面访问量统计</div> -->
+                <div class="pagetable visit col-sm-2 col-lg-2 col-sm-offset-1 col-lg-offset-1 allpage-wrap">
+                    <div class="visit allpage textcenter">页面访问量统计</div>
+                    <div class="somepage col-sm-12">
+                        <div class="visit textcenter" ng-click="vm.goto(0)">专题详情页</div>
+                        <div class="visit textcenter" ng-click="vm.goto(1)">任务详情统计</div>
+                        <div class="visit textcenter" ng-click="vm.goto(2)">个人中心</div>
+                        <div class="visit textcenter" ng-click="vm.goto(3)">签到</div>
+                        <div class="visit textcenter" ng-click="vm.goto(4)" >开通会员页</div>
+                        <div class="visit textcenter" ng-click="vm.goto(5)" >卡券激活页统计</div>
+                    </div>
+                </div>
+                <div class="date-history col-sm-9 col-lg-9">
+                    <div class="history row">
+                        <div class="today-wrap col-md-offset-1 col-sm-10">
+                            <button class="btn btn-default  today col-sm-2" ng-class="{activedClass:(0==vm.a)&&vm.staticActive}" ng-click="vm.historyVisit(0)">今日访问</button>
+                            <button class="btn btn-default today col-sm-2" ng-class="{activedClass:(1==vm.a)&&vm.staticActive}" ng-click="vm.historyVisit(1)">昨日访问</button>
+                            <button class="btn btn-default today col-sm-2" ng-class="{activedClass:7==vm.a&&vm.staticActive}" ng-click="vm.historyVisit(7)">近七日访问</button>
+                            <button class="btn btn-default today col-sm-2" ng-class="{activedClass:30==vm.a&&vm.staticActive}" ng-click="vm.historyVisit(30)">近一月访问</button>
+                            <button class="btn btn-default today col-sm-2" ng-class="{activedClass:((99==vm.a)&&vm.staticActive)}" ng-click="vm.historyVisit(99)" ng-init="vm.a=99">历史总访问</button>
+                        </div>
+                    </div>
+                    <div class="data-text row">
+                        <div class="col-sm-2 col-lg-2">系统类型</div>
+                             <select class="form-control type-select col-sm-3 col-lg-3" ng-model="vm.systemType" ng-options="grade.type as grade.name for grade in vm.systemTypes" ng-change="vm.systemTypeChange(vm.systemType)">
+                                    <option ng-selected="vm.systemType ==''||undefined" value="">全部</option>
+                                </select>
+                        <div class="type-member col-sm-2 col-lg-2">用户类型</div>
+                             <select class="form-control type-select col-sm-3 col-lg-3" ng-model="vm.identifyType" ng-options="grade.type as grade.name for grade in vm.memberType" >
+                                  <!--   <option ng-selected="vm.identifyType ==''||undefined" value=''>全部</option> -->
+                                  <!-- ng-change="vm.identifyTypeChange(vm.identifyType)" -->
+
+
+                                    <option value="">全部</option>
+                                    <option  ng-selected="item.taskType ==vm.taskType" value="{{item.type}}"></option>
+
+
+
+                                </select>
+                    <div class="col-md-5 limit-data">
+                        <div class="col-md-5 date-wrap">
+                        <input type="text" class="form-control col-md-5" ng-model="vm.effectBegin" data-date-format="yyyy-MM-dd"
+                               data-date-type="number" data-max-date="{{vm.effectEnd}}" name="effectBegin" bs-datepicker autoclose="true" >
+                        <img src="../images/date.png" class="date-img">
+                        </div>
+                    <div class="col-md-1">-</div>
+                    <div class="col-md-5 date-wrap">
+                        <input type="text" class="form-control  col-md-5" ng-model="vm.effectEnd" data-date-format="yyyy-MM-dd"
+                               data-date-type="number" data-min-date="{{vm.effectBegin}}"  name="effectEnd" bs-datepicker autoclose="true" >
+                        <img src="../images/date.png" class="date-img">
+                    </div>
+                    </div>
+                            <button type="button" class="btn btn-info col-sm-2 col-md-2 col-lg-2" ng-click="vm.dateChoice(cancelColor)">筛选</button>
+                        </div>
+
+                </div>
+                <span class="clearfix"></span>
+            </div>
+            <ui-view></ui-view>
+        </div>
+    </div>

@@ -1,0 +1,97 @@
+<div class="statistic-main">
+    <div class="seminar">
+        <div class="pagetable1 col-sm-2 col-lg-2 col-sm-offset-1 col-lg-offset-1">任务详情页统计</div>
+        <div class="col-sm-12 col-lg-12" style="margin: 15px;"></div>
+        <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+            <div class="form-group mr0-ml0">
+                <label class="col-md-2 col-xs-12 control-label">所属年级部</label>
+                <div class="col-md-2">
+                    <select class="form-control" ng-model="vm.searchParams.gradeDept" ng-options="grade.type as grade.name for grade in vm.subjectGrade" ng-change="vm.sujectOptions(vm.searchParams.gradeDept)">
+                        <option ng-if="cc" ng-selected="vm.searchParams.gradeDept ==''||undefined" value="">全部</option>
+                    </select>
+                    <!-- {{vm.searchParams.gradeDept}}-->
+                </div>
+                <label class="col-md-1 col-xs-12 control-label pd-left-0">所属科目</label>
+                <div class="col-md-2">
+                    <select class="form-control"  ng-change="vm.lessonOptions(vm.subName)" ng-model="vm.subName" ng-options="grade.subjectName as grade.subjectName for grade in vm.sujectOptionsData|unique:'subjectName'">
+                        <!-- |unique:'subjectName' -->
+
+                        <option ng-selected="vm.subName ==''||undefined" value="">全部</option>
+                    </select><!-- {{vm.subName}} -->
+                </div>
+                <label class="col-md-1 col-xs-12 control-label pd-left-0">专题名称</label>
+                <div class="col-md-2">
+                    <select class="form-control"  ng-model="vm.name" ng-options="grade.lessonName as grade.lessonName for grade in vm.lessonOptionsData|unique:'lessonName'" ng-change="vm.periodOptions(vm.name)">
+                        <option ng-selected="vm.name ==''||undefined" value="">全部</option>
+                    </select><!-- {{vm.name}} -->
+                </div>
+                <div class="seminar-choice col-md-2 col-xs-12">
+                </div>
+            </div>
+            <div class="form-group mr0-ml0">
+                <label class="col-md-2 col-xs-12 control-label">所属课程</label>
+                <div class="col-md-2">
+                    <select class="form-control" ng-model="vm.period" ng-options="grade.periodName as grade.periodName for grade in vm.periodOptionsData|unique:'periodName'" ng-change="vm.taskTypeOptions(vm.period)">
+                        <option ng-selected="vm.period ==''||undefined" value="">全部</option>
+                    </select>
+                </div>
+                <label class="col-md-1 col-xs-12 control-label pd-left-0">任务类型</label>
+                            <div class="col-md-2">
+                                <select class="form-control" ng-model="vm.taskType" ng-options="grade.taskType as grade.typeWord for grade in vm.taskTypeOptionsData|uniqueTaskType:'taskType'"
+                                 ng-change="vm.taskTypeOptions(vm.taskType)">
+                                    <!-- |taskTypeFilter:'taskType' -->
+                                    <option ng-selected="vm.taskType ==''||undefined" value="">全部</option>
+                                </select>
+                            </div>
+                <!-- <picker label-class="col-sm-1 control-label" option-class="col-md-2" options="vm.taskTypeList" ng-model="vm.taskType" select-name="任务类型" form-name="myForm" required default=""></picker> -->
+                <label class="col-md-1 col-xs-12 control-label pd-left-0">任务名称</label>
+                <div class="col-md-2">
+                    <select class="form-control" ng-model="vm.taskName" ng-options="grade.taskName as grade.taskName for grade in vm.taskTypeOptionsData|unique:'taskName'">
+                        <option ng-selected="vm.params.subjectName ==''||undefined" value="">全部</option>
+                    </select>
+                </div>
+                <div class="seminar-choice col-md-2 col-xs-12">
+                    <button class="btn btn-success" ng-click="vm.getTaskStaticA()">筛选</button>
+                </div>
+            </div>
+            <!-- 上面是任务选项 -->
+            <div class="panel-body">
+                <table class="table  table-bordered  table-striped" ng-if="vm.noticeList.length!==0">
+                    <thead>
+                        <tr align="center" valign="middle">
+                            <th>任务名称</th>
+                            <th>所属课程</th>
+                            <th>所属专题</th>
+                            <th>所属科目</th>
+                            <th>年级部</th>
+                            <th>任务类型</th>
+                            <th id="th6" style="cursor: pointer;" onclick="SortTable(this)">访问量<span class="glyphicon glyphicon-resize-vertical"></span></th>
+                            <th id="th7" style="cursor: pointer;" onclick="SortTable(this)">收藏次数<span class="glyphicon glyphicon-resize-vertical"></span></th>
+                            <th id="th8" style="cursor: pointer;" onclick="SortTable(this)">缓存次数<span class="glyphicon glyphicon-resize-vertical"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="ul-table table-responsive table-striped">
+                        <tr ng-repeat=" item in vm.taskStaticDataA track by $index" ng-class="{'selected': vm.subjectListData.selected == item}" align="center" valign="middle">
+                            <td name="td0">{{item.taskName}}</td>
+                            <td name="td1">{{item.periodName}}</td>
+                            <td name="td2">{{item.lessonName}}</td>
+                            <td name="td3">{{item.subjectName}}</td>
+                            <td name="td4">{{item.gradeDept | gradeFilter:'grade'}}</td>
+                            <td name="td5">{{item.taskType|gradeFilter:'taskType'}}</td>
+                            <td name="td6">{{item.viewStat}}</td>
+                            <td name="td7">{{item.collectStat}}</td>
+                            <td name="td8">{{item.cacheStat}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col-md-offset-8 col-md-4 total-static">访问量总计:{{vm.result}}</div>
+                <div class="col-md-offset-8 col-md-4 total-static">收藏次数总计:{{vm.collectResult}}</div>
+                <div class="col-md-offset-8 col-md-4 total-static">缓存次数总计:{{vm.cacheStat}}</div>
+                <!--分页-->
+                <nav class="pull-right" ng-if="vm.totalTakPage&&!vm.add">
+                    <page total-page="{{vm.totalTakPage}}"></page>
+                </nav>
+            </div>
+        </form>
+    </div>
+</div>

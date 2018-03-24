@@ -1,0 +1,86 @@
+.memberActive {
+  width: 384px;
+  /*// height: 239px;*/
+}
+.memberActive .modal-header {
+    padding: 0;
+    text-align: right;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+.memberActive .modal-header img {
+  cursor: pointer;
+  margin: 19px;
+}
+.memberActive .modal-body {
+  padding: 0;
+  text-align: center;
+}
+.sure-success{
+  margin: 31px 0 21px;
+  text-align: center;
+}
+.member-success{
+  margin:34px 0 21px;
+}
+.sure-success button {
+  width: 100px;
+  height: 36px;
+  font-size: 14px;
+}
+
+.scan-weixin{
+   position: absolute;
+    right: 19px;
+    top: -16px;
+    cursor: pointer;
+}
+
+
+.memberActive .modal-body img {
+  margin: 34px 0 0;
+}
+.memberActive .modal-body p {
+  font-size: 16px;
+  /*line-height: 32px;*/
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #333;
+  margin-top: 21px;
+}
+.memberActive .modal-footer {
+  padding: 0;
+  border: none;
+  text-align: center;
+}
+.memberActive .modal-footer button {
+  width: 100px;
+  height: 36px;
+  margin: 31px 0 21px;
+  padding: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: white;
+  background: #65a9fc;
+}
+.memberActive .modal-footer p {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #808080;
+      margin-bottom: 19px;
+}
+.memberActive .modal-footer p span {
+  color: #65a9fc;
+}
+
+@media (max-width: 768px) {
+  .payHtml {
+    width: 258px;
+    height: 266px;
+  }
+}

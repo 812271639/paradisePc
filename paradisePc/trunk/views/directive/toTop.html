@@ -1,0 +1,17 @@
+<style>
+	.to-top-wrapper{
+		position: fixed;
+		bottom: 50px;
+		right: 15px;
+		z-index: 1000;
+		height: 120px;
+		width: 53px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+</style>
+<div class="to-top-wrapper">
+	<div class="to-top" id="toTop"><img class="pointer" ng-click="backTop()" id="scrollTop" src="images/toTop.png" alt=""></div>
+	<div class="to-bottom" id="toBottom"><img class="pointer" ng-click="backBottom()" id="scrollBottom" src="images/toBottom.png" alt=""></div>
+</div>

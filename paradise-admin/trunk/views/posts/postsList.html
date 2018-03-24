@@ -1,0 +1,99 @@
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="form-group panel panel-default panel-body">
+            <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">标题</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" ng-model="vm.params.title">
+                    </div>
+                    <!--楼主-->
+                    <label class="col-md-1 col-xs-12 control-label">楼主</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" ng-model="vm.params.author">
+                    </div>
+                    <!--状态-->
+                    <picker label-class="col-md-1 col-xs-12 control-label" option-class="col-md-3"
+                            options="vm.postsOptions.type"
+                            ng-model="vm.params.type" select-name="状态" all="true"></picker>
+                </div>
+                <div class="form-group mr0-ml0">
+                    <!--板块-->
+                    <picker label-class="col-md-1 col-xs-12 control-label" option-class="col-md-3"
+                            options="vm.postsOptions.grade"
+                            ng-model="vm.params.grade" select-name="板块" all="true">
+
+                    </picker>
+                    <!--发布时间-->
+                        <label class="col-md-1 col-xs-12 control-label">发布时间</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" ng-model="vm.params.minAt" data-date-type="number" data-date-format="yyyy-MM-dd" data-max-date="{{vm.params.maxAt}}" data-autoclose="1" placeholder="开始时间" bs-datepicker>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" ng-model="vm.params.maxAt" data-date-type="number" data-date-format="yyyy-MM-dd" data-min-date="{{vm.params.minAt}}" data-autoclose="1" placeholder="结束时间" bs-datepicker>
+                        </div>
+                </div>
+
+
+                <div class="form-group mr0-ml0">
+
+
+                    <div class="col-md-12 search-btn text-right">
+                        <button type="button" class="btn btn-danger" ng-click="vm.rest()">清空</button>
+                        <button type="button" class="btn btn-success" ng-click="vm.search()">搜索</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                帖子管理（帖子总数{{vm.postsCount.total}}　　初中部:{{vm.postsCount.juniorCount}}　　高中部：{{vm.postsCount.highCount}}）
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-bordered table-striped ">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>标题</th>
+                        <th>楼主</th>
+                        <th>发布时间</th>
+                        <th>所属板块</th>
+                        <th>阅读量<button class="sort-btn glyphicon glyphicon-minus" ng-click="vm.sort(1)" ng-class="{1:'glyphicon-arrow-down',2:'glyphicon-arrow-up',}[vm.params.sort]"></button></th>
+                        <th>评论数<button class="sort-btn glyphicon glyphicon-minus" ng-click="vm.sort(2)" ng-class="{3:'glyphicon-arrow-down',4:'glyphicon-arrow-up'}[vm.params.sort]" ></button></th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="li in vm.postsList">
+                        <td ng-bind="$index+1" ng-class="{'digest':li.digest==2}" style="min-width: 70px"></td>
+                        <td>{{li.title}}</td>
+                        <td>{{li.author}}</td>
+                        <td>{{li.createAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>{{li.grade|postsFilter:'grade'}}</td>
+                        <td ng-bind="li.readCount"></td>
+                        <td>{{li.repliesCount}}</td>
+                        <td>
+                            <button class="btn btn-default btn-xs" ui-sref="field.postsDetail({id:li.id})">查看</button>
+                            <button class="btn btn-danger btn-xs"
+                                    ng-click="vm.setDigest(li)"
+                                    ng-bind="li.digest|postsFilter: 'digestBtn'"></button>
+                            <button class="btn btn-danger btn-xs"
+                                    ng-click="vm.setSticky(li)"
+                                    ng-bind="li.sticky|postsFilter: 'stickyBtn'"></button>
+                            <button class="btn btn-danger btn-xs" ng-click="vm.delete(li)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--分页-->
+
+            <nav class="pull-right" ng-if="vm.totalPage">
+                <page total-page="{{vm.totalPage}}"></page>
+            </nav>
+        </div>
+    </div>
+</div>

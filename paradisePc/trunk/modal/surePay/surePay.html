@@ -1,0 +1,20 @@
+
+<div ng-if="vm.payCode" class="payHtml"  style=" height: 535px;width: 500px;">
+    <!--<div class="modal-header">-->
+        <!--<img src="images/remove.jpg" alt="" ng-click="vm.cancel()">-->
+    <!--</div>-->
+    <p style="font-size:50px;text-align:center;">长按二维码付款</p>
+    <div style="text-align: center; z-index: 9999" ng-hide="vm.payCode">
+        <qrcode data="{{vm.codeUrl}}" href="{{vm.codeUrl}}" size="400" color="black"></qrcode>
+    </div>
+ <div id="imgDiv" style="  text-align: center;margin-top: 5%;"></div>
+</div>
+<div style="text-align: center" ng-if="!vm.payCode">
+
+<div class="sure-pay">
+    <p>确定为{{vm.userName}}</p>
+    <p>购买逗你学年度会员{{ vm.discountPrice}}元/原价{{vm.price}}元</p>
+</div>
+<button class="btn btn-default sure-pay-btn" ng-click="vm.cancel()">取消</button>
+<button class="btn btn-success sure-pay-btn" ng-click="vm.yes()">确定 </button>
+</div>

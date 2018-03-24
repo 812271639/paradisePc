@@ -1,0 +1,280 @@
+
+.pay-agreement #checked{
+     display: none;
+}
+.pay-agreement label{
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+     padding-left: 25px;
+    margin-left: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+.pay-agreement label:before{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    background-color: white;
+    border: 2px solid #65a9fc;
+    border-radius: 5px;
+}
+.pay-agreement input[type='checkbox']:checked+label:before{
+    content: "\2713";
+    font-size: 16px;
+    color: #65a9fc;
+    text-align: center;
+    line-height: 11px;
+    font-weight: 600;
+}
+
+
+.header-bg{
+    border-bottom: 7px solid #65a9fc;
+}
+.pay-wrapper{
+    background-color: white;
+}
+.suirvive-main{
+    padding: 45px 0 154px 70px;
+}
+
+.cardactive-membertext{
+font-size: 24px;
+}
+.cardactive-opentext{
+    font-size: 16px;
+        padding: 13px 0;
+}
+.Voucher{
+    text-align: center;
+}
+.Voucher .member-img{
+    width: 272px;
+    height: 273px;
+    background: url("../images/pay.png") no-repeat;
+    background-size: contain;
+}
+
+/*.row{
+    // margin-left: 15px;
+    // margin-right: 15px;
+
+}*/
+
+
+.Vouchercard-input {
+    margin-top: 3px;
+}
+
+
+.member-active{
+     z-index: 5;
+     padding-left: 73px;
+}
+
+.pay-wrapper .member-active button {
+    margin: -3px 0 -8px;
+    width: 130px;
+    height: 44px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: white;
+    background: #79B5FD;
+    border: none;
+}
+.paopaoimg{
+    position: absolute;
+    left: 2.5rem;
+    top: -45px;
+    z-index: 0;
+}
+.cardactive-text1{
+    font-size: 24px;
+}
+
+.pay-agreement .shuru{
+   /* width: 14px;
+    height: 14px;*/
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(17%);
+}
+.fee{
+    color: #65a9fc;
+    font-size: 37px;
+    line-height: 29.3px;
+    /*// margin: 1% 0;*/
+}
+.member-common{
+    font-size: 22px;
+    text-align: center;
+    z-index: 10;
+    min-width: 130px;
+    white-space:nowrap;
+}
+.member-time .price{
+    min-width: 130px;
+    display: inline-block;
+}
+.year-member{
+    border: 2px solid #ccc;
+    border-radius: 7px;
+    padding: 8px 0 4px;
+    /*padding: 2% 5%;*/
+    position: relative;
+    margin: 11px 0;
+    min-width: 130px;
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    font-weight: 400;
+}
+.per-mouth{
+    z-index: 10;
+    font-size: 14px;
+    color: #666;
+}
+.year-member:last-child{
+    z-index: 1;
+}
+.year-member .selected{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 3px;
+}
+.member-time{
+   /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;*/
+}
+.price:nth-child(3n-1){
+    margin: 0 20px;
+}
+
+.recommend {
+    /*// display: none;*/
+    position: absolute;
+    top: -6px;
+    right: 6px;
+}
+.payment{
+        margin-bottom: 22px;
+    margin-top: 4px;
+}
+.alipay,.wechatpay{
+    width: 158px;
+    height: 60px;
+    position: relative;
+    border:2px solid #ccc;
+    border-radius: 7px;
+    padding: 10px 19px;
+    position: relative;
+    margin: 15px 0 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.wechatpay{
+    margin-left: 20px;
+}
+.pay-way{
+    display: flex;
+    justify-content:flex-start;;
+    align-items:center
+}
+
+
+
+.alipay .selected{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 3px;
+}
+.wechatpay .selected{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 3px;
+}
+.kongge{
+        width: 130px;
+    border: none;
+}
+.choose-time{
+        color: #858585;
+        margin-bottom:11px;
+            margin-top: 16px;
+            font-size: 14px;
+            padding-bottom: 18px;
+}
+.member-charge .chooseBottom{
+             padding-bottom: 0;
+             margin-bottom: 0;
+}
+.pay-way{
+    display: flex;
+}
+.pay-agreement{
+        margin-bottom: 18px;
+        margin-top: 6px;
+        font-size: 16px;
+}
+.pay-agreement .tips{
+    font-size: 1.2rem;
+    color: #ef4a24;
+}
+.pay-agreement a{
+    color: #73b2fd;
+}
+.active {
+      border: 2px solid #65a9fc!important;
+  }
+.member-time input{
+    display: none;
+}
+.time1{
+    margin-top: 13px;
+    font-size: 14px;
+}
+/*// .pay-agreement input[type=checkbox], input[type=radio]{
+//     -webkit-appearance:none;border:1px solid #65a9fc;
+// }*/
+@media screen and (max-width:768px){
+  .paopaoimg {display: none;}
+}
+@media screen and (max-width:408px){
+  .kongge {display: none;}
+}
+@media screen and (min-width:1126px){
+  /*// .kongge {display: none;}*/
+}
+@media screen and (min-width:767px) and (max-width:992px){
+   .kongge {display: none;}
+    .paopaoimg {display: none;}
+    .paopao img{
+        display: none;
+    }
+}
+@media screen and (min-width:992px) and (max-width:1125px){
+   .kongge {display: none;}
+}
+
+/*// @media screen and (min-width:992px) and (max-width:1200px){
+//   .paopaoimg {left: 6rem;}
+// }
+// @media screen and (max-width:1200px){
+// .paopaoimg { left: -2rem;}
+// }*/

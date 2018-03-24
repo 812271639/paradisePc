@@ -1,0 +1,16 @@
+<div class="memberActive">
+    <div class="modal-header">
+        <img src="images/remove.png" class="delet-record" ng-click="vm.cancel()" alt="">
+    </div>
+    <div class="modal-body" id="modal-body">
+        <img ng-src="{{vm.failImg}}"  alt="">
+        <p ng-bind="vm.tips"></p>
+    </div>
+    <div class="sure-success" ng-if="vm.success">
+        <button class="btn btn-info" ng-bind="vm.tipBtn" ng-click="vm.sureSuccess()"></button>
+    </div>
+    <div class="modal-footer" ng-hide="vm.success">
+        <button class="btn btn-info" ng-bind="vm.tipBtn" ng-click="vm.again()">重新激活</button>
+        <p >{{vm.tipHelp}}<span>400-001-6698</span></p>
+    </div>
+</div>

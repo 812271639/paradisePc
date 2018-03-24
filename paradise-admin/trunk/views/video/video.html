@@ -1,0 +1,113 @@
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="form-group panel panel-default panel-body">
+            <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                <div class="form-group mr0-ml0">
+
+                    <label class="col-md-1 col-xs-12 control-label">标题</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" ng-model="vm.searchParam.title">
+                    </div>
+
+                    <picker label-class="col-md-1 col-xs-12 control-label" option-class="col-md-3"
+                            options="vm.videoOptions.type" ng-model="vm.searchParam.type" select-name="分类" all="true"></picker>
+                    <picker label-class="col-md-1 col-xs-12 control-label" option-class="col-md-3"
+                            options="vm.videoOptions.gradeList" ng-model="vm.searchParam.grade"
+                            select-name="所属年级"></picker>
+                </div>
+                <div class="form-group mr0-ml0">
+                    <picker label-class="col-md-1 col-xs-12 control-label" option-class="col-md-3"
+                            options="vm.videoOptions.subjectList" ng-model="vm.searchParam.subject"
+                            select-name="所属科目"></picker>
+
+                    <limit-section label-name="点赞数" start="vm.searchParam.minLike"
+                                   end="vm.searchParam.maxLike"></limit-section>
+
+
+                    <limit-section label-name="收藏数" start="vm.searchParam.minCollection"
+                                   end="vm.searchParam.maxCollection"></limit-section>
+                </div>
+                <div class="form-group mr0-ml0">
+                    <div>
+                        <label class="col-md-1 col-xs-12 control-label">老师</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control " ng-model="vm.searchParam.teacherName">
+                        </div>
+                    </div>
+                    <picker label-class="col-md-1 col-xs-12 control-label" option-class="col-md-3"
+                            options="vm.videoOptions.status" ng-model="vm.searchParam.status" select-name="状态"></picker>
+
+
+                    <div class="col-md-12 search-btn text-right">
+                        <button type="button" class="btn btn-danger" ng-click="vm.rest()">清空</button>
+                        <button type="button" class="btn btn-success" ng-click="vm.search()">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                视频列表
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary btn-xs" ui-sref="field.videoDetail">
+                        <i class="fa fa-plus-square fa-fw"></i>新增内容
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>标题</th>
+                        <th>分类</th>
+                        <th>所属年级</th>
+                        <th>所属科目</th>
+                        <th>老师</th>
+                        <th>收藏数</th>
+                        <th>点赞数</th>
+                        <th>编辑时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr> ,
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat=" item in vm.list" align="center" valign="middle">
+                        <td ng-bind="$index+1"></td>
+                        <td style="white-space: pre-line">{{item.title|newLine:14}}</td>
+                        <td ng-bind="item.type|videoFilter:'type'"></td>
+                        <td>
+	                        <span ng-repeat="grade in item.grade">{{grade|videoFilter:'gradeList'}}</span>
+                        </td>
+                        <td ng-bind="item.subject|videoFilter:'subjectList'"></td>
+                        <td style="white-space: pre-line">{{item.teacherName|newLine:5}}</td>
+                        <td>{{item.collection}}</td>
+                        <td>{{item.love}}</td>
+                        <td ng-bind="item.publishAt|date:'yyyy-MM-dd HH:mm:ss'"></td>
+                        <td ng-bind="item.status|videoFilter:'status'"></td>
+                        <td>
+                            <button class="btn btn-default btn-xs"
+                                    ui-sref="field.videoDetail({id: item.id,disabled:true})">查看
+                            </button>
+                            <button class="btn btn-default btn-xs" ui-sref="field.videoDetail({id: item.id})">编辑
+                            </button>
+                            <button class="btn btn-danger btn-xs"
+                                    ng-click="vm.changeStatus(item.id,(item.status==1?2:1|videoFilter:'status'),item.type,item)"
+                                    ng-bind="item.status==1?2:1|videoFilter:'status'">
+                            </button>
+	                        <button class="btn btn-primary btn-xs"
+	                         ng-click="vm.setSticky(item.id,item.rank,(item.rank===1?2:1|videoFilter:'rankBtn'))">
+	                        </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <nav class="pull-right" ng-if="vm.totalPage">
+                    <page total-page="{{vm.totalPage}}"></page>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

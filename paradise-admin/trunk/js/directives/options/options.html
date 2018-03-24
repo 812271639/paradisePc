@@ -1,0 +1,10 @@
+<form name="{{formName}}">
+    <label class="{{labelClass}}">{{selectName}}</label>
+    <div class="{{optionClass}}" style="position: relative">
+        <select class="form-control" name="name" ng-model="selectedValue"
+                ng-options="item.type as item.name for item in options"
+                ng-required='{{required}}'>
+            <option ng-selected="selectedValue ==''||undefined" value='' ng-if="all">全部</option>
+        </select>
+    </div>
+</form>

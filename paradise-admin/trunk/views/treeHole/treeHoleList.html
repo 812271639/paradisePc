@@ -1,0 +1,77 @@
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="form-group panel panel-default panel-body">
+            <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                <div class="form-group mr0-ml0">
+                    <!--发布时间-->
+                    <label class="col-md-1 col-xs-12 control-label">发布时间</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" ng-model="vm.params.minAt" data-date-type="number" data-date-format="yyyy-MM-dd" data-max-date="{{vm.params.maxAt}}" data-autoclose="1" placeholder="开始时间" bs-datepicker>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" ng-model="vm.params.maxAt" data-date-type="number" data-date-format="yyyy-MM-dd" data-min-date="{{vm.params.minAt}}" data-autoclose="1" placeholder="结束时间" bs-datepicker>
+                    </div>
+
+                    <limit-section label-name="热度" start="vm.params.minHotLevel"
+                                   end="vm.params.maxHotLevel"></limit-section>
+                    <!--楼主-->
+
+                </div>
+                <div class="form-group mr0-ml0">
+                    <limit-section label-name="顶数" start="vm.params.minBumpCount"
+                                   end="vm.params.maxBumpCount"></limit-section>
+                    <limit-section label-name="踩数" start="vm.params.minDownCount"
+                                   end="vm.params.maxDownCount"></limit-section>
+                </div>
+
+
+                <div class="form-group mr0-ml0">
+
+                    <div class="col-md-12 search-btn text-right">
+                        <button type="button" class="btn btn-danger" ng-click="vm.rest()">清空</button>
+                        <button type="button" class="btn btn-success" ng-click="vm.search()">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                树叶列表
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-bordered table-striped ">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>发布时间</th>
+                        <th>内容</th>
+                        <th>顶数</th>
+                        <th>踩数</th>
+                        <th>热度</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="li in vm.treeHoleList">
+                        <td ng-bind="$index+1"></td>
+                        <td>{{li.createAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>{{li.content}}</td>
+                        <td>{{li.bumpCount}}</td>
+                        <td>{{li.downCount}}</td>
+                        <td ng-bind="li.bumpCount+li.downCount"></td>
+                        <td>
+                            <button class="btn btn-danger btn-xs" ng-click="vm.delete(li)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--分页-->
+            <nav class="pull-right" ng-if="vm.totalPage">
+                <page total-page="{{vm.totalPage}}"></page>
+            </nav>
+        </div>
+    </div>
+</div>

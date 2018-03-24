@@ -1,0 +1,143 @@
+<div class="row pd-top-2 ng-scope">
+	
+	
+	<div class="panel-body">
+		<div class="form-group panel panel-default panel-body">
+			<form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+				<div class="form-group mr0-ml0">
+					<label class="col-md-1 col-xs-12 control-label pd-right-0">卡&emsp;&emsp;号</label>
+					<div class="col-md-4">
+						<input type="text" class="form-control ng-pristine ng-untouched ng-valid"
+						       ng-model="vm.params.number" numberic>
+					</div>
+					<label class="col-md-2 col-xs-12 control-label">有效期（月）</label>
+					<div class="col-md-2">
+						<input type="text" class="form-control ng-pristine ng-untouched ng-valid"
+						       ng-model="vm.params.minPeriod" numberic>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control ng-pristine ng-untouched ng-valid"
+						       ng-model="vm.params.maxPeriod" numberic>
+					</div>
+				</div>
+				
+				<div class="form-group mr0-ml0">
+					<label class="col-md-1 col-xs-12 control-label pd-right-0">生成日期</label>
+					<div class="col-md-2">
+						<input type="text" class="form-control col-md-5" ng-model="vm.params.effectBegin" data-date-format="yyyy-MM-dd"
+						       data-date-type="number" data-max-date="{{vm.params.effectEnd}}" name="effectBegin" bs-datepicker autoclose="true" >
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control  col-md-5" ng-model="vm.params.effectEnd" data-date-format="yyyy-MM-dd"
+						       data-date-type="number" data-min-date="{{vm.params.effectBegin}}"  name="effectEnd" bs-datepicker autoclose="true" >
+					</div>
+					<label class="col-md-2 col-xs-12 control-label">失效日期&emsp;&emsp;</label>
+					<div class="col-md-2">
+						<input type="text" class="form-control col-md-5" ng-model="vm.params.invalidBegin" data-date-format="yyyy-MM-dd"
+						       data-date-type="number" data-max-date="{{vm.params.invalidEnd}}" name="invalidBegin" bs-datepicker autoclose="true" >
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control  col-md-5" ng-model="vm.params.invalidEnd" data-date-format="yyyy-MM-dd"
+						       data-date-type="number" data-min-date="{{vm.params.invalidBegin}}"  name="invalidEnd" bs-datepicker autoclose="true" >
+					</div>
+				</div>
+				
+				<div class="form-group mr0-ml0">
+					<label class="col-md-1 col-xs-12 control-label pd-right-0">状&emsp;&emsp;态</label>
+					<div class="col-md-4">
+						<select class="form-control" ng-model="vm.params.status" ng-change="vm.changeGradeType(vm.params.subjectId)">
+							<option ng-selected="vm.params.status ==''||undefined" value=''>全部</option>
+							<option ng-repeat=" li in vm.cardStatusType"    value="{{li.id}}"
+							        ng-selected="li.id == vm.params.status">{{li.name}}</option>
+						</select>
+					</div>
+					<label class="col-md-2 col-xs-12 control-label">套&emsp;&emsp;餐&emsp;&emsp;</label>
+					<div class="col-md-4">
+						<select class="form-control" ng-model="vm.params.memberId" ng-change="vm.changeGradeType(vm.params.subjectId)">
+							<option ng-selected="vm.params.memberId ==''||undefined" value=''>全部</option>
+							<option ng-repeat=" li in vm.PackageList"    value="{{li.id}}"
+							        ng-selected="li.id == vm.params.memberId">{{li.name}}</option>
+						</select>
+					</div>
+				</div>
+			</form>
+			<button class="btn btn-success pull-right" ng-click="vm.search()">搜索
+			</button>
+			<button class="btn btn-danger pull-right" ng-click="vm.clear()" style="display:block;margin-right: 20px">清除
+			</button>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>卡劵管理</strong>
+				<div class="btn-group pull-right">
+					<button class="btn btn-primary btn-xs" style="margin-right: 15px" ng-click="vm.toOut()">
+						<i class="fa fa-plus-square fa-fw"></i>导出EXL
+					</button>
+					<button class="btn btn-primary btn-xs" ng-click="vm.toCreate(1)">
+						<i class="fa fa-plus-square fa-fw"></i>生成
+					</button>
+				</div>
+			</div>
+			<div class="panel-body">
+				<table ng-if="vm.list.length!==0" class="table table-striped text-center add-table-border">
+					<thead>
+					<tr>
+						<th class="text-center width5">序号</th>
+						<th class="text-center width5">卡号</th>
+						<th class="text-center width6">密码</th>
+						<th class="text-center width15">有效期（月）</th>
+						
+						<th class="text-center width6">生成日期</th>
+						<th class="text-center width15">失效日期</th>
+						<th class="text-center width15">套餐</th>
+						<th class="text-center width15">状态</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="li in vm.list">
+						<td >{{$index+1}}</td>
+						<td>{{li.number}}</td>
+						<td>{{li.pwd}}</td>
+						<td>{{li.period}}</td>
+						
+						<td>{{li.createAt|date: "yyyy-MM-dd"}}</td>
+						<td>{{li.deadline|date: "yyyy-MM-dd"}}</td>
+						<td>{{li.name}}</td>
+						<td>{{li.status|cardStatusFilter}}</td>
+					</tr>
+					</tbody>
+				</table>
+				<!--分页-->
+				<p class="text-center" ng-if="vm.list.length===0">搜索结果为空</p>
+				<nav class="pull-right" ng-if="vm.totalPage">
+					<page total-page="{{vm.totalPage}}"></page>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="generate" ng-if="vm.generate==1">
+		<form action="" name="generate">
+			<div class="generate2">
+				<p class="generate-p">请输入需生成卡券数量，失效日期，服务类型：</p>
+				<div class="generate-div">
+					<input class="generate-div-input1" type="text" ng-model="vm.string.amount" required numberic maxlength="3"><span>条，失效日期</span>
+					<input type="text" autoclose="true" class="generate-div-input2" ng-model="vm.string.deadline" data-date-format="yyyy-MM-dd" data-date-type="number"  name="start" bs-datepicker required>
+				
+				</div>
+				<div class="generate-div" style="margin-top: 20px">
+					<select class="generate-select" ng-model="vm.string.memberId" required>
+						<option ng-repeat=" li in vm.PackageList"    value="{{li.id}}"
+						        ng-selected="li.id == vm.string.memberId">{{li.name}}</option>
+					</select>
+				</div>
+				<div class="generate-div">
+					<button class="generate-div-button" type="button" ng-click="vm.createCardList()" ng-disabled="generate.$invalid">确定</button>
+					<button class="generate-div-button" style="margin-left: 45px" ng-click="vm.toCreate(0)">取消</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

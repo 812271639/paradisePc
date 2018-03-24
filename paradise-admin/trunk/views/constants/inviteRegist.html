@@ -1,0 +1,28 @@
+
+
+<div class="row pd-top-2 ng-scope pd-left-15 pd-right-15">
+    <div class="panel panel-default">
+        <div class="panel-heading contentManage-header ">
+            <strong style="border-left:2px solid red;padding-left: 1em">
+                邀请注册赠送会员管理</strong>
+        </div>
+        <form class="form-horizontal ng-pristine ng-valid  padding-top-20 " role="form" name="ngForm" novalidate>
+            <div class="form-group mr0-ml0">
+                <div class="col-md-12 search-btn text-left margin-top-50 padding-left-20">
+                    <label class="col-md-2 col-xs-12 control-label pd-right-0">赠送会员天数</label>
+                    <div class="col-md-3">
+                        <input type="number" class="form-control col-sm-8" ng-model="vm.qwe" placeholder="请输入赠送会员天数" required>
+                    </div>
+                    <label class="col-sm-1 control-label label-after">天</label>
+                </div>
+
+                <div class="col-md-12 search-btn text-left margin-top-50 padding-left-20">
+                    <div class="col-md-offset-2 padding-left-20">
+                        <button type="button" class="btn btn-success margin-right-10" ng-click="vm.clickSaveVipDays()" ng-disabled="ngForm.$invalid">保存</button>
+                        <button type="button" class="btn btn-default " onClick="javascript :history.go(-1)">取消</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

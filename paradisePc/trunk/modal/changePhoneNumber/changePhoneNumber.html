@@ -1,0 +1,140 @@
+<div class="changePhoneNumber-wrapper">
+    <!-- <div class="modal-header"> -->
+        <div class="pointer close-model" ng-click="vm.cancel()"><img src="images/remove.png" class="close-img" alt=""></div>
+    <!-- </div> -->
+    <div class="modal-body" id="modal-body">
+
+        <div class="title">更换手机号</div>
+        <div class="step register-row">
+            <div class="center" ng-if="!vm.step2" >
+                <img src="images/forgetStep1.png" alt="">
+                <div class="step-text-left-phone">验证手机号</div>
+                <div class="step-text-right-phone">绑定新手机</div>
+            </div>
+            <div class="center" ng-if="vm.step2">
+                <img src="images/found4.png" alt="">
+                <div class="step-text-left-phone" style="left:54px;">验证手机号</div>
+                <div class="step-text-right-phone" style="right:57px;">绑定新手机</div>
+            </div>
+        </div>
+
+        <form name="step1" novalidate ng-if="!vm.step2">
+            <div class="left1">原手机号</div>
+            <div class="account register-row" ng-if="!vm.step2">
+                <div class="center">
+                    <input ng-focus="vm.check()" maxlength="11" ng-model="vm.name" ng-change="vm.nameChange=true"
+                           ng-class="{'red-border':(step1.name.$invalid)&&(step1.name.$touched||step1.$submitted)}"
+                           placeholder="请输入手机号" class="form-control" type="text" name="name" required
+                           ng-pattern="/^1[34578]\d{9}$/" onkeyup="this.value=this.value.replace(' ','')">
+
+                </div>
+            </div>
+            <div class="left1">验证码</div>
+            <div class="phone-code register-row" ng-if="!vm.step2">
+
+                <div class="center">
+                    <input ng-focus="vm.errCodeMsg2005 = false" maxlength="6" type="text" ng-model="vm.code" name="code"
+                           ng-class="{'red-border':(step1.code.$invalid)&&(step1.code.$touched||vm.step1Button)} "
+                           required class="form-control" placeholder="请输入收到的验证码" ng-pattern="/^\d{6}$/">
+                    <button ng-click="vm.getVifPhone(!step1.name.$invalid,1)" class="btn" type="button"
+                            ng-show="!vm.getcode" ng-bind="vm.getTips">获取验证码
+                    </button>
+                    <button style="background: #EBEBEB;color: #555555;padding: 0;border:none;opacity: 1!important;-msz-border-shadow: none; box-shadow:none" type="button"
+                            class="btn btn-default btn-lg active" ng-show="vm.getcode" ng-bind="vm.time"
+                            ng-disabled="vm.canClick"></button>
+
+                </div>
+            </div>
+
+            <div class="register-row voice" ng-if="vm.name>0 && vm.voice && !vm.nameChange"">
+                <!-- <div class="left"></div> -->
+                <div class="center" ng-show="vm.name>0 && vm.voice && !vm.nameChange">收不到短信？试试<span
+                        class="font-blue pointer"
+                        ng-click="vm.canClickVoice || vm.getVifPhone(!step1.name.$invalid,2)"  ng-class="{true:'VoiceGai'}[vm.getcode]">语音验证</span>
+                </div>
+                <!-- <div class="right"></div> -->
+            </div>
+            <div ng-if="!vm.step2" class="button-wrapper register-row">
+                <div class="center">
+                    <button type="button" ng-click="vm.doubleClick||vm.next(!step1.$invalid)" class="btn"
+                    ng-class="{true:'button-bg'}[!step1.$invalid]">下一步</button>
+                </div>
+                <!-- 客服电话 -->
+               <!--  <div class="tips f14">如需更换手机号，请呼叫客服大白：<span class="font-blue pointer">400-001-6698 </span></div> -->
+            </div>
+            <div class="error-box" ng-messages="step1.name.$error"
+                         ng-if="step1.name.$touched||step1.$submitted">
+                        <p ng-message="required">手机号不能为空</p>
+                        <p ng-if="vm.oldPhoneMsg">{{vm.oldPhoneMsg}}</p>
+                        <p ng-message="pattern">手机号格式错误，请输入11位手机号</p>
+            </div>
+            <div class="error-box" ng-messages="step1.code.$error" ng-if="step1.code.$touched||vm.step1Button">
+                        <p ng-message="required">验证码不能为空</p>
+                        <p ng-message="pattern">请输入6位数字验证码</p>
+                        <p  ng-if="vm.errCodeMsg2005">{{vm.errCodeMsg2005}}</p>
+                    </div>
+        </form>
+
+
+
+        <!-- 修改密码界面 -->
+        <form name="step2" novalidate ng-if="vm.step2">
+            <div class="left1">新手机号</div>
+            <div class="account register-row" ng-if="vm.step2">
+
+                <div class="center">
+                    <input ng-focus="vm.newPhoneMsg=false" maxlength="11" ng-model="vm.name2" ng-change="vm.nameChange2=true"
+                           ng-class="{'red-border':(step2.name.$invalid)&&(step2.name.$touched||step2.$submitted)}"
+                           placeholder="请输入新手机号" class="form-control" type="text" name="name" required
+                           ng-pattern="/^1[34578]\d{9}$/" onkeyup="this.value=this.value.replace(' ','')">
+
+                </div>
+            </div>
+            <div class="left1">验证码</div>
+            <div class="phone-code register-row" ng-if="vm.step2">
+
+                <div class="center">
+                    <input ng-focus="vm.errNewCodeMsg = false" maxlength="6" type="text" ng-model="vm.code2" name="code"
+                           ng-class="{'red-border':(step2.code.$invalid)&&(step2.code.$touched||vm.step2Button)}"
+                           required class="form-control" placeholder="请输入收到的验证码" ng-pattern="/^\d{6}$/">
+                    <button ng-click="vm.getIsVifNewPhone((!step2.name.$invalid),1)" class="btn" type="button"
+                            ng-show="!vm.getcode2" ng-bind="vm.getTips2">获取验证码
+                    </button>
+                    <button style="background: #EBEBEB;color: #555555;padding: 0" type="button"
+                            class="btn btn-default btn-lg active" ng-show="vm.getcode2" ng-bind="vm.time2"
+                            ng-disabled="vm.canClick2"></button>
+                    <div class="error-box" ng-messages="step2.name.$error"
+                         ng-if="step2.name.$touched||step2.$submitted">
+                        <p ng-message="required">手机号不能为空</p>
+                        <p ng-message="pattern">手机号格式错误，请输入11位手机号</p>
+                    </div>
+                    <div class="error-box" ng-if="vm.newPhoneMsg">
+                        <p>{{vm.newPhoneMsg}}</p>
+                    </div>
+                    <div class="error-box" ng-messages="step2.code.$error" ng-if="step2.code.$touched||vm.step2Button">
+                        <p ng-message="required">验证码不能为空</p>
+                        <p ng-message="pattern">请输入6位数字验证码</p>
+                        <p ng-if="vm.errNewCodeMsg">验证码错误</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="register-row voice" ng-if="vm.name2>0 && vm.voice2 && !vm.nameChange2">
+                <!-- <div class="left"></div> -->
+                <div class="center" ng-if="vm.name2>0 && vm.voice2 && !vm.nameChange2">收不到短信？试试<span
+                        class="font-blue pointer"
+                        ng-class="{true:'VoiceGai'}[vm.getcode2]"
+                        ng-disabled="vm.getcode2"
+                        ng-click="vm.canClickVoice2 || vm.getIsVifNewPhone(!step2.name.$invalid,2)">语音验证</span>
+                </div>
+                <!-- <div class="right"></div> -->
+            </div>
+
+            <div ng-if="vm.step2" class="button-wrapper button-wrapper2 register-row">
+                <div class="center">
+                    <button ng-click="vm.doubleClick||vm.complete((!step2.$invalid))" class="btn" ng-class="{true:'btn-bg'}[(!step2.$invalid)]" type="submit">完成</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

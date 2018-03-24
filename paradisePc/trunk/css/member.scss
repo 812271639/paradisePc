@@ -1,0 +1,418 @@
+.cor-ori{
+  color:#f60;
+}
+.cl{
+  clear: both;
+}
+.middle{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hand{
+  cursor:pointer;
+}
+
+.member{
+  header{
+    width: 100%;
+    height: 87px;
+
+  }
+  .img ,.img-p{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-right: .2em;
+  }
+  .img-p{
+    transform: translateY(-32%);
+  }
+  .sidebar{
+    float: left;
+    margin-right: 113/1200*100%;
+    margin-bottom: 10px;
+    width: 1/6*100%;
+    min-width: 6em;
+    border: 1px solid  #dddddd;
+    background: white;
+    .list{
+      width: 100%;
+      cursor:pointer;
+      .list-p{
+        margin: 13px 0;
+        padding-left: 1em;
+        font-size: 1.8rem;
+        color: #545454;
+        font-weight: 500;
+        line-height: 56px;
+        border-left: 4px solid transparent;
+      }
+      .m-line{
+        width: calc(100% - 13px);
+        margin-left: 13px;
+        float: left;
+        height: 0;
+        border-bottom:2px solid #f4f4f4 ;
+      }
+      .active{
+        border-left: 4px solid #79b5fd;
+        color: #79b5fd;
+      }
+    }
+    .list:nth-last-child(1){
+      border-bottom: none;
+    }
+  }
+  main{
+    float: left;
+    margin-bottom: 106px;
+    width: 887/1200*100%;
+    border: 1px solid  #dddddd;
+    background: white;
+    .mem-logo{
+      margin: 0 2%;
+      padding-left: 1.5em;
+      width: 96%;
+      height: 46px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #cbcbcb;
+      span{
+        display: inline-block;
+        position: relative;
+        top: 50%;
+        transform: translateY(-32%);
+        color: #ffc600;
+      }
+      img{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    .main{
+      padding: 33px 40px 40px;
+      .introduction{
+        width: 571px;
+        margin-bottom: 24px;
+        border: 1px solid #F4F4F4;
+        border-radius: 5px;
+        img{
+          width: 100%;
+        }
+      }
+      .price-box{
+        position: relative;
+        width: 100%;
+
+        border: 1px solid #A1A1A1;
+        border-radius:5px;
+        .active{
+          border: 1px solid #f60!important;
+        }
+        cursor:pointer;
+        img{
+          border-bottom-right-radius:5px;
+        }
+      }
+      .price{
+        float: left;
+        width: 285px;
+        margin-right: 60px;
+        margin-bottom: 17px;
+        input{
+          display: none;
+        }
+      }
+      .price-total{
+        float: left;
+        width: 62%;
+        line-height: 121px;
+        text-align: center;
+        font-size: 4.2rem;
+        color:#f60;
+      }
+      .price-day{
+        position: relative;
+        float: left;
+        padding:29px 0 ;
+        width: 38%;
+        height: 121px;
+        line-height: 30px;
+        font-size: 1.8rem;
+        text-align: center;
+      }
+      .recommend{
+        position: absolute;
+        top: -4px;
+        right: 7px;
+      }
+      .selected{
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+      }
+      .price-p{
+        width: 100%;
+        padding: 5px 0;
+        line-height: 1;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #545454;
+      }
+      .pay-p{
+        float: left;
+        width: 100%;
+        padding: 9px 0;
+        line-height: 1;
+        text-align: left;
+        font-size: 1.6rem;
+        color: #545454;
+        font-weight: 700;
+      }
+      .active{
+        border: 1px solid #f60!important;
+      }
+      .alipay,.wechatpay{
+        position: relative;
+        text-align: center;
+        float: left;
+        width: 200px;
+        height: 57px;
+        border: 1px solid #A7A7A7;
+        border-radius: 5px;
+        cursor:pointer;
+        .selected{
+          border-bottom-right-radius: 5px;
+        }
+        .pay{
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+      }
+      .alipay{
+        margin-right: 40px;
+      }
+      .pay-agreement{
+        float: left;
+        width: 100%;
+        line-height: 1;
+        text-align: left;
+        color: #545454;
+        font-weight: 700;
+        position: relative;
+        padding: 14px 0;
+        font-size: 1.4rem;
+        a{
+          outline: none;
+          text-decoration:none;
+          color: #73b2fd;
+        }
+        input{
+          width: 14px;
+          height: 14px;
+          margin: 0;
+          position: relative;
+          top: 50%;
+          transform: translateY(17%);
+        }
+        .tips{
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          font-size: 1.2rem;
+          color: #ef4a24;
+        }
+      }
+      .pay-btn{
+        float: left;
+        margin: 37px 0 0;
+        padding: 0;
+        width: 200px;
+        line-height: 57px;
+        font-size: 2rem;
+        letter-spacing: 1px;
+        background: #79B5FD;
+      }
+    }
+    .card{
+      .card-input,.psw-input{
+        margin-bottom: 40px;
+      }
+      input{
+        width: 306px;
+        height: 51px;
+      }
+      label{
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        margin-right: 7px;
+        color: #555555;
+      }
+      button{
+        margin: -3px 0 -8px;
+        width: 200px;
+        height: 57px;
+        font-size: 2rem;
+        letter-spacing: 1px;
+        color: white;
+        background: #79B5FD;
+        border: none;
+      }
+      button:active{
+        color: white;
+        border: none;
+        background:#79B5FD;
+      }
+    }
+  }
+}
+.payHtml{
+  width: 450px;
+  //height: 241px;
+  .modal-header{
+    padding: 0;
+    background: #73b2fd;
+    text-align: right;
+    img{
+      height: 33px;
+      cursor: pointer;
+    }
+  }
+  .modal-body{
+    padding: 32px 10px;
+    p{
+      font-size: 1.6rem;
+      line-height: 28px;
+      text-align: center;
+      color: #555555;
+    }
+  }
+  .modal-footer{
+    padding:0 10px 10px;
+    border: none;
+    text-align: center;
+    button{
+      font-size: 1.6rem;
+      margin-bottom: 19px;
+    }
+    p{
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #cbcbcb;
+      span{
+        color: #73b2fd;
+      }
+    }
+  }
+}
+.memberActive{
+  width: 428px;
+  height: 237px;
+
+  .modal-header{
+    height: 33px;
+    padding: 0;
+    text-align: right;
+    border: none;
+    img{
+      height: 33px;
+      cursor: pointer;
+
+    };
+  }
+  .modal-body{
+    padding: 0;
+    text-align: center;
+    img{
+      margin: 7px 0 25px;
+    }
+    p{
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 1px;
+      color: #545454;
+    }
+
+  }
+  .modal-footer{
+    padding:0;
+    border: none;
+    text-align: center;
+    button{
+      width: 136px;
+      height: 31px;
+      margin: 12px 0 15px;
+      padding: 0;
+      font-size: 1.6rem;
+      color:white;
+      background: #73B2FD;
+    }
+    p{
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #cbcbcb;
+      span{
+        color: #73b2fd;
+      }
+    }
+  }
+
+}
+
+
+@media(max-width:1230px){
+  .member main .main .price{
+    float: none;
+    margin-left: 0;
+  }
+}
+@media(max-width:992px){
+  .member .sidebar,.member  main{
+    width: 100%;
+  }
+
+
+}
+@media(max-width:768px){
+  .member main .main .price{
+    width: 220px;
+  }
+  .member main .main{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .member main .main .alipay, .member main .main .wechatpay{
+    margin-bottom: 10px;
+  }
+  .member main .main .pay-agreement a{
+    line-height: 25px;
+  }
+  .member main .card input {
+    width: 100%;
+    max-width: 306px;
+  }
+  .member main .main .price-total {
+    font-size: 3.2rem;
+  }
+  .member main .main .price-day {
+    font-size: 1.5rem;
+  }
+  .member main .main .introduction{
+    width: 100%;
+    img{
+      width: 100%;
+    }
+  }
+  .payHtml{
+    width: 258px;
+    height: 266px;
+  }
+}

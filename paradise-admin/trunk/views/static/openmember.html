@@ -1,0 +1,31 @@
+            <div class="statistic-main">
+                <div class="seminar">
+                    <div class="pagetable1 col-sm-2 col-lg-2 col-sm-offset-1 col-lg-offset-1">开通会员页统计</div>
+                    <div class="col-sm-12 col-lg-12" style="margin: 15px;"></div>
+                    <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+
+                        <div class="panel-body">
+                            <table class="table  table-bordered  table-striped" ng-if="vm.noticeList.length!==0">
+                                <thead>
+                                    <tr align="center" valign="middle">
+                                        <th>页面</th>
+                                        <th>访问量</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="ul-table table-responsive table-striped">
+                                    <tr>
+                                        <td>开通会员页统计</td>
+                                        <td ng-bind="vm.viewsStat"></td>
+                                    </tr>
+                                    <!-- <tr ng-repeat=" item in vm.commonDataList" ng-class="{'selected': vm.subjectListData.selected == item}" align="center" valign="middle">
+                                        <td>{{item.subjectName}}</td>
+                                        <td>{{item.gradeDept | gradeFilter:'grade'}}</td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>

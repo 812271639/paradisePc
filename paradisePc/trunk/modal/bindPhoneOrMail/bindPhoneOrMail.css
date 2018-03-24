@@ -1,0 +1,80 @@
+.bindPhoneOrMail-wrapper {
+  width: 349px;
+  /*height: 370px;*/ }
+  .bindPhoneOrMail-wrapper input {
+    height: 50px; }
+  .bindPhoneOrMail-wrapper .modal-body {
+    /*height: 335px;*/
+    display: flex; }
+    .bindPhoneOrMail-wrapper .modal-body form {
+      width: 100%; }
+      .bindPhoneOrMail-wrapper .modal-body form form > div {
+        width: 100%; }
+    .bindPhoneOrMail-wrapper .modal-body .phone-code button {
+      height: 38px;
+          position: absolute;
+    right: 4px; }
+    .bindPhoneOrMail-wrapper .modal-body .title {
+      height: 56px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .bindPhoneOrMail-wrapper .modal-body .title-content {
+      font-size: 16px;
+      /*margin-top: 33px;*/ }
+    .bindPhoneOrMail-wrapper .modal-body .account {
+      height: 52px;
+      margin-bottom: 16px; }
+    .bindPhoneOrMail-wrapper .modal-body .phone-code {
+      height: 50px;
+      margin-bottom: 20px; }
+    .bindPhoneOrMail-wrapper .modal-body .phone-code-phone {
+      margin-bottom: 13px; }
+    .bindPhoneOrMail-wrapper .modal-body .button-wrapper {
+      height: 44px;
+      margin-bottom: 44px; }
+    .bindPhoneOrMail-wrapper .modal-body .button-wrapper-phone {
+      margin-bottom: 27px; }
+    .bindPhoneOrMail-wrapper .modal-body .button-wrapper button {
+      height: 44px; }
+    .bindPhoneOrMail-wrapper .modal-body .voice {
+      height: 13px;
+      font-size: 12px;
+      margin-bottom: 27px; }
+  .bindPhoneOrMail-wrapper .VoiceGai {
+    color: grey; }
+
+@media (max-width: 768px) {
+  .bindPhoneOrMail-wrapper {
+    width: 310px;
+    height: auto; }
+    .bindPhoneOrMail-wrapper .modal-body {
+      height: auto;
+      padding: 10px; }
+      .bindPhoneOrMail-wrapper .modal-body .title {
+        margin: 0px;
+        height: 30px; }
+      .bindPhoneOrMail-wrapper .modal-body .title-content {
+        margin-top: 0px; }
+      .bindPhoneOrMail-wrapper .modal-body .voice {
+        margin-bottom: 15px; }
+    .bindPhoneOrMail-wrapper .modal-body .account, .bindPhoneOrMail-wrapper .modal-body .phone-code {
+      height: auto; }
+    .bindPhoneOrMail-wrapper .modal-body .phone-code {
+      margin-bottom: 15px; }
+    .bindPhoneOrMail-wrapper .register-row {
+      flex-direction: column; }
+    .bindPhoneOrMail-wrapper .account, .bindPhoneOrMail-wrapper .password, .bindPhoneOrMail-wrapper .image-code-new {
+      margin-bottom: 15px; }
+    .bindPhoneOrMail-wrapper .forget, .bindPhoneOrMail-wrapper .modal-body .button-wrapper, .bindPhoneOrMail-wrapper .modal-body .button-wrapper-phone {
+      margin-bottom: 10px; }
+    .bindPhoneOrMail-wrapper .left {
+      width: 290px;
+      justify-content: flex-start; }
+    .bindPhoneOrMail-wrapper .center {
+      margin: 0px;
+      width: 290px; }
+    .bindPhoneOrMail-wrapper .rule input {
+      height: 20px; } }
+
+/*# sourceMappingURL=bindPhoneOrMail.css.map */

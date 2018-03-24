@@ -1,0 +1,682 @@
+.modal-dialog {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .modal-dialog .modal-content {
+    border-radius: 9px;
+    zoom: 1.1; }
+.image-code .center .vertystyle{
+  background-color: #f2f2f2;
+}
+.modal-open {
+  padding-right: 0 !important;
+  overflow-y: scroll; }
+
+.confirm-wrapper {
+  width: 337px;
+  height: 245px; }
+  .confirm-wrapper > div {
+    width: 100%; }
+  .confirm-wrapper .modal-header {
+    background-color: #73b2fd;
+    color: white;
+    height: 35px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+    .confirm-wrapper .modal-header .close-model {
+      width: 40px;
+      height: 32px; }
+      .confirm-wrapper .modal-header .close-model img {
+        width: 40px;
+        height: 32px; }
+  .confirm-wrapper .modal-body {
+    height: 125px;
+    text-align: center;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .confirm-wrapper .modal-body p {
+      padding-top: 15px; }
+  .confirm-wrapper .modal-footer {
+    padding: 0px;
+    height: 85px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-top: 0px; }
+    .confirm-wrapper .modal-footer button {
+      border-radius: 0px;
+      padding: 5px 17px; }
+  .confirm-wrapper .cancel-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #a1a1a1;
+    margin-right: 43px; }
+  .confirm-wrapper .ok-btn {
+    background-color: #73b2fd;
+    color: white; }
+.close-img{
+  position: absolute;
+    right: 19px;
+    top: 19px;
+        z-index: 2;
+}
+.login-wrapper {
+  /*width: 505px;
+  height: 453px;*/ }
+  .login-wrapper > div {
+    width: 100%; }
+  .modal-content .login-wrapper .modal-header {
+    background-color: white;
+    color: white;
+    height: 35px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+    .login-wrapper .modal-header .close-model {
+      width: 40px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .login-wrapper .modal-header .close-model img {
+        width: 40px;
+        height: 32px; }
+  .login-wrapper .close-model{
+    /*position: absolute;
+    right: 19px;
+    top: 16px;*/
+  }
+  .other-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 17px;
+    position: relative;
+  }
+  .other-login .line-bar{
+    width: 65px;
+    height:1px;
+    background-color: #ccc;
+    position: absolute;
+  }
+  .barA{
+      top: 50%;
+    right: 69%;
+  }
+  .barB{
+        top: 50%;
+    left: 67%;
+  }
+  .login-text{
+    font-size: 14px;
+    margin: 0 13px;
+  }
+  .wx-login-text{
+    color: #87d850;
+    margin-top: 10px;
+    margin-bottom: 21px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .wx-login-img{
+    cursor: pointer;
+  }
+.wx-login{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.codePsw{
+  margin: 30px 55px;
+}
+.username input{
+        box-shadow: 40px 40px 40px 40px #F2F2F2 inset;
+}
+.password input{
+        box-shadow: 40px 40px 40px 40px #F2F2F2 inset;
+}
+  .login-wrapper .modal-body {
+    padding:0; }
+  .login-wrapper .code-wrapper {
+    /*width: 305px;
+    height: 301px;*/
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+  .login-wrapper .code-img {
+    padding-top: 10px;
+    height: 195px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .login-wrapper .code-img img {
+      width: 205px;
+      height: 185px; }
+  .login-wrapper .code-text {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    align-items: flex-start;
+    padding-top: 30px; }
+  .login-wrapper .code-text-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    letter-spacing: 2px; }
+    .login-wrapper .code-text-img img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px; }
+  .login-wrapper .title {
+    /*height: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 14px;*/ }
+  .login-wrapper .password {
+    margin: 23px 0 13px; }
+    .login-wrapper .password input {
+      height: 50px; }
+  .login-wrapper .username input {
+    height: 50px; }
+  .login-wrapper .save-checkbox {
+    display: flex; }
+  .login-wrapper .save-username {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .login-wrapper .forget-password {
+    color: #73b2fd; }
+  .login-wrapper .button-wrapper button {
+    height: 50px;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    background-color: #86ce2f;
+    font-size: 20px;
+    color: white;
+    letter-spacing: 1em; }
+  .modal-body .login-wrapper .last-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; }
+    .login-wrapper .last-line > div {
+      font-size: 14px; }
+    .login-wrapper .last-line .wechat img {
+      margin-right: 5px; }
+
+.register-wrapper {
+  width: 349px;
+  /*height: 488px;*/ }
+  .register-wrapper > div {
+    width: 100%; }
+  .register-wrapper input {
+    height: 50px;
+    background-color: #f2f2f2; }
+  .register-wrapper .rule input {
+    height: 100%; }
+  .register-wrapper .modal-header {
+    background-color: #73b2fd;
+    color: white;
+    height: 35px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+    .register-wrapper .modal-header .close-model {
+      width: 40px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .register-wrapper .modal-header .close-model img {
+        width: 40px;
+        height: 32px; }
+  .register-wrapper .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px; }
+    .register-wrapper .modal-body > div {
+      width: 100%;
+      margin-bottom: 20px; }
+    .register-wrapper .modal-body .title {
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      margin-bottom: 0px; }
+  .register-wrapper .register-row {
+    display: flex;
+    justify-content: center; }
+  .register-wrapper .left {
+    font-size: 16px;
+    width: 195px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+  .register-wrapper .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    /*margin-left: 15px;*/ }
+  .register-wrapper .right {
+    flex: 1; }
+  .register-wrapper .phone-code, .register-wrapper .image-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px; }
+    .register-wrapper .phone-code .center, .register-wrapper .image-code .center {
+      display: flex;
+      justify-content: space-between; }
+    .register-wrapper .phone-code input, .register-wrapper .image-code input {
+      /*width: 170px;*/ }
+    .register-wrapper .phone-code button, .register-wrapper .phone-code img, .register-wrapper .image-code button, .register-wrapper .image-code img {
+      width: 130px;
+      height: 50px;
+      font-size: 16px;
+      background-color: #73b2fd;
+      color: white;
+      letter-spacing: 2px; }
+  .register-wrapper .rule {
+    padding-top: 7px;
+    margin-bottom: 15px;
+    font-size: 14px; }
+  .register-wrapper .button-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1; }
+    .register-wrapper .button-wrapper button {
+      height: 55px;
+      width: 100%;
+      /*background-color: #86ce2f;*/
+      color: white;
+      letter-spacing: 5px;
+      font-size: 20px; }
+
+.forgetPassword-wrapper, .changePhoneNumber-wrapper, .bindPhoneOrMail-wrapper, .changePassword-wrapper {
+  /*width: 715px;*/
+  /*height: 463px;*/ }
+  .forgetPassword-wrapper > div, .changePhoneNumber-wrapper > div, .bindPhoneOrMail-wrapper > div, .changePassword-wrapper > div {
+    width: 100%; }
+  .forgetPassword-wrapper input, .changePhoneNumber-wrapper input, .bindPhoneOrMail-wrapper input, .changePassword-wrapper input {
+    height: 50px; }
+  .forgetPassword-wrapper .rule input, .changePhoneNumber-wrapper .rule input, .bindPhoneOrMail-wrapper .rule input, .changePassword-wrapper .rule input {
+    height: 100%; }
+  .forgetPassword-wrapper .modal-header, .changePhoneNumber-wrapper .modal-header, .bindPhoneOrMail-wrapper .modal-header, .changePassword-wrapper .modal-header {
+    background-color: #73b2fd;
+    color: white;
+    height: 35px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+    .forgetPassword-wrapper .modal-header .close-model, .changePhoneNumber-wrapper .modal-header .close-model, .bindPhoneOrMail-wrapper .modal-header .close-model, .changePassword-wrapper .modal-header .close-model {
+      width: 40px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .forgetPassword-wrapper .modal-header .close-model img, .changePhoneNumber-wrapper .modal-header .close-model img, .bindPhoneOrMail-wrapper .modal-header .close-model img, .changePassword-wrapper .modal-header .close-model img {
+        width: 40px;
+        height: 32px; }
+  .forgetPassword-wrapper .modal-body, .changePhoneNumber-wrapper .modal-body, .bindPhoneOrMail-wrapper .modal-body, .changePassword-wrapper .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px;
+    /*height: 428px; */}
+    .forgetPassword-wrapper .modal-body > div, .changePhoneNumber-wrapper .modal-body > div, .bindPhoneOrMail-wrapper .modal-body > div, .changePassword-wrapper .modal-body > div {
+      width: 100%;
+      margin-bottom: 20px; }
+    .forgetPassword-wrapper .modal-body .title, .changePhoneNumber-wrapper .modal-body .title, .bindPhoneOrMail-wrapper .modal-body .title, .changePassword-wrapper .modal-body .title {
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      margin-bottom: 0px; }
+  .forgetPassword-wrapper .register-row, .changePhoneNumber-wrapper .register-row, .bindPhoneOrMail-wrapper .register-row, .changePassword-wrapper .register-row {
+    display: flex;
+    justify-content: center; }
+  .forgetPassword-wrapper .left, .changePhoneNumber-wrapper .left, .bindPhoneOrMail-wrapper .left, .changePassword-wrapper .left {
+    font-size: 16px;
+    width: 195px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+  .forgetPassword-wrapper .center, .changePhoneNumber-wrapper .center, .bindPhoneOrMail-wrapper .center, .changePassword-wrapper .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    margin-left: 15px; }
+  .forgetPassword-wrapper .right, .changePhoneNumber-wrapper .right, .bindPhoneOrMail-wrapper .right, .changePassword-wrapper .right {
+    flex: 1;
+    color: #ef4a24;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px; }
+  .forgetPassword-wrapper .modal-body .account, .changePhoneNumber-wrapper .modal-body .account, .bindPhoneOrMail-wrapper .modal-body .account, .changePassword-wrapper .modal-body .account {
+    margin-bottom: 15px; }
+  .forgetPassword-wrapper .modal-body .phone-code, .changePhoneNumber-wrapper .modal-body .phone-code, .bindPhoneOrMail-wrapper .modal-body .phone-code, .changePassword-wrapper .modal-body .phone-code {
+    margin-bottom: 10px; }
+  .forgetPassword-wrapper .modal-body .affirm, .changePhoneNumber-wrapper .modal-body .affirm, .bindPhoneOrMail-wrapper .modal-body .affirm, .changePassword-wrapper .modal-body .affirm {
+    margin-bottom: 10px; }
+  .forgetPassword-wrapper .step img, .changePhoneNumber-wrapper .step img, .bindPhoneOrMail-wrapper .step img, .changePassword-wrapper .step img {
+    /*width: 320px;*/
+    height: 34px;
+    margin-bottom: 20px; }
+  .forgetPassword-wrapper .step .center, .changePhoneNumber-wrapper .step .center, .bindPhoneOrMail-wrapper .step .center, .changePassword-wrapper .step .center {
+    position: relative; }
+  .forgetPassword-wrapper .step .step-text-left, .forgetPassword-wrapper .step .step-text-left-phone, .changePhoneNumber-wrapper .step .step-text-left, .changePhoneNumber-wrapper .step .step-text-left-phone, .bindPhoneOrMail-wrapper .step .step-text-left, .bindPhoneOrMail-wrapper .step .step-text-left-phone, .changePassword-wrapper .step .step-text-left, .changePassword-wrapper .step .step-text-left-phone {
+    position: absolute;
+    left: 67px;
+    top: 40px;
+    font-size: 12px; }
+  .forgetPassword-wrapper .step .step-text-right, .forgetPassword-wrapper .step .step-text-right-phone, .changePhoneNumber-wrapper .step .step-text-right, .changePhoneNumber-wrapper .step .step-text-right-phone, .bindPhoneOrMail-wrapper .step .step-text-right, .bindPhoneOrMail-wrapper .step .step-text-right-phone, .changePassword-wrapper .step .step-text-right, .changePassword-wrapper .step .step-text-right-phone {
+    position: absolute;
+    right: 60px;
+    top: 40px;
+    font-size: 12px; }
+  .forgetPassword-wrapper .step .step-text-left-phone, .changePhoneNumber-wrapper .step .step-text-left-phone, .bindPhoneOrMail-wrapper .step .step-text-left-phone, .changePassword-wrapper .step .step-text-left-phone {
+    left: 59px; }
+  .forgetPassword-wrapper .step .step-text-right-phone, .changePhoneNumber-wrapper .step .step-text-right-phone, .bindPhoneOrMail-wrapper .step .step-text-right-phone, .changePassword-wrapper .step .step-text-right-phone {
+    right: 60px; }
+  .forgetPassword-wrapper .modal-body .voice, .changePhoneNumber-wrapper .modal-body .voice, .bindPhoneOrMail-wrapper .modal-body .voice, .changePassword-wrapper .modal-body .voice {
+    height: 20px;
+    margin-bottom: 27px; }
+    .forgetPassword-wrapper .modal-body .voice .center, .changePhoneNumber-wrapper .modal-body .voice .center, .bindPhoneOrMail-wrapper .modal-body .voice .center, .changePassword-wrapper .modal-body .voice .center {
+      color: #ccc;
+      display: flex;
+      justify-content: flex-start;
+      font-size: 14px; }
+  .forgetPassword-wrapper .phone-code, .changePhoneNumber-wrapper .phone-code, .bindPhoneOrMail-wrapper .phone-code, .changePassword-wrapper .phone-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px; }
+    .forgetPassword-wrapper .phone-code .center, .changePhoneNumber-wrapper .phone-code .center, .bindPhoneOrMail-wrapper .phone-code .center, .changePassword-wrapper .phone-code .center {
+      /*display: flex;*/
+      /*justify-content: space-between; */}
+    .forgetPassword-wrapper .phone-code input, .changePhoneNumber-wrapper .phone-code input, .bindPhoneOrMail-wrapper .phone-code input, .changePassword-wrapper .phone-code input {
+      /*width: 170px;*/ }
+    .forgetPassword-wrapper .phone-code button, .forgetPassword-wrapper .phone-code img, .changePhoneNumber-wrapper .phone-code button, .changePhoneNumber-wrapper .phone-code img, .bindPhoneOrMail-wrapper .phone-code button, .bindPhoneOrMail-wrapper .phone-code img, .changePassword-wrapper .phone-code button, .changePassword-wrapper .phone-code img {
+      width: 130px;
+      height: 50px;
+      font-size: 16px;
+      background-color: #73b2fd;
+      color: white;
+      letter-spacing: 2px; }
+  .forgetPassword-wrapper .modal-body .button-wrapper, .changePhoneNumber-wrapper .modal-body .button-wrapper, .bindPhoneOrMail-wrapper .modal-body .button-wrapper, .changePassword-wrapper .modal-body .button-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 50px;
+    margin-bottom: 70px;
+    position: relative; }
+    .forgetPassword-wrapper .modal-body .button-wrapper button, .changePhoneNumber-wrapper .modal-body .button-wrapper button, .bindPhoneOrMail-wrapper .modal-body .button-wrapper button, .changePassword-wrapper .modal-body .button-wrapper button {
+      height: 50px;
+      width: 100%;
+      background-color: #86ce2f;
+      color: white;
+      letter-spacing: 5px;
+      font-size: 20px; }
+    .forgetPassword-wrapper .modal-body .button-wrapper .tips, .changePhoneNumber-wrapper .modal-body .button-wrapper .tips, .bindPhoneOrMail-wrapper .modal-body .button-wrapper .tips, .changePassword-wrapper .modal-body .button-wrapper .tips {
+      display: flex;
+      width: 100%;
+      height: 18px;
+      justify-content: center;
+      color: #979797;
+      position: absolute;
+      bottom: -45px;
+      right: 0px; }
+
+.bindPhoneOrMail-wrapper {
+  width: 709px;
+  height: 370px; }
+  .bindPhoneOrMail-wrapper input {
+    height: 52px; }
+  .bindPhoneOrMail-wrapper .modal-body {
+    height: 335px;
+    display: flex; }
+    .bindPhoneOrMail-wrapper .modal-body .phone-code button {
+      height: 52px; }
+    .bindPhoneOrMail-wrapper .modal-body .title {
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; }
+    .bindPhoneOrMail-wrapper .modal-body .title-content {
+      font-size: 16px;
+      margin-top: 33px; }
+    .bindPhoneOrMail-wrapper .modal-body .account {
+      height: 52px;
+      margin-bottom: 16px; }
+    .bindPhoneOrMail-wrapper .modal-body .phone-code {
+      height: 52px;
+      margin-bottom: 36px; }
+    .bindPhoneOrMail-wrapper .modal-body .phone-code-phone {
+      margin-bottom: 13px; }
+    .bindPhoneOrMail-wrapper .modal-body .button-wrapper {
+      height: 52px;
+      margin-bottom: 44px; }
+    .bindPhoneOrMail-wrapper .modal-body .button-wrapper-phone {
+      margin-bottom: 27px; }
+    .bindPhoneOrMail-wrapper .modal-body .button-wrapper button {
+      height: 52px; }
+    .bindPhoneOrMail-wrapper .modal-body .voice {
+      height: 13px;
+      font-size: 12px;
+      margin-bottom: 27px; }
+
+.changePassword-wrapper {
+  width: 709px;
+  height: auto; }
+  .changePassword-wrapper .modal-header {
+    height: 40px; }
+  .changePassword-wrapper input {
+    height: 53px; }
+  .changePassword-wrapper .modal-body {
+    height: auto;
+    display: flex; }
+    .changePassword-wrapper .modal-body > div {
+      height: 53px;
+      margin-bottom: 15px; }
+    .changePassword-wrapper .modal-body .title {
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; }
+      .changePassword-wrapper .modal-body .title .title-content {
+        font-size: 16px;
+        margin-top: 20px; }
+    .changePassword-wrapper .modal-body .title-change {
+      height: 60px; }
+      .changePassword-wrapper .modal-body .title-change .title-content {
+        font-size: 16px;
+        margin-top: 20px; }
+    .changePassword-wrapper .modal-body .confirm-password {
+      height: 53px;
+      margin-bottom: 53px; }
+    .changePassword-wrapper .modal-body .button-wrapper {
+      height: 53px;
+      margin-bottom: 34px; }
+    .changePassword-wrapper .modal-body .button-wrapper-change {
+      margin-bottom: 47px; }
+    .changePassword-wrapper .modal-body .button-wrapper button {
+      height: 53px; }
+
+.afterWeChat-wrapper {
+  width: 852px; }
+  .afterWeChat-wrapper > div {
+    width: 100%; }
+  .afterWeChat-wrapper input {
+    height: 53px; }
+  .afterWeChat-wrapper .rule input {
+    height: 100%; }
+  .afterWeChat-wrapper .modal-header {
+    background-color: #f2f2f2;
+    color: white;
+    height: 53px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+    .afterWeChat-wrapper .modal-header .header-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 50%;
+      font-size: 18px;
+      color: #555; }
+    .afterWeChat-wrapper .modal-header .header-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 50%;
+      font-size: 18px;
+      color: #555; }
+    .afterWeChat-wrapper .modal-header .active {
+      background-color: #73b2fd;
+      color: white; }
+    .afterWeChat-wrapper .modal-header .close-model {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      padding: 8.5px 0;
+      width: 40px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .afterWeChat-wrapper .modal-header .close-model img {
+        width: 40px;
+        height: 32px; }
+  .afterWeChat-wrapper .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px; }
+    .afterWeChat-wrapper .modal-body > div {
+      width: 100%; }
+    .afterWeChat-wrapper .modal-body .title {
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      margin-bottom: 27px;
+      margin-top: 23px;
+      color: #86ce2f; }
+      .afterWeChat-wrapper .modal-body .title img {
+        width: 56px;
+        height: 56px;
+        border: 2px solid #73b2fd;
+        border-radius: 50%;
+        margin-right: 10px; }
+  .afterWeChat-wrapper .register-row {
+    display: flex;
+    justify-content: center; }
+  .afterWeChat-wrapper .left {
+    font-size: 16px;
+    width: 266px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+  .afterWeChat-wrapper .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 310px;
+    margin-left: 10px; }
+  .afterWeChat-wrapper .right {
+    flex: 1; }
+  .afterWeChat-wrapper .account {
+    margin-bottom: 27px; }
+  .afterWeChat-wrapper .password {
+    margin-bottom: 18px; }
+  .afterWeChat-wrapper .password-new {
+    margin-bottom: 30px; }
+  .afterWeChat-wrapper .modal-body .voice {
+    height: 13px;
+    margin-bottom: 10px;
+    font-size: 12px; }
+    .afterWeChat-wrapper .modal-body .voice .center {
+      color: #ccc;
+      display: flex;
+      justify-content: flex-start;
+      font-size: 14px; }
+  .afterWeChat-wrapper .phone-code, .afterWeChat-wrapper .image-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px; }
+    .afterWeChat-wrapper .phone-code .center, .afterWeChat-wrapper .image-code .center {
+      display: flex;
+      justify-content: space-between; }
+    .afterWeChat-wrapper .phone-code input, .afterWeChat-wrapper .image-code input {
+      width: 170px; }
+    .afterWeChat-wrapper .phone-code button, .afterWeChat-wrapper .phone-code img, .afterWeChat-wrapper .image-code button, .afterWeChat-wrapper .image-code img {
+      width: 130px;
+      height: 50px;
+      font-size: 16px;
+      background-color: #73b2fd;
+      color: white;
+      letter-spacing: 2px; }
+  .afterWeChat-wrapper .image-code-new {
+    margin-bottom: 35px; }
+  .afterWeChat-wrapper .phone-code-new {
+    margin-bottom: 5px; }
+  .afterWeChat-wrapper .forget {
+    height: 17px;
+    margin-bottom: 24px; }
+    .afterWeChat-wrapper .forget .center {
+      justify-content: flex-end;
+      font-size: 14px;
+      color: #73b2fd; }
+  .afterWeChat-wrapper .rule {
+    height: 16px;
+    margin-bottom: 15px;
+    font-size: 14px; }
+  .afterWeChat-wrapper .button-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1;
+    margin-bottom: 33px; }
+    .afterWeChat-wrapper .button-wrapper button {
+      height: 53px;
+      width: 100%;
+      background-color: #86ce2f;
+      color: white;
+      letter-spacing: 5px;
+      font-size: 20px; }
+
+    .impowerBox .qrcode{
+       border:none!important;
+      }
+
+/*# sourceMappingURL=modal.css.map */

@@ -1,0 +1,100 @@
+<div class="row pd-top-2 ng-scope">
+
+        <div class="panel-body">
+            <div class="form-group panel panel-default panel-body">
+                <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                    <div class="form-group mr0-ml0">
+                        <label class="col-md-1 col-xs-12 control-label">会员套餐</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入会员套餐名称"
+                                   ng-model="vm.params.name" name="name">
+                        </div>
+                        <label class="col-md-1 col-xs-12 control-label">期限</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入期限" numberic
+                                   ng-model="vm.params.minPeriod" name="minPeriod">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入期限" numberic
+                                   ng-model="vm.params.maxPeriod" name="maxPeriod">
+                        </div>
+
+                    </div>
+                    <div class="form-group mr0-ml0">
+                        <label class="control-label col-lg-1 col-md-1 col-xs-12">状态</label>
+                        <div class=" col-md-4 col-xs-12">
+                            <select class="form-control" ng-model="vm.params.status" ng-change="vm.changeGradeType(vm.params.subjectId)">
+                                <option ng-selected="vm.params.status ==''||undefined" value=''>全部</option>
+                                <option ng-repeat=" li in vm.off"    value="{{li.id}}"
+                                        ng-selected="li.id == vm.params.status">{{li.name}}</option>
+                            </select>
+
+                        </div>
+                        <label class="col-md-1 col-xs-12 control-label">价格</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入价格" numberic
+                                   ng-model="vm.params.minPrice" name="minPrice">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入价格" numberic
+                                   ng-model="vm.params.maxPrice" name="maxPrice">
+                        </div>
+                    </div>
+                </form>
+
+                <button class="btn btn-primary pull-right" ng-click="vm.search()">搜索
+                </button>
+                <button class="btn btn-primary pull-right" ng-click="vm.clear()" style="display:block;margin-right: 50px">清除
+                </button>
+
+            </div>
+
+            <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>套餐管理</strong>
+            <div class="btn-group pull-right">
+                <button class="btn btn-primary btn-xs" ui-sref="field.PackageDetail">
+                    <i class="fa fa-plus-square fa-fw"></i>新增
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-striped text-center add-table-border">
+                <thead>
+                <tr>
+                    <th class="text-center width5">序号</th>
+                    <th class="text-center width5">会员套餐</th>
+                    <th class="text-center width6">期限（月）</th>
+                    <th class="text-center width15">价格（元）</th>
+                    <th class="text-center width6">状态</th>
+                    <th class="text-center width15">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="li in vm.list">
+                    <td >{{$index+1}}</td>
+                    <td>{{li.name}}</td>
+                    <td>{{li.period}}</td>
+                    <td>{{li.price|fundFilter2}}</td>
+                    <td>{{li.status|statusFilter}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-xs" ng-click="vm.del(li.id)">删除</button>
+                        <button class="btn btn-success btn-xs" ui-sref="field.PackageDetail({id:li.id})">编辑</button>
+                        <button class="btn btn-default btn-xs" ng-click="vm.upDown(2,li.id)" ng-if="li.status==1">下架</button>
+                        <button class="btn  btn-danger btn-xs" ng-click="vm.upDown(1,li.id)" ng-if="li.status==2">上架</button>
+                        <button class="btn  btn-default btn-xs" ng-click="vm.recommend(li.id)" ng-if="li.recommend==2">推荐</button>
+                        <button class="btn  btn-danger btn-xs" ng-click="vm.recommendCancel(li.id)" ng-if="li.recommend==1">取消推荐</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--分页-->
+            <nav class="pull-right" ng-if="vm.totalPage">
+                <page total-page="{{vm.totalPage}}"></page>
+            </nav>
+        </div>
+    </div>
+</div>
+    </div>

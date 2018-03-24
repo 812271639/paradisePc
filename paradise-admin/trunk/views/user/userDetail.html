@@ -1,0 +1,263 @@
+<!-- <script src="../../../../简单的html5影音视频播放器代码/dist/plyr.js"></script> -->
+<div class="row pd-top-2 ng-scope">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>用户详情</strong>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="subjectForm">
+
+                <dl class="dl-horizontal col-md-4" style="text-align:left">
+                    <dt class="padding-top-20 user-detail-dt">昵称</dt>
+                    <dd class="padding-top-20 user-detail-dd"><input type="text" ng-model="vm.userData.alias" disabled></dd>
+
+                    <dt class="padding-top-20 user-detail-dt" style="line-height: 35px">手机号</dt>
+                    <dd class="padding-top-20 user-detail-dd">
+                        <input type="text" ng-model="vm.userData.mobile" ng-disabled="vm.isChangeMobile==0">
+                        <button class="btn btn-default" ng-if="vm.isChangeMobile==0" ng-click="vm.isChangeMobile=1">修改</button>
+                        <button ng-if="vm.isChangeMobile==1" class="btn btn-success btn-xs" style="margin-left: 10px" ng-click="vm.changeMobile(vm.id)">保存</button>
+                        <button ng-if="vm.isChangeMobile==1" class="btn btn-danger btn-xs" style="margin-left: 10px" ng-click="vm.isChangeMobile=0;vm.userData.mobile=vm.changeMobileNum;">取消</button>
+                    </dd>
+
+                    <dt class="padding-top-20 user-detail-dt">邮箱</dt>
+                    <dd class="padding-top-20 user-detail-dd"><input type="text" ng-model="vm.userData.mail" disabled></dd>
+                    <!--需要修改ng-model-->
+                    <dt class="padding-top-20 user-detail-dt">所在区域</dt>
+                    <dd class="padding-top-20 user-detail-dd"><input type="text" ng-model="vm.userData.location" disabled></dd>
+
+                    <dt class="padding-top-20 user-detail-dt">年级</dt>
+                    <dd class="padding-top-20 user-detail-dd"><input type="text" value="{{vm.userData.grade|userFilter:'grade'}}" disabled></dd>
+
+                    <!--充值接口等-->
+                    <dt class="padding-top-20 user-detail-dt" style="line-height: 35px">逆袭豆</dt>
+                    <dd class="padding-top-20 user-detail-dd">
+                        <input type="text" ng-model="vm.userData.score" disabled>
+                        <button class="btn btn-default" ng-disabled="school" ng-click="vm.isChangeScore()">充值逆袭豆</button>
+                    </dd>
+
+                    <!--<dd class="padding-top-20 user-detail-dd" style="width:100%;">-->
+                    <!--<input type="text" ng-model="vm.changeMobileNum" ng-if="vm.isChangeMobile==1" numberic maxlength="11">-->
+                    <!--<input type="text" ng-model="vm.userData.mobile" ng-if="vm.isChangeMobile==0" disabled>-->
+
+                    <!--<div style="display:inline-block" ng-if="vm.isChangeMobile==1">-->
+                    <!--<button class="btn btn-success btn-xs" style="margin-left: 10px" ng-click="vm.changeMobile()">充值</button>-->
+                    <!--</div>-->
+                    <!--</dd>-->
+
+                    <!--需要修改ng-model-->
+                    <dt class="padding-top-20 user-detail-dt">会员类型</dt>
+                    <dd class="padding-top-20 user-detail-dd"><input type="text" ng-model="vm.userData.mail" disabled></dd>
+                </dl>
+
+                <dl class="dl-horizontal col-md-4">
+                    <dt class="padding-top-20 user-detail-dt">学校</dt>
+                    <dd class="padding-top-20 user-detail-dd"><input type="text" ng-model="vm.userData.schoolName" disabled></dd>
+                    <!--需要修改ng-model-->
+                    <dt class="padding-top-20 user-detail-dt">班级</dt>
+                    <dd class="padding-top-20 user-detail-dd"><input type="text" ng-model="vm.userData.className" disabled></dd>
+                </dl>
+
+                <dl class="dl-horizontal col-md-4">
+                    <dt class="padding-top-20">头像</dt>
+                    <dd class="padding-top-20">
+                        <img src="{{vm.userData.img}}" class="userDetail-img">
+                    </dd>
+                    <dd style="padding-top:10px;margin-left: 155px;" ng-if="vm.userData.vipLine">
+                        <div style="padding-left:10px;color: dimgray;background: url(../../images/year_vip_img@3x.png) no-repeat left center;background-size:20px 20px;text-align:center;">{{vm.userData.vipLine|date:'yyyy-MM-dd'}}到期</div>
+                    </dd>
+                </dl>
+                <!--<dl class="dl-horizontal col-md-3 padding-top-20">-->
+                <!--&lt;!&ndash;<dd class="padding-top-20">&ndash;&gt;-->
+                <!--&lt;!&ndash; <button class="btn btn-default" ng-click="vm.person()" ng-if="!vm.invitationCode">设置推广人</button> &ndash;&gt;-->
+                <!--&lt;!&ndash;</dd>&ndash;&gt;-->
+                <!--&lt;!&ndash; <div ng-if="vm.invitationCode">-->
+                <!--邀请码-->
+                <!--</div> &ndash;&gt;-->
+                <!--&lt;!&ndash; <div ng-if="vm.invitationCode">-->
+                <!--<input type="text" ng-model="vm.invitationCode" disabled>-->
+                <!--</div>-->
+                <!--<div class="padding-top-20"><button class="btn btn-default" ui-sref="field.putSore({id:vm.userData.id})">充值学习星</button></div> &ndash;&gt;-->
+                <!--</dl>-->
+            </form>
+
+
+            <div class="col-sm-12" style="color: #999">
+                <div class="userDetail-table-title cursor" style="margin-left:0;" ng-click="vm.change(1)" ng-class="{true:'color-black'}[vm.typeChoose==1]">
+                    当前会员状态
+                </div>
+                <div class="userDetail-table-title cursor" style="margin-left:0" ng-click="vm.change(2)" ng-class="{true:'color-black'}[vm.typeChoose==2]">
+                    往期充值记录
+                </div>
+                <div class="userDetail-table-title cursor" style="margin-left:0" ng-click="vm.change(3)" ng-class="{true:'color-black'}[vm.typeChoose==3]">
+                    最近登记记录
+                </div>
+                <div class="userDetail-table-title cursor" style="margin-left:0" ng-click="vm.change(4)" ng-class="{true:'color-black'}[vm.typeChoose==4]">
+                    学习记录
+                </div>
+                <!-- <div class="col-xs-2 col-md-2 userDetail-table-title cursor" ng-click="vm.change(5)"
+                     ng-class="{true:'color-black'}[vm.typeChoose==5]">
+                    学习星充值记录
+                </div>
+                <div class="col-xs-2 col-md-2 userDetail-table-title cursor" ng-click="vm.change(6)"
+                     ng-class="{true:'color-black'}[vm.typeChoose==6]">
+                    我的教材
+                </div> -->
+                <div class="userDetail-table-title cursor" style="margin-left:0" ng-click="vm.change(5)" ng-class="{true:'color-black'}[vm.typeChoose==5]">
+                    购买记录
+                </div>
+            </div>
+            <!--当前会员状态-->
+            <div class="panel-body" ng-if="vm.typeChoose==1">
+                <table class="table table-striped text-center add-table-border">
+
+                    <div class="row">
+                        <div class="col-md-6 text-right">会员状态</div>
+                        <div class="col-md-6 text-left">{{vm.memberDetail.memberName|date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-right">会员到期时间</div>
+                        <div class="col-md-6 text-left">{{vm.memberDetail.endTime|date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-right">会员开始时间</div>
+                        <div class="col-md-6 text-left">{{vm.memberDetail.startTime}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-right">当前总消费金额</div>
+                        <div class="col-md-6 text-left">{{vm.memberDetail.price}}元</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-right">当前会员剩余天数</div>
+                        <div class="col-md-6 text-left">{{vm.memberDetail.deadTime}}</div>
+                    </div>
+                </table>
+
+
+            </div>
+
+            <!--往期充值记录-->
+            <div class="panel-body" ng-if="vm.typeChoose==2">
+
+                <table class="table table-striped text-center add-table-border">
+                    <thead>
+                        <tr>
+                            <th class="text-center width5">序号</th>
+                            <th class="text-center width5">会员类型</th>
+                            <th class="text-center width6">开始时间</th>
+                            <th class="text-center width15">到期时间</th>
+                            <th class="text-center width15">花费金额</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ngRepeat: item in vm.list -->
+                        <tr ng-repeat="li in  vm.OrderList">
+                            <td>{{$index+1}}</td>
+                            <td>{{li.memberType}}</td>
+                            <td>{{li.startTime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{li.endTime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{li.price}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+            <!--最近登记记录-->
+            <div class="panel-body" ng-if="vm.typeChoose==3">
+                <table class="table table-striped text-center add-table-border">
+                    <thead>
+                        <tr>
+                            <th class="text-center width5">序号</th>
+                            <th class="text-center width5">登陆端</th>
+                            <th class="text-center width6">登录时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr ng-repeat="li in  vm.loginRecord">
+                            <td>{{$index+1}}</td>
+                            <td>{{li.os}}</td>
+                            <td>{{li.loginAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+
+                        </tr>
+                </table>
+
+
+            </div>
+
+
+            <!--学习记录-->
+            <div class="panel-body" ng-if="vm.typeChoose==4">
+                <table class="table table-striped text-center add-table-border">
+                    <thead>
+                        <tr>
+                            <th class="text-center width5">序号</th>
+                            <th class="text-center width10">任务名称</th>
+                            <th class="text-center width10">课程名称</th>
+                            <th class="text-center width6">所属科目</th>
+                            <th class="text-center width6">所属年级部</th>
+                            <th class="text-center width10">专题名称</th>
+                            <th class="text-center width15">累计学习人数</th>
+                            <th class="text-center width5">状态</th>
+                            <th class="text-center width15">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ngRepeat: item in vm.list -->
+                        <tr ng-repeat="li in  vm.StudyRecord">
+                            <td>{{$index+1}}</td>
+                            <td>{{li.taskName}}</td>
+                            <td>{{li.lessonName}}</td>
+                            <td>{{li.subjectName}}</td>
+                            <td>{{li.gradeDept| gradeFilter:'grade'}}</td>
+                            <td>{{li.periodName}}</td>
+                            <td>{{li.taskStudyCount}}</td>
+                            <td>{{li.status| articleFilter:'status'}}</td>
+                            <td>
+                                <button class="btn btn-danger btn-xs" ui-sref="field.courseAdd({id:li.periodId})">查看{{li.id}}</button>
+                            </td>
+                        </tr>
+                </table>
+
+                <nav class="pull-right" ng-if="vm.totalPage">
+                    <page total-page="{{vm.totalPage}}"></page>
+                </nav>
+            </div>
+
+            <!--购买记录-->
+            <div class="panel-body" ng-if="vm.typeChoose==5">
+                <table class="table table-striped text-center add-table-border">
+                    <thead>
+                    <tr>
+                        <th class="text-center width5">序号</th>
+                        <th class="text-center width10">专题名称</th>
+                        <th class="text-center width6">所属科目</th>
+                        <th class="text-center width6">所属年级部</th>
+                        <th class="text-center width5">状态</th>
+                        <th class="text-center width15">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- ngRepeat: item in vm.list -->
+                    <tr ng-repeat="li in vm.PayRecord">
+                        <td>{{$index+1}}</td>
+                        <td>{{li.lessonName}}</td>
+                        <td>{{li.subjectName}}</td>
+                        <td>{{li.gradeDept| gradeFilter:'grade'}}</td>
+                        <td>{{li.status| articleFilter:'status'}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-xs" ui-sref="field.specialList({name:li.lessonName})">查看</button>
+                        </td>
+                    </tr>
+                </table>
+                <!--分页-->
+                <nav class="pull-right" ng-if="vm.totalPage">
+                    <page total-page="{{vm.totalPage}}"></page>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>

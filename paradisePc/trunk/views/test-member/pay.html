@@ -1,0 +1,93 @@
+<!--客服样式-->
+<div class="customer-service">
+    <img src="images/customer.gif" alt="客服悬浮窗">
+    <img src="images/sverve-content.png" class="customer-hovers">
+    <p class="official-tell"><span style="padding-right: 10px">官方热线&nbsp:</span><span>400-001-6698</span></p>
+    <p class="official-wechat"><span style="padding-right: 10px;">微信客服&nbsp:</span><span>dounixue521</span></p>
+</div>
+<div class="pay-wrapper">
+    <div class="container suirvive-main">
+      <div class="row">
+        <div class="Voucher col-sm-12 col-md-4 col-lg-3">
+           <!-- <img src="#"></div> -->
+           <div class="member-img"></div>
+         </div>
+        <div class="member-active col-sm-12 col-md-5 col-lg-6">
+            <div class="cardactive-text">
+                <p class="cardactive-text1"><b>逗你学会员</b></p>
+                <p class="cardactive-text2 choose-time">开通即可观看所有付费视频，更享7大会员特权</p>
+                <div class="fee" ng-repeat="li in vm.list track by $index" ng-show="vm.status==li.id">
+                    <span style=" position: relative;color: #9E9E9E;display: inline-block;"><span style="position: absolute;bottom: 50%; width: 103%; border-bottom: solid #9E9E9E 2px;"></span>￥{{li.price}}</span> ￥{{li.discountPrice}}
+                </div>
+            </div>
+
+            <div class="member-charge">
+              <p class="choose-time chooseBottom">选择时长</p>
+              <!-- 下面是套餐价格 -->
+
+              <!-- 上面为实验 -->
+              <div class="member-time">
+                <div class="price" ng-repeat="li in vm.list track by $index">
+                  <input type="radio" ng-init="vm.status=vm.list[0].id" name="data" id="data{{$index}}"  ng-value="li.id" ng-model="vm.status">
+                  <label class="year-member" for="data{{$index}}" ng-class="{true:'active'}[vm.status==li.id]">
+
+
+                    <div class="member-common" ng-bind="li.name"><b>年费会员</b></div>
+                    <div class="per-mouth">每月<span ng-bind="(li.price/li.period).toFixed(2)"></span>元</div>
+                    <img class="recommend" src="images/recommend.png" alt="" ng-show="li.recommend==1">
+                    <img class="selected" src="images/selected.png" alt="" ng-show="vm.status==li.id">
+                  </label>
+                </div>
+
+                <!-- <div class="year-member kongge"></div> -->
+              </div>
+
+
+
+
+        <!-- //下面是支付 -->
+              <div class="payment">
+                   <p class="time1" ng-init="vm.ali=true">选择付款方式</p>
+                      <div class="pay-way">
+                        <div class="alipay" ng-click="vm.ali=true" ng-class="{true:'active'}[vm.ali]">
+                            <div class="member-common" >支付宝支付</div>
+                            <img class="selected" src="images/selected.png" alt="" ng-show="vm.ali">
+                        </div>
+
+                        <div class="wechatpay" ng-click="vm.ali=false" ng-class="{true:'active'}[!vm.ali]">
+                            <div class="member-common">&ensp;微信支付&ensp;</div>
+                            <img class="selected" src="images/selected.png" alt="" ng-hide="vm.ali">
+                        </div>
+
+                      </div>
+
+                     <div class="pay-agreement">
+                       <input type="checkbox" id=checked ng-checked="vm.payAgreement" ng-model="vm.payAgreement" class="shuru">
+                         <label for="checked">我已阅读并同意</label>
+                       <a data-toggle="modal" data-target="#myModal">《逗你学平台用户协议》</a>
+                       <p class="tips ng-hide" ng-show="vm.tip">请你阅读并同意用户协议</p>
+                   </div>
+
+
+
+
+                   <button type="submit" ng-click="vm.payBtn()" class="btn btn-info pay-btn">立即支付</button>
+              </div>
+
+
+              <div class="cl" style="clear: both;"></div>
+
+
+            </div>
+
+        </div>
+
+
+
+         <div class="paopao col-sm-12 col-md-3 col-lg-3">
+                <img src="images/paopao.png" class="paopaoimg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+   <div agreement></div>

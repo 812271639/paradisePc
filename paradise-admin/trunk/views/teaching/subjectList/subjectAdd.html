@@ -1,0 +1,110 @@
+<div class="panel panel-default " >
+    <div ng-if="!(vm.id) " class="panel-heading">
+        <span>| 新增科目</span>
+    </div>
+    <div ng-if="vm.id" class="panel-heading">
+        <span>| 编辑科目</span>
+    </div>
+    <div class="panel panel-body">
+        <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+            <div class="form-group mr0-ml0">
+                <label class="col-md-1 col-xs-12 control-label">科目名称</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="vm.params.subjectName" placeholder="必填" maxlength="8">
+                </div>
+                <label class="col-md-2 col-xs-12 control-label">所属年级部</label>
+                <div class="col-md-2">
+                    <select ng-init="vm.params.gradeDept =2" class="form-control"  ng-model="vm.params.gradeDept"
+                            ng-options="grade.type  as grade.name for grade in vm.subjectGrade">
+                    </select>
+                </div>
+                <label class="col-md-1 col-xs-12 control-label">主讲人</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="vm.params.presenter">
+                </div>
+            </div>
+        </form>
+        <div class="form-group mr0-ml0 row">
+            <label class="col-md-1 col-xs-12 control-label text-right">科目介绍</label>
+            <div class="col-md-3  col-xs-12">
+                <textarea class="form-control"   cols="5" rows="5" ng-model="vm.params.introText"></textarea>
+            </div>
+        </div>
+        <div class="form-group mr0-ml0 row" >
+            <label class="col-md-1 col-xs-12 text-right">专题字体颜色</label>
+            <div class="col-md-3 col-xs-12">
+                <color-picker ng-model="vm.params.fontColour" options="vm.colorOptions"
+                ></color-picker>
+            </div>
+
+        </div>
+
+        <!--文章封面图-->
+        <div class="form-group mr0-ml0">
+            <label class="col-md-1 col-md-12 text-right margin-top-8">封面</label>
+            <div class="col-md-8">
+                <label class="btn btn-default" for="file" ng-if="vm.disableNum!=1">上传</label>
+                <span ng-show="vm.params.type==1">(上传文件在5M以内，推荐使用640*310分辨率或相同比例的图片)</span>
+                <span ng-show="vm.params.type==2">(上传文件在5M以内，推荐使用75*75分辨率或相同比例的图片)</span>
+                <div ng-if="vm.uploader">
+                    <input id="file" style="display: none" accept=".jpg,.png,.bmp" type="file"
+                           nv-file-select uploader="vm.uploader" required/>
+                </div>
+
+                <br/>
+                    <img ng-src="{{vm.params.frontCoverURL}}" alt="with responsive image feature"
+                     class="img-responsive" style="max-height: 300px;max-width: 700px">
+                <table class="table" ng-show="vm.uploader.queue.length">
+                    <thead>
+                    <tr>
+                        <th width="50%">图片名</th>
+                        <th ng-show="vm.uploader.isHTML5">大小</th>
+                        <th ng-show="vm.uploader.isHTML5">进度</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in vm.uploader.queue" class="ng-scope" ng-if="$first">
+                        <td><strong class="ng-binding">{{item.file.name}}</strong></td>
+                        <td ng-show="vm.uploader.isHTML5" nowrap="" class="ng-binding">{{
+                            item.file.size/1024/1024 | number:2 }} MB
+                        </td>
+                        <td ng-show="vm.uploader.isHTML5">
+                            <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar"
+                                     ng-style="{ 'width': item.progress + '%' }"></div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                                                    <span ng-show="item.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                            <span ng-show="item.isCancel"><i
+                                    class="glyphicon glyphicon-ban-circle"></i></span>
+                            <span ng-show="item.isError"><i
+                                    class="glyphicon glyphicon-remove"></i></span>
+                        </td>
+                        <td nowrap="">
+                            <button type="button" class="btn btn-success btn-xs"
+                                    ng-click="vm.upload(item)"
+                                    ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                <span class="glyphicon glyphicon-upload"></span> 上传
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs"
+                                    ng-click="item.remove(); vm.clearImg()">
+                                <span class="glyphicon glyphicon-trash"></span> 删除
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="col-md-12 text-center" style="margin-top:20px;">
+            <button ng-click="vm.back()" type="button" class="btn btn-default" >取消</button>
+            <button type="button" ng-disabled=" !(vm.params.subjectName) || !(vm.params.frontCoverURL)" class="btn btn-primary" ng-click="vm.addSubject(vm.id)" >保存</button>
+        </div>
+    </div>
+</div>

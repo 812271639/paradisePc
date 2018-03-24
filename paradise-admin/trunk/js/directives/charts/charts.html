@@ -1,0 +1,8 @@
+<div ng-controller="chartsCtrl">
+
+    <charts data="chartsData"></charts>
+    <!--<button class="btn btn-primary col-xs-offset-5 charts-btn" ng-click="changeChart('sign')">注册数</button>-->
+    <!--<button class="btn btn-primary charts-btn" ng-click="changeChart('daily')">日报数</button>-->
+    <p class="charts" ng-bind=" ' 转化率:' + (memberTotal/numTotal*100).toFixed(2) + '%' "></p>
+    <p class="charts" ng-bind=" ' 付费率:' + (buyTotal/numTotal*100).toFixed(2) + '%' "></p>
+</div>

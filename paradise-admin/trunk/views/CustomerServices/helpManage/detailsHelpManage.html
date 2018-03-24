@@ -1,0 +1,39 @@
+<div class="row pd-top-2 ng-scope">
+    <div class="panel panel-default">
+        <div class="panel-heading contentManage-header">
+            <strong>新增帮助</strong>
+        </div>
+
+        <div class="panel-body">
+            <div class="form-group panel panel-default panel-body">
+                <form class="form-horizontal col-lg-12" name="help">
+                    <div class="form-group">
+                        <label  class="col-lg-2 control-label">标题</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control"  maxlength="15" placeholder="最多15字" ng-model="vm.params.name" ng-disabled="vm.disableNum==1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">正文</label>
+                        <!-- 加载编辑器的容器 -->
+                        <div class="col-md-10">
+                            <script id="myEditor" name="content" type="text/plain" style="width:100%;height:240px;" ng-disabled="vm.disableNum==1"></script>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 pd-top-2 margin-top-5">
+                        <button class="btn btn-primary " ng-click="vm.add()" ng-if="!vm.id" ng-disabled="help.$invalid||vm.addDisable==1">新增</button>
+                        <button class="btn btn-primary " ng-click="vm.detail()" ng-if="vm.disableNum==1">编辑</button>
+                        <button class="btn btn-primary " ng-click="vm.change()" ng-if="vm.disableNum==0" ng-disabled="help.$invalid">修改</button>
+                        <button class="btn btn-default margin-left-2" ng-click="vm.back()" >取消</button>
+                    </div>
+                </form>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

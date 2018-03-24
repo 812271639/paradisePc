@@ -1,0 +1,80 @@
+<div class="row pd-top-2 ng-scope">
+    <div class="panel panel-default">
+        <div class="panel-body form-group panel-default">
+            <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                <div class="form-group col-md-12">
+                    <label class="col-md-1 col-xs-12 control-label pd-left-0">用户昵称</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" ng-model="vm.params.name">
+                    </div>
+                    <label class="control-label  col-md-1 col-xs-12  ">邮箱</label>
+                    <div class="  col-md-3 col-xs-12">
+                        <input type="text" class="form-control" ng-model="vm.params.mail">
+                    </div>
+
+                    <label class="control-label  col-md-1 col-xs-12  pd-left-0">开始时间</label>
+                    <div class="col-md-3 col-xs-12">
+                        <div class="form-group" style="margin-right: 0;margin-left: 0" ng-class="{'has-error': vm.params.startAt != '' && ngForm.startAt.$invalid}">
+                            <input type="text" class="form-control" ng-model="vm.params.startAt" data-date-format="yyyy-MM-dd" data-date-type="number" data-max-date="{{vm.activeDate}}" name="startAt" bs-datepicker>
+                        </div>
+                    </div>
+                    <label class="control-label  col-md-1 col-xs-12 pd-left-0">结束时间</label>
+                    <div class="col-md-3 col-xs-12">
+                        <div class="form-group" style="margin-right: 0;margin-left: 0" ng-class="{'has-error': vm.params.startAt != '' && ngForm.endAt.$invalid}">
+                            <input type="text" class="form-control" ng-model="vm.params.endAt" data-date-format="yyyy-MM-dd" data-date-type="number" data-min-date="{{vm.params.startAt}}" data-max-date="{{vm.activeDate}}" name="endAt" bs-datepicker>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <button class="btn btn-primary pull-right" ng-click="vm.search()">搜索
+                        </button>
+                        <button class="btn btn-primary pull-right" ng-click="vm.clear()" style="display:block;margin-right: 50px">清除
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row pd-top-2 ng-scope">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>意见管理</strong>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped text-center add-table-border">
+                <thead>
+                    <tr>
+                        <th class="text-center width5">序号</th>
+                        <th class="text-center">用户昵称</th>
+                        <th class="text-center">邮箱</th>
+                        <th class="text-center">提交时间</th>
+                        <th class="text-center ">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="li in vm.list">
+                        <td>{{$index+1}}</td>
+                        <td>{{li.name}}</td>
+                        <!--<td>{{li.nick}}</td>-->
+                        <td>{{li.mail}}</td>
+                        <td>{{li.updateAt|date : 'yyyy-MM-dd '}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-xs" ui-sref="field.lookOpinionManage({id:li.id})">查看</button>
+                            <button class="btn btn-danger btn-xs" ng-click="vm.del(li.id)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--分页-->
+            <nav class="pull-right" ng-if="vm.totalPage&&!vm.add">
+                <page total-page="{{vm.totalPage}}"></page>
+            </nav>
+        </div>
+
+    </div>
+</div>

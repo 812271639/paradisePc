@@ -1,0 +1,490 @@
+<div class="row pd-top-2">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading" ng-bind="vm.title">
+				新增任务(练习)
+			</div>
+			<!--归属，渲染不可更改-->
+			<div class="panel-body">
+				<div class="panel panel-default">
+					<form class="form-horizontal">
+						<div class="pd-top-2 form-group">
+							<label class="col-sm-2  col-xs-12 control-label">所属年级部</label>
+							<div class="col-sm-9 col-xs-12">
+								<p class="form-control-static"  ng-bind="vm.params.task.gradeDept | taskFilter:'grade' ">xxxxxx</p>
+							</div>
+							<label class="col-sm-2  col-xs-12 control-label">所属科目</label>
+							<div class="col-sm-9 col-xs-12">
+								<p class="form-control-static" ng-bind="vm.params.task.subjectName">xxxxxx</p>
+							</div>
+							<label class="col-sm-2  col-xs-12 control-label" >所属专题</label>
+							<div class="col-sm-9 col-xs-12">
+								<p class="form-control-static" ng-bind="vm.params.task.lessonName">xxxxxx</p>
+							</div>
+							<label class="col-sm-2  col-xs-12 control-label">所属课程</label>
+							<div class="col-sm-9 col-xs-12">
+								<p class="form-control-static"  ng-bind="vm.params.task.periodName">xxxxxx</p>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="panel-body">
+
+				<div class="form-group panel panel-default panel-body">
+					<form class="form-horizontal" name="myForm" novalidate>
+
+						<!--名称类型-->
+						<div class="form-group">
+							<label class="col-sm-2 control-label" >任务名称</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="" ng-model="vm.params.task.taskName" maxlength="20" placeholder="最多20字" required>
+							</div>
+						</div>
+
+						<!-- 习题类型 -->
+						<div class="form-group">
+							<label class="col-sm-2 control-label">习题类型</label>
+							<div class="col-sm-2">
+								<select class="form-control" ng-model="vm.params.task.specificType" required ng-disabled="vm.taskId" ng-change="vm.clearParams()">
+									<option value="">请选择</option>
+									<option value="1">选择题</option>
+									<option value="2">填空题</option>
+									<option value="4">判断题</option>
+								</select>
+							</div>
+						</div>
+
+						<!--题目-->
+						<div class="form-group margin-left-1">
+							<label class="col-sm-2 control-label" ng-if="vm.params.task.specificType != 2">题&emsp;&emsp;目</label>
+							<label class="col-sm-2 control-label" ng-if="vm.params.task.specificType == 2">题&emsp;&emsp;干</label>
+							<div class="col-sm-10">
+								<table class="table table-striped text-center add-table-border">
+
+									<tr>
+										<th  class="text-center width6"></th>
+										<th  class="text-left width1">
+											<button class="btn btn-success" ng-click="vm.addExercise(2)" ng-disabled="vm.disableNum==1 || vm.params.task.specificType== undefined ">添加文本+</button>
+											<button class="btn btn-success margin-left-10" ng-click="vm.addExercise(1)" ng-disabled="vm.disableNum==1|| vm.params.task.specificType== undefined ">添加图片+</button>
+											<button class="btn btn-success margin-left-10" ng-click="vm.addExercise(3)" ng-disabled="vm.disableNum==1|| vm.params.task.specificType== undefined ">添加音频+</button>
+											<button class="btn btn-success margin-left-10" ng-click="vm.addExercise(5)" ng-disabled="vm.disableNum==1|| vm.params.task.specificType== undefined ">添加视频+</button>
+										</th>
+									</tr>
+									<!-- 新增题目内容 -->
+									<tr ng-repeat="li in vm.unitList track by $index">
+
+										<td class="width6">{{$index+1}}</td>
+										<td class="">
+											<div class="form-group">
+												<!-- 添加文本 -->
+												<!--原数据-->
+												<div class="pull-left col-sm-10" ng-if="li.mediaType==2&&!vm.charge($index)">
+													<textarea class="text-area" ng-model="li.textContent"  required></textarea>
+												</div>
+												<!--新数据-->
+												<div class="pull-left col-sm-10" ng-if="li.mediaType==2&&vm.charge($index)">
+												<div class="col-sm-6">
+													<textarea class="text-area" ng-model="li.textContent.textContent" ng-disabled="vm.disableNum==1" style="overflow: auto;min-height: 150px;font-size: 20px" required></textarea>
+												</div>
+												<div class="col-sm-5" style="line-height: 30px">
+													<button class="col-sm-5"
+															style="background: #f9f9f9;border: none;">
+														app字号
+													</button>
+													<button class="col-sm-5 col-sm-offset-2"
+															style="background: #f9f9f9;border: none;">
+														pc字号
+													</button>
+													<select class="col-sm-5" ng-options="item.type as item.name for item in vm.contentStyle.appFontSize" ng-model="li.textContent .appFontSize"
+													>
+													</select>
+
+													<select class="col-sm-5 col-sm-offset-2" ng-options="item.type as item.name for item in vm.contentStyle.pcFontSize" ng-model="li.textContent .pcFontSize"
+													>
+													</select>
+
+													<button class="col-sm-5"
+															style="background: #f9f9f9;border: none;">
+														字体
+													</button>
+													<button class="col-sm-5 col-sm-offset-2"
+															style="background: #f9f9f9;border: none;">
+														色号
+													</button>
+													<select class="col-sm-5" ng-options="item.type as item.name for item in vm.contentStyle.font" ng-model="li.textContent.font">
+													</select>
+
+													<select class="col-sm-5 col-sm-offset-2" ng-options="item.type as item.name for item in vm.contentStyle.fontColor" ng-model="li.textContent.fontColor"></select>
+												</div>
+											</div>
+												<span style="margin-left: -150px;margin-top: 60px;display: inline-block;width: 35px;height: 20px;background-color:{{li.textContent.fontColor}} "></span>
+
+												<!-- 添加图片 -->
+												<div class="pull-left col-sm-10" ng-if="li.mediaType==1">
+													<simple-upload disabled="true" string="img" url="{{li.resourceLink}}" ng-model="li.resourceLink" ng-if="vm.disableNum==1" accept=".jpg,.png,.bmp"></simple-upload>
+													<simple-upload string="img" url="{{li.resourceLink}}" ng-model="li.resourceLink" ng-if="vm.disableNum!=1" accept=".jpg,.png,.bmp"></simple-upload>
+												</div>
+												<!-- 添加音频 -->
+												<div class="pull-left col-sm-10" ng-if="li.mediaType==3" style="min-height:130px">
+													<simple-upload string="music" ng-model="li.resourceLink"  accept=".mp3,.wma,.wav,.ogg,.ape,.acc">
+													</simple-upload>
+													<audio src="{{li.resourceLink |urlFilter}}" controls="controls" style="margin-top: 30px" ng-if="vm.taskId"></audio>
+												</div>
+												<!-- 添加视频 -->
+												<div class="pull-left col-sm-10" ng-if="li.mediaType==5">
+													<div class="form-group">
+														<label class="col-md-1 col-xs-12 control-label padding-0 text-left">URL</label>
+														<div class="col-md-11">
+															<input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入视频地址" ng-model="li.resourceLink" name="name" ng-blur="vm.getVideo($index,li.resourceLink)"  required>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-1 col-xs-12 control-label padding-0 text-left">封面</label>
+														<div class="col-md-11">
+															<simple-upload disabled="true" string="img" url="{{li.imageLink}}" ng-model="li.imageLink" ng-if="vm.disableNum==1" accept=".jpg,.png,.bmp"></simple-upload>
+															<simple-upload string="img" url="{{li.imageLink}}" ng-model="li.imageLink" ng-if="vm.disableNum!=1" accept=".jpg,.png,.bmp"></simple-upload>
+														</div>
+													</div>
+													<!-- 这里渲染视频 -->
+													<div class="col-md-11" ng-if="vm.taskId">
+														<video src="{{li.resourceLink|urlFilter}}" controls="controls" style="width: 100%;height: 300px"></video>
+													</div>
+													<div class="col-md-11" ng-if="!vm.taskId">
+														<video src="{{vm.videoUrl[$index].url|urlFilter}}" controls="controls" style="width: 100%;height: 300px"></video>
+													</div>
+												</div>
+												<button type="button" class="btn btn-default" style="float: right;margin-right: 30px"  ng-click="vm.deleteStep($index)">删除</button>
+											</div>
+										</td>
+									</tr>
+
+								</table>
+							</div>
+						</div>
+
+						<!--填空题答案-->
+						<div class="form-group margin-left-1" ng-if="vm.params.task.specificType == 2" >
+							<label class="col-sm-2 control-label margin-bottom-20">题&emsp;&emsp;目</label>
+							<div class="col-sm-10 margin-bottom-20">
+								<button class="btn btn-success margin-left-10" ng-click="vm.addParagraph()" >添加段落+</button>
+							</div>
+							<!-- 下面这一段好像没什么用 -->
+							<div class="col-sm-12 margin-bottom-20" ng-repeat="li in vm.answerList track by $index">
+								<label class="col-sm-2 control-label">段落{{$index+1}}</label>
+								<div class="col-sm-10  border-1-gai padding-0" >
+									<div class="col-sm-12 padding-10-0 border-1-bottom-gai">
+										<button class="btn btn-success margin-left-10" ng-click="vm.addFill(1,$index,1)" >添加文本+</button>
+										<button class="btn btn-success margin-left-10" ng-click="vm.addFill(2,$index,2)" >添加答案+</button>
+										<button class="btn btn-default" type="button" style="float: right;margin-right: 30px" ng-click="vm.deleteParagraph($index)" >删除段落</button>
+									</div>
+									<div class="col-sm-12 padding-10-0 border-1-bottom-gai" ng-repeat="text in li.introduce track by $index">
+										<label  class="glyphicon glyphicon-list-alt col-sm-1" style="font-size: 2rem;padding-top: 7px;" ng-if="text.type==1"></label>
+										<label  class="glyphicon glyphicon-question-sign col-sm-1" style="font-size: 2rem;padding-top: 7px;"  ng-if="text.type==2"></label>
+										<input type="email" class="form-control " id="exampleInputEmail1" placeholder="Email" style="width: 75%" ng-model="text.introduce" required>
+										<button class="btn btn-default " type="button" style="float: right;margin-right: 30px;margin-top: -33px" ng-click="vm.deleteFill(li.paragraph,$index)" >删除</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 选择题和判断题答案 -->
+						<div  class="form-group" ng-if="vm.params.task.specificType != 2">
+							<label class="col-sm-2 control-label">答&emsp;&emsp;案</label>
+							<div class="col-sm-10">
+								<table class="table table-striped text-center add-table-border">
+									<thead>
+									<tr ng-if="vm.params.answerList.exerciseType == 1 || vm.params.task.specificType == 1">
+										<th class="fill-img" style="width:30px;">&emsp;</th>
+										<th class="text-center width10">序号类型</th>
+										<th class="text-left width1">
+											<div class="choice">
+												<select class="form-control order"  ng-model="vm.numberPattern">
+													<option value="1">字母</option>
+													<option value="2">数字</option>
+												</select>
+												<button class="btn btn-success margin-left-10" ng-click="vm.addChoice(1)" >添加文本+</button>
+												<button class="btn btn-success margin-left-10" ng-click="vm.addChoice(2)" >添加图片+</button>
+												<span class="correct">正确答案</span>
+											</div>
+										</th>
+									</tr>
+									<tr ng-if="vm.params.answerList.exerciseType == 4 || vm.params.task.specificType == 4">
+										<th class="text-center width10">序号类型</th>
+										<th class="text-left width1">
+											<div class="choice">
+												<select class="form-control order" ng-model="vm.numberPattern" >
+													<option value="" ng-if="!vm.numberPattern">字母</option>
+													<option value="1" ng-if="vm.numberPattern">字母</option>
+													<option value="2">数字</option>
+												</select>
+												<button class="btn btn-success margin-left-10" ng-click="vm.addJudge(1)" >√   ×</button>
+												<button class="btn btn-success margin-left-10" ng-click="vm.addJudge(2)" >是否</button>
+												<button class="btn btn-success margin-left-10" ng-click="vm.addJudge2()" >自定义</button>
+												<span class="correct">正确答案</span>
+											</div>
+										</th>
+									</tr>
+									<tr ng-if="vm.params.answerList.exerciseType == 2" ng-repeat="li in vm.params.answerList track by $index">
+										<th class="text-center" >
+											{{$index+1}}.
+										</th>
+										<th class="text-center width10">序号类型</th>
+										<div class="pull-left col-sm-10" >
+										</div>
+									</tr>
+									</thead>
+									<!-- 选择题 -->
+									<tr ng-repeat="li in  vm.params.answerList track by $index"
+										ng-if="vm.params.answerList.exerciseType ==1 || vm.params.task.specificType == 1">
+										<th class="text-center middle">
+											<button class="fill-img btn-delete" ng-click="vm.deleteChoice($index)">
+												<span class="glyphicon glyphicon-minus-sign task-delete"></span>
+											</button>
+										</th>
+										<th class="text-center">
+											{{vm.numberPattern |serialNumber:$index}}
+										</th>
+										<th class="text-left">
+											<div class="form-group margin-bottom-0 choice">
+												<!--原始数据-->
+												<label class="pull-left width50 margin-bottom-0"
+													   ng-if="li.mediaType==1&&!vm.charge1($index)">
+													<input class="form-control" type="text" ng-model="li.introduce"
+														   required>
+												</label>
+
+												<!--新数据-->
+												<label class="pull-left width50 margin-bottom-0" ng-if="li.mediaType==1&&vm.charge1($index)" style="width: 85%;">
+													<div class="col-sm-6">
+														<textarea class="text-area" ng-model="li.introduce.textContent" style="overflow: auto;min-height: 150px;font-size: 20px" required></textarea>
+													</div>
+													<div class="col-sm-5" style="line-height: 30px">
+														<button class="col-sm-5"
+																style="background: #f9f9f9;border: none;">
+															app字号
+														</button>
+														<button class="col-sm-5 col-sm-offset-2"
+																style="background: #f9f9f9;border: none;">
+															pc字号
+														</button>
+														<select class="col-sm-5" ng-options="item.type as item.name for item in vm.contentStyle.appFontSize" ng-model="li.introduce.appFontSize"></select>
+
+														<select class="col-sm-5 col-sm-offset-2" ng-options="item.type as item.name for item in vm.contentStyle.pcFontSize" ng-model="li.introduce.pcFontSize"></select>
+														<button class="col-sm-5"
+																style="background: #f9f9f9;border: none;">
+															字体
+														</button>
+														<button class="col-sm-5 col-sm-offset-2"
+																style="background: #f9f9f9;border: none;">
+															色号
+														</button>
+														<select class="col-sm-5" ng-model="li.introduce.font" ng-options="item.type as item.name for item in vm.contentStyle.font">
+														</select>
+
+														<select class="col-sm-5 col-sm-offset-2" ng-model="li.introduce.fontColor" ng-options="item.type as item.name for item in vm.contentStyle.fontColor"
+														>
+														</select>
+
+													</div>
+												</label>
+												<span style="margin-left: -60px;margin-top: 60px;display: inline-block;width: 35px;height: 20px;background-color:{{li.introduce.fontColor}} "></span>
+
+												<div class="pull-left width50" ng-if="li.mediaType==2">
+													<simple-upload disabled="true" string="img"
+																   url="{{li.resourceLink}}" ng-model="li.resourceLink"
+																   ng-if="vm.disableNum==1"
+																   accept=".jpg,.png,.bmp"></simple-upload>
+													<simple-upload string="img" url="{{li.resourceLink}}"
+																   ng-model="li.resourceLink" ng-if="vm.disableNum!=1"
+																   accept=".jpg,.png,.bmp"></simple-upload>
+												</div>
+												<label class="pull-left width50" ng-if="li.mediaType==3">
+													<simple-upload string="music" ng-model="li.resourceLink"
+																   accept=".mp3,.wma,.wav,.ogg,.ape,.acc"></simple-upload>
+													<audio src="{{li.resourceLink |urlFilter}}" controls="controls"
+														   style="margin-top: 30px" ng-if="vm.disableNum"></audio>
+												</label>
+												<label class="pull-left width50" ng-if="li.mediaType==5">
+													<summernote config="vm.summerOptions"
+																ng-model="li.introduce"></summernote>
+													<div class="form-control" style="height: 280px"
+														 ng-if="vm.disableNum==1"
+														 ng-bind-html="li.introduce | to_trusted"></div>
+												</label>
+												<label class="choice-answer">
+													<input class="pull-right " type="checkbox"
+														   ng-click="li.standardAnswer=li.standardAnswer=='true'?'':'true'"
+														   ng-model="li.standardAnswer"
+														   ng-checked="li.standardAnswer=='true'">
+												</label>
+											</div>
+										</th>
+
+									</tr>
+									<!-- 判断题 -->
+									<tr ng-repeat="li in  vm.params.answerList track by $index" ng-if="vm.params.answerList.exerciseType == 4 || vm.params.task.specificType == 4">
+										<th class="text-center" ng-if="vm.numberPattern === '2'">
+											{{$index+1}}.
+										</th>
+										<th class="text-center" ng-if="vm.numberPattern !== '2'">
+											{{vm.numberPattern| serialNumber:$index}}.
+										</th>
+										<td class="text-left">
+											<div class="margin-bottom-1 choice" style="height: 35px;display: flex;align-items: center;">
+												<label class="pull-left width50" style="margin-bottom: 0px;" ng-if="vm.judgeType!==3">
+													{{li.introduce}}
+												</label>
+												<label class="pull-left width50" ng-if="vm.judgeType===3">
+													<input class="form-control" type="text" ng-model="li.introduce" required >
+												</label>
+												<label class="choice-answer">
+													<input class="pull-right " type="checkbox" ng-click="li.standardAnswer=li.standardAnswer=='true'?'':'true'" ng-model="li.standardAnswer"  ng-checked="li.standardAnswer"  >
+												</label>
+											</div>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 填空题答案部分-->
+						<div ng-if="vm.params.task.specificType == 2" class="form-group fill" ng-repeat="li in vm.params.answerList track by $index">
+							<label class="col-sm-2 control-label paragraph">段落{{$index+1}}</label>
+							<div class="col-sm-10">
+								<table class="table table-striped text-center add-table-border" ng-class="{'wired-width':vm.params.task.answerType==3}">
+									<thead>
+									<tr>
+										<th class="text-center width10">&emsp;</th>
+										<th class="text-left width1">
+											<div class="col-sm-12 padding-10-0 border-1-bottom-gai">
+												<button class="btn btn-success margin-left-10" ng-click="vm.addFill(1,$index,1)" >添加文本+</button>
+												<button class="btn btn-success margin-left-10" ng-click="vm.addFill(2,$index,2)" >添加答案+</button>
+												<button class="btn btn-default" type="button" style="float: right;margin-right: 30px" ng-click="vm.deleteParagraph($index)" >删除段落</button>
+											</div>
+										</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="x in li.introduce track by $index">
+										<td ng-if="x.status===1"><img class="fill-img" src="images/text.png" style="width:45px;height: 45px;"> </td>
+										<td ng-if="x.status===2"><img class="fill-img" src="images/parentheses.png"> </td>
+										<td class="text-left">
+											<div class="margin-bottom-1" ng-if="!li.textContent.textContent">
+												<label class="pull-left col-sm-10" ng-class="{'fill-delete':x.status===1}">
+													<input type="text" class="form-control" ng-model="x.introduce"  required>
+												</label>
+												<button class="btn btn-default" type="button" style="float: right;margin-right: 30px" ng-click="vm.deleteFill(x.paragraph,$index)" >删除</button>
+											</div>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 是否启用解析 -->
+						<div class="form-group">
+							<label class="col-sm-2 control-label">是否启用解析</label>
+							<div class="col-sm-10">
+								<label class="checkbox-inline">
+									<input type="radio" value="1" name="resolution" ng-model="vm.params.task.isAnalysis" ng-checked="vm.data.resolution==1">是
+								</label>
+								<label class="checkbox-inline">
+									<input type="radio" value="0" name="resolution" ng-model="vm.params.task.isAnalysis" ng-checked="vm.data.resolution!=1">否
+								</label>
+							</div>
+						</div>
+						<!-- 内容解析 -->
+
+						<div class="form-group" ng-if="vm.params.task.isAnalysis==1">
+							<label class="col-sm-2 control-label">内&emsp;&emsp;容</label>
+							<div class="col-sm-10">
+								<table class="table table-striped text-center add-table-border">
+									<tr>
+										<th class="text-center width6"></th>
+										<th class="text-left width1">
+											<button class="btn btn-success"  ng-click="vm.addExercise(6)">添加文本+</button>
+											<button class="btn btn-success margin-left-10"  ng-click="vm.addExercise(7)">添加图片+</button>
+										</th>
+									</tr>
+									<tr ng-repeat="li in vm.tipList track by $index">
+										<td class="width6">{{$index+1}}</td>
+										<td class="">
+											<div class="form-group">
+												<!--原始数据-->
+
+												<div class="pull-left col-sm-10" ng-if="li.mediaType==6&&!vm.charge2($index)">
+													<textarea class="text-area" ng-model="li.textContent"  required></textarea>
+												</div>
+												<!--新数据-->
+												<div class="pull-left col-sm-10" ng-if="li.mediaType==6&&vm.charge2($index)">
+													<div class="col-sm-6">
+														<textarea class="text-area" ng-model="li.textContent.textContent" style="overflow: auto;min-height: 150px;font-size: 20px" required></textarea>
+													</div>
+													<div class="col-sm-5" style="line-height: 30px">
+														<button class="col-sm-5"
+																style="background: #f9f9f9;border: none;">
+															app字号
+														</button>
+														<button class="col-sm-5 col-sm-offset-2"
+																style="background: #f9f9f9;border: none;">
+															pc字号
+														</button>
+														<select class="col-sm-5" ng-model="li.textContent.appFontSize" ng-options="item.type as item.name for item in vm.contentStyle.appFontSize">
+														</select>
+
+														<select class="col-sm-5 col-sm-offset-2" ng-model="li.textContent.pcFontSize" ng-options="item.type as item.name for item in vm.contentStyle.pcFontSize">
+
+														</select>
+
+														<button class="col-sm-5"
+																style="background: #f9f9f9;border: none;">
+															字体
+														</button>
+														<button class="col-sm-5 col-sm-offset-2"
+																style="background: #f9f9f9;border: none;">
+															色号
+														</button>
+														<select class="col-sm-5" ng-model="li.textContent.font" ng-options="item.type as item.name for item in vm.contentStyle.font">
+
+														</select>
+
+														<select class="col-sm-5 col-sm-offset-2" ng-model="li.textContent.fontColor" ng-options="item.type as item.name for item in vm.contentStyle.fontColor">
+														</select>
+
+													</div>
+												</div>
+												<span style="margin-left: -150px;margin-top: 60px;display: inline-block;width: 35px;height: 20px;background-color:{{li.textContent.fontColor}} "></span>
+												<!-- 添加图片 -->
+												<div class="pull-left col-sm-10" ng-if="li.mediaType==7">
+													<simple-upload disabled="true" string="img" url="{{li.resourceLink}}" ng-model="li.resourceLink" ng-if="vm.disableNum==1" accept=".jpg,.png,.bmp"></simple-upload>
+													<simple-upload string="img" url="{{li.resourceLink}}" ng-model="li.resourceLink" ng-if="vm.disableNum!=1" accept=".jpg,.png,.bmp"></simple-upload>
+												</div>
+												<button type="button" class="btn btn-default" style="float: right;margin-right: 30px"  ng-click="vm.deleteStep($index,li.mediaType)">删除</button>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</form>
+
+					<div class="row">
+						<div class="col-xs-2"></div>
+						<div class="col-xs-12 text-center">
+							<!-- 下面的是正式版 -->
+							<button class="btn btn-success" ng-click="vm.add(1)" ng-disabled="myForm.$invalid" >立即上线
+							</button>
+							<button style="margin: 0 20px" class="btn btn-primary" ng-click="vm.add(2)" ng-disabled="myForm.$invalid " >
+								存为草稿
+							</button>
+							<button class="btn btn-default" onClick="javascript :history.go(-1)" >取消</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

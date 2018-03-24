@@ -1,0 +1,25 @@
+<div class="row pd-top-2 ng-scope">
+    <div class="panel panel-default">
+        <div class="panel-heading contentManage-header">
+            <strong>查看意见</strong>
+        </div>
+
+        <div class="panel-body">
+            <div class="form-group panel panel-default panel-body">
+                <p style="height: 30px" class="col-md-2 text-right">用户</p>
+                <p style="height: 30px" class="col-md-10">{{vm.params.name}}</p>
+                <p style="height: 30px" class="col-md-2 text-right">邮箱或手机号</p>
+                <p style="height: 30px" class="col-md-10">{{vm.params.mail}}</p>
+                <p style="height: 30px" class="col-md-2 text-right">意见反馈</p>
+                <p style="height: 30px" class="col-md-10">{{vm.params.contents}}</p>
+
+
+                <div class="col-lg-10 col-lg-offset-2 pd-top-2 margin-top-5">
+                    <button class="btn btn-default margin-left-2" ui-sref="field.opinionManage">返回</button>
+                    <button class="btn btn-danger margin-left-2" ng-click="vm.del()">删除</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

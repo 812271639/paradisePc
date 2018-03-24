@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<link rel="stylesheet" href="homePage.css">
+
+<!--客服样式-->
+<div class="customer-service">
+    <img src="images/customer.gif" alt="客服悬浮窗">
+    <img src="images/sverve-content.png" class="customer-hovers">
+    <p class="official-tell"><span style="padding-right: 10px">官方热线&nbsp:</span><span>400-001-6698</span></p>
+    <p class="official-wechat"><span style="padding-right: 10px;">微信客服&nbsp:</span><span>dounixue521</span></p>
+</div>
+
+<div class="newMember-wraper">
+   <div class="container newMember-wrap">
+     <div class="row">
+      <div class="col-sm-8 col-md-10 col-lg-10 person">
+        <div class="person-box">
+          <img src="{{vm.userMsg.img}}" class="activeimg" alt="">
+        </div>
+        <div class="person-infor-wrap">
+            <div class="person-infor">
+              <div class="person-name">
+                <div class="name"><b>{{vm.name}}</b></div>
+
+                <img class="main-vip" src="../../images/icon/vip_03.png" alt="" ng-if="vm.userMsg.isMember==1">
+                <img class="main-vip" src="../../images/icon/notVip_03.png" alt="" ng-if="vm.userMsg.isMember==2">
+              </div>
+              <div class="member-state" ng-if="vm.userMsg.isMember==2">当前未开通</div>
+              <div class="member-state" ng-if="vm.userMsg.isMember==1"><span class="finalyDate">{{vm.currentDate}}</span>到期</div>
+            </div>
+            <div class="open-swap">
+              <button class="open" ui-sref="main.pay" ng-if="vm.userMsg.isMember==1" ng-click="vm.gradeDept=3">立即续费</button>
+              <button class="open" ui-sref="main.pay" ng-if="vm.userMsg.isMember==2" ng-click="vm.gradeDept=3">立即开通</button>
+
+              <button class="swap" ui-sref="main.survive" ng-click="vm.gradeDept=3">卡券兑换</button>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-2 col-lg-2 qipao">
+        <img src="images/paopao.png" class="qipaoimg" alt="气泡">
+      </div>
+     </div>
+
+     <div class="row super-member">
+      <div class="super-img"><img src="../images/memberCenter/member2.png" alt=""></div>
+      <!-- <div class="super-fee">798/年</div> -->
+     </div>
+
+     <!-- //时间轴 -->
+    <section id="cd-timeline" class="cd-container">
+     <div class="cd-timeline-block">
+        <div class="cd-timeline-img cd-picture tv-wrap">
+            <img src="../images/memberCenter/member-img_03.png" alt="Picture" class="imageTv">
+        </div>
+        <div class="cd-timeline-content">
+            <h3>海量基础课程</h3>
+            <p>涵盖初/高中：数学、物理、英语、化学、生物等学科考纲的知识点导学视频，五分钟的碎片时间，只抓最基础的知识点，帮你轻松入门，愉快复习，知识也可以如此性感有趣！</p>
+        </div>
+        <div class="trange5"></div>
+      </div>
+
+
+
+     <div class="cd-timeline-block1">
+        <div class="cd-timeline-img cd-picture imageVideo-wrap">
+            <img src="../images/memberCenter/member-img_06.png" class="imageVideo" alt="Picture">
+        </div>
+        <div class="cd-timeline-content2">
+            <h3>会员专属课程（刷题先疯）</h3>
+            <p>覆盖学渣乐园全科导学视频的解题视频，最经典的例题，全新思路、角度讲解，打通任督二脉，解题思路一下清晰明了！碎片化的时间，课间、放学、吃煎饼果子的时间都可以学会一道题，想想还有点小激动!</p>
+        </div>
+        <div class="trange6"></div>
+      </div>
+
+
+      <div class="cd-timeline-block3">
+        <div class="cd-timeline-img cd-picture blockWrap">
+            <img src="../images/memberCenter/member-img_09.png" class="guo" alt="Picture">
+        </div>
+        <div class="cd-timeline-content">
+            <h3>高阶学习干货</h3>
+            <p>学不可以已，会员独享每月一个高阶学习干货。养成一个好习惯、做一手适合自己的笔记、克服一个困难……除了成绩的提高，成长路上，我们也将成为更好的自己！</p>
+        </div>
+        <div class="trange5 highStudy"></div>
+      </div>
+
+
+
+      <div class="cd-timeline-block4">
+        <div class="cd-timeline-img cd-picture shoes-wrap">
+            <img src="../images/memberCenter/member-img_12.png" class="shoes" alt="Picture">
+        </div>
+        <div class="cd-timeline-content2 onlineAnser">
+            <h3>课程包全部解锁</h3>
+            <p>会员一键解锁所有收费课程包，无任何叠加收费。</p>
+        </div>
+        <div class="trange6 onlinethree"></div>
+      </div>
+      <div class="line4"></div>
+
+
+      <div class="cd-timeline-block5">
+              <div class="line5"></div>
+        <div class="cd-timeline-img cd-picture percent-wrap">
+            <img src="../images/memberCenter/member-img_16.png" class="percent" alt="Picture">
+        </div>
+        <div class="cd-timeline-content mall">
+            <h3>商城商品无门槛9折</h3>
+            <p>《抱佛脚》笔记本、“大人物”系列笔记本、订制考神T恤、公式餐巾纸……统统9折！ </p>
+        </div>
+        <div class="trange5"></div>
+      </div>
+
+
+       <div class="line6"></div>
+
+
+
+            <div class="cd-timeline-block6">
+        <div class="cd-timeline-img cd-picture dialog-wrap">
+            <img src="../images/memberCenter/member-img_19.png" class="dialog" alt="Picture">
+        </div>
+        <div class="cd-timeline-content2 studyGrop">
+            <h3>专属学习交流群</h3>
+            <p>严格把控，共同打卡，彼此监督，一起进步！ </p>
+        </div>
+        <div class="trange6"></div>
+      </div>
+
+
+      <!-- <div class="line7"></div> -->
+      <div class="line8"></div>
+
+     <!--  <div class="cd-timeline-block7">
+        <div class="cd-timeline-img cd-picture briefcase-wrap">
+            <img src="../images/memberCenter/member-img_22.png" class="briefcase" alt="Picture">
+        </div>
+        <div class="cd-timeline-content lession-wrap">
+            <h3>课程包全部解锁</h3>
+            <p>会员一键解锁所有收费课程包，无任何叠加收费。 </p>
+        </div>
+        <div class="trange5"></div>
+      </div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+</div>
+</div>
+<div class="jiange-img">
+      <img src="../images/memberCenter/bolang.png" alt="">
+    </div>
+<div class="bottom-wrap">
+    <div class="container">
+  <div class="master">
+
+    <div class="ceng">
+      <div class="leftline"></div>
+      <div class="intro">讲师介绍</div>
+      <div class="rightline"></div>
+    </div>
+
+    <div class="teachers">
+    <div class="teacher a">
+      <div class="niudun">
+        <div class="niudun-img">
+          <img src="../images/memberCenter/member11.png" alt="">
+        </div>
+        <div class="niudun-text">大科学家牛顿<br/>逗你学数学讲师</div>
+      </div>
+      <div class="teacher-text a-text">南京逗你学信息科技有限公司cto，南京大学毕业，硕士。高中多次获得学科竞赛奖项。硕士后取得ucb 博士候选人资格。长期从事高中及出国教育工作，教授学员人数众多，在江苏地区具有相当影响力。
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="teacher b">
+      <div class="niudun">
+        <div class="niudun-img">
+          <img src="../images/memberCenter/member13.png" alt="">
+        </div>
+        <div class="niudun-text">青莲教主二代目<br/>逗你学古诗讲师</div>
+      </div>
+      <div class="teacher-text">原南京新东方国内考试部优秀教师，毕业于南京大学文学院，语文功底扎实，授课经验丰富，善于启发学生思考，引导学生发现语文的魅力，帮助学生在取得理想成绩的同时提高语文素养。
+        </div>
+    </div>
+
+    <div class="teacher c">
+      <div class="niudun">
+        <div class="niudun-img">
+          <img src="../images/memberCenter/member12.png" alt="">
+        </div>
+        <div class="niudun-text">张小花<br/>逗你学物理讲师</div>
+      </div>
+      <div class="teacher-text">原南京新东方优能中学理科组长，长期以独特的风格深受学生喜爱，在她眼中，没有晦涩难懂的知识，只有未经雕琢的讲法；没有讲不透的难题，只缺洞察一切的眼睛。n 年的一线从业生涯，从先后辅导几千名中高考学员，到执掌国际各种物理考试，一路带领学员从爱上物理到攻克物理。
+        </div>
+    </div>
+
+     <div class="teacher d">
+      <div class="niudun">
+        <div class="niudun-img">
+          <img src="../images/memberCenter/member10.png" alt="">
+        </div>
+        <div class="niudun-text">胡说团队<br/>胡说栏目制作组</div>
+      </div>
+      <div class="teacher-text d-text">
+      美丽的红梅姐姐带领着一帮有节操的语文大大们，为大家呈现语文课本里的另一番天地，赶快来看我们内外兼修的胡八二、呆萌可爱的韩四，还有迷倒万人的煎蛋翔老师，他们都在这里~
+        </div>
+    </div>
+
+    </div>
+
+
+    <div class="ceng2">
+      <div class="leftline1"></div>
+      <div class="intro">&ensp;Q&A&ensp;</div>
+      <div class="rightline2"></div>
+    </div>
+
+   <div class="queation">
+
+    <div class="qa">
+      <div class="qanda">
+        <div class="question">Q:视频什么时候更新？</div>
+        <div class="answer">A:目前已有知识点视频、刷题先锋共计300余集；每周三会更新新的刷题先锋，公告栏也会及时更新。</div>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="qanda">
+        <div class="question">Q:会员视频有时间限制吗？</div>
+        <div class="answer">A:在会员期间，可以无限次观看、学习会员视频。</div>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="qanda">
+        <div class="question">Q:课程可以在哪里看？</div>
+        <div class="answer">A:逗你学官网(www.dounixue.net)、逗你学app内都可以使用会员会员权利收看我们的课程。</div>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="qanda">
+        <div class="question">Q:想要与其他用户吐槽交流怎么办？</div>
+        <div class="answer">A:关注微信公共号"xueZhaleyuan",可以在公众号里与全国的渣宝一起交流学习，一起逆袭。</div>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="qanda">
+        <div class="question">Q:课程怎么学习？</div>
+        <div class="answer">A:根据学校学到/复习到的内容，收看对应的知识点视频，掌握基础概念后做习题，带着问题去看刷题先疯，拓展丰富做题思路，真正学透每一个知识点。</div>
+      </div>
+    </div>
+
+
+   </div>
+   </div>
+</div>
+<!-- </div> -->
+</body>
+</html>

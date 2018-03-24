@@ -1,0 +1,138 @@
+
+.date-wrap{
+    position: relative;
+	}
+.date-img{
+	position: absolute;
+	top: 4px;
+	right: 4px;
+}
+.activedClass{
+	background-color: #199ed8;
+}
+.today-wrap .btn-default:hover,
+.today-wrap .btn-default:focus{
+	background-color: #199ed8;
+}
+.statistic-header{
+	background-color: #f2f2f2;
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+.history  div{
+	padding: 0;
+	text-align: center;
+}
+.date-history div{
+padding: 0;
+text-align: center;
+}
+.pagetable{
+	text-align: center;
+    background-color: #f2f2f2;
+    margin-left: 20px;
+}
+.pd-top-2 .statistic-header .pagetable{
+	padding: 0;
+	border: none;
+	}
+.limit-data, .data-text{
+	    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.limit-data{
+	margin: 0 20px;
+}
+.history{
+	 margin: 22px 0;
+}
+.data-text{
+	    margin: 22px 0;
+}
+.type-select{
+	width: 15%;
+}
+.clearfix{
+	clear: both;
+}
+.limit-data img{
+	width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 7px;
+}
+.end-date img{
+	    right: 4px;
+}
+.start-date img{
+	right: 4px;
+    z-index: 2;
+}
+.start-date,.end-date{
+	position: relative;
+	    width: 100%;
+}
+#start,#end{
+	width: 100%;
+	height: 34px;
+}
+.statistic-main{
+	margin-top: 40px;
+}
+.mr0-ml0 .control-label{
+	padding: 0;
+	line-height: 34px;
+    height: 34px;
+}
+.statistic-header .visit{
+	background-color: white;
+	cursor: pointer;
+	padding: 13px 0;
+    z-index: 2;
+    border: 1px solid;
+}
+.history .today-wrap .today{
+	cursor: pointer;
+	margin: 0 6px;
+	padding: 5px 0;
+}
+.somepage{
+	display: none;
+}
+.allpage-wrap:hover  .somepage{
+	display: block;
+}
+.allpage-wrap{
+	position: relative;
+}
+.somepage{
+	position: absolute;
+	top: 47px;
+	padding: 0;
+}
+
+.pagetable1{
+	text-align: center;
+    background-color: #f2f2f2;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 13px 0;
+    border: 1px solid;
+
+}
+.textcenter{
+   text-align: center;
+}
+.btn-default.active{
+     background-color: white;
+}
+.btn-default.active:focus{
+	background-color: green;
+}
+
+
+
+
+

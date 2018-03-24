@@ -1,0 +1,65 @@
+            <div class="statistic-main">
+                <div class="seminar">
+                    <div class="pagetable1 col-sm-2 col-lg-2 col-sm-offset-1 col-lg-offset-1">专题详情页</div>
+                    <div class="col-sm-12 col-lg-12" style="margin: 15px;"></div>
+                    <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                        <div class="form-group mr0-ml0">
+
+                            <label class="col-md-2 col-xs-12 control-label">所属年级部</label>
+                            <div class="col-md-2">
+                                <select class="form-control" ng-model="vm.searchParams.gradeDept" ng-options="grade.type as grade.name for grade in vm.subjectGrade" ng-change="vm.getSubjectListData(vm.searchParams.gradeDept)">
+                                    <option ng-if='cc' ng-selected="vm.searchParams.gradeDept ==''||undefined" value="">全部</option>
+                                </select>
+                                <!-- {{vm.searchParams.gradeDept}} -->
+                            </div>
+
+                            <label class="col-md-1 col-xs-12 control-label pd-left-0">所属科目</label>
+                            <div class="col-md-2">
+                                <select class="form-control" ng-model="vm.subName" ng-options="grade.subjectName as grade.subjectName for grade in vm.subjectListData|unique:'subjectName'" ng-change="vm.getSubject(vm.subName)">
+                                    <option ng-selected="vm.subName ==''||undefined" value="">全部</option>
+                                </select><!-- {{vm.subName}} -->
+                            </div>
+
+
+                            <label class="col-md-1 col-xs-12 control-label pd-left-0">专题名称</label>
+                            <div class="col-md-2">
+                                <select class="form-control" ng-model="vm.name" ng-options="grade.id as grade.lessonName for grade in vm.subject">
+                                    <option ng-selected="vm.name ==''||undefined" value="">全部</option>
+                                </select><!-- {{vm.name}} -->
+                            </div>
+                            <div class="seminar-choice col-md-2 col-xs-12">
+                                <button class="btn btn-info" ng-click="vm.getLessonStatic()">筛选</button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table  table-bordered  table-striped" ng-if="vm.noticeList.length!==0">
+                                <thead>
+                                    <tr align="center" valign="middle">
+                                        <th>专题</th>
+                                        <th>所属科目</th>
+                                        <th>年级部</th>
+                                        <th id="th3" onclick="SortTable(this)" class="as">访问量<span class="glyphicon glyphicon-resize-vertical"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="ul-table table-responsive table-striped">
+                                    <tr ng-repeat=" item in vm.lessonStaticData track by $index" ng-class="{'selected': vm.subjectListData.selected == item}" align="center" valign="middle">
+                                        <td name="td0">{{item.lessonName}}</td>
+                                        <td name="td1">{{item.subjectName}}</td>
+                                        <td name="td2">{{item.gradeDept | gradeFilter:'grade'}}</td>
+                                        <td name="td3">{{item.viewStat}}</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                            <div class="col-md-offset-8 col-md-4 total-static">访问量总计:{{vm.result}}</div>
+                            <!--分页-->
+                            <nav class="pull-right" ng-if="vm.totalPage&&!vm.add">
+                                <page total-page="{{vm.totalPage}}"></page>
+                            </nav>
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>

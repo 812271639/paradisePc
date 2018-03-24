@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=750px,user-scalable=no">
+    <title>逗你学</title>
+</head>
+<body >
+
+<div class="share_wrap wraps">
+
+    <!--付费专题视频-->
+    <div style="min-height: 100vh;background-color: #f5f5f5;" ng-if="vm.data.data.lessonIsLock==1">
+        <!--专题简介头部-->
+        <div style="height: 470px;background-image:url({{vm.data.data.frontCoverURL}});background-repeat: no-repeat;background-size: 100% 100%;position: relative">
+            <p ng-bind="vm.detail.data.lessonName" class="intro-head"></p>
+            <p class="intro-head2" ng-click="vm.jumpTo()"><sapn class="first-span"><span class="second-span"></span><sapn class="third-span"></sapn></sapn>试看</p>
+        </div>
+
+        <!--专题简介内容-->
+        <div class="simple-intro">
+            <h1 style="margin-bottom: 40px;"></h1>
+            <div ng-repeat="item in vm.detail.introduction">
+                <p ng-bind="item.textContent.textContent" style="margin-bottom: 27px;font-size: {{item.textContent.pcFontSize}};font-family:{{item.textContent.font | fontFilter}};color:{{item.textContent.fontColor}};" ng-if="item.mediaType==1"></p>
+                <img ng-src="{{item.resourceURL}}" style="width: 100%;margin: 24px 0" ng-if="item.mediaType==2">
+            </div>
+        </div>
+        <div class="text-main">
+            <span class="span-first">
+                <span ng-click="vm.download()" style="font-size: 32px;">加入VIP免费加入</span>
+            </span>
+            <span class="span-second">
+                <span style="color: #6eaefc;font-size: 32px;" ng-click="vm.download()">购买专题</span><span style="color: #ffc600;margin-left: 25px;font-size: 32px">{{vm.detail.data.price|currency:'￥'}}</span>
+            </span>
+        </div>
+    </div>
+
+    <!--免费专题视频-->
+    <div style="min-height: 100vh;" ng-if="vm.data.data.lessonIsLock!=1">
+
+        <!--免费视频--><!--锁定视频-->
+        <div style="min-height: 100vh;background-color:#f5f5f5; ">
+            <div ng-bind="vm.data.data.lessonName" class="free"></div>
+            <!--视频播放器-->
+            <div class="video-size" style="width: 100%;height: 419px;">
+                <video id="mediaVideo1" class="video-js vjs-default-skin video-size app-Video vjs-big-play-centered " webkit-playsinline="true" poster="{{vm.data.data.videoCoverURL}}" ng-if="vm.data.unitList[0]" try-it={{vm.data.data.isLock}} try-over="vm.switchs" controls >
+                    <source ng-if="vm.switchs!=true"  ng-src="{{vm.trust(vm.data.unitList[0])}}"  type="video/mp4">
+                </video>
+                <!--蒙层-->
+                <div class="open-vip" ng-if="vm.switchs==true">
+                    <p class="vip-title" >试看结束,开通VIP会员，解锁全部视频</p>
+                    <div class="vip-btn" ng-click="vm.download()"><span class="vip-btn-comtext" >开通VIP会员</span></div>
+                </div>
+            </div>
+            <!--难度等级-->
+            <div class="hardLevel-all" ng-if="vm.data.data.showLevel==1">
+                <p class="diffcult-level">难度等级</p>
+                <div class="hardLevel-numb">
+                    <img src="../images/subject&course/hardLevel-bc.png" alt="难度级别" style="width: 120%;">
+                    <div class="hardLevel-value">Lv<span ng-bind="vm.data.data.difficultyLevel"></span></div>
+                </div>
+            </div>
+            <!--视频文字内容-->
+            <div style="padding: 10px 50px 0px;background: #f5f5f5;margin-bottom: 5vh;">
+                <!--新数据-->
+                <div ng-repeat="item in vm.context" style="margin:10px 0" ng-if="!vm.oldData">
+                    <p ng-bind="item.textContent.textContent" style="font-size: {{item.textContent.appFontSize}};font-family:{{item.textContent.font | fontFilter}};color:{{item.textContent.fontColor}};"></p>
+                </div>
+                <!--老数据-->
+                <div ng-repeat="item in vm.oldData" style="margin:10px 0" ng-if="vm.oldData">
+                    <p ng-bind="item.textContent" style="font-size:24px"></p>
+                </div>
+            </div>
+
+            <!--猜你薄弱-->
+            <div class="course-rcmdContents"
+                 ng-if="vm.data.rcmdContentList!=''&&vm.data.rcmdContentList!=undefined&&vm.data.data.taskType==1" >
+                <p class="gass-wrap"><span class="guass-u"></span>猜你薄弱</p>
+                <div style="position: absolute;left: 50px" id="width" ng-click="vm.download()">
+                    <div ng-repeat="li in vm.newRcmdContentList" style="float: left;">
+                        <div class="course-rcmdContents-box" ng-class="{'margin-left-0':$index==0}">
+                        <img src="{{li.targetCoverURL}}" alt="" ng-if="li.targetCoverURL">
+                        <img src="../../images/icon/bg.png" alt="" ng-if="li.targetCoverURL==''">
+                            <span ng-if="li.taskType==1&&(li.specificType==2)"><span style="display:inline-block;margin-left: 38px;margin-top: 2px;">刷题先锋</span></span>
+                            <span ng-if="li.taskType!=1"><span style="display:inline-block;margin-left: 38px;margin-top: 2px;">习题</span></span>
+                            <span ng-if="li.taskType==1&&(li.specificType!=2)"><span style="display:inline-block;margin-left: 38px;margin-top: 2px;">逗你学</span></span>
+
+                        <span ng-if="li.targetType==3">
+                            <img src="../../images/icon/triangle_04.png" alt="" ng-if="li.taskType==1&&(li.specificType!=2)"
+                                 style="margin-left: 12px;">
+                            <img src="../../images/icon/book_03.png" alt="" ng-if="li.taskType!=1"
+                                 style="margin-left: 12px;">
+                            <img src="../../images/icon/Pentagram_03.png" alt=""
+                                 ng-if="li.taskType==1&&(li.specificType==2) " style="margin-left: 12px;">
+                            <span ng-if="li.taskType==1&&(li.specificType==2)"
+                                  style="position: absolute;top: 4px;left: 35px;"></span>
+                            <span ng-if="li.taskType!=1" style="position: absolute;top: 4px;left: 35px;"></span>
+                            <span ng-if="li.taskType==1&&(li.specificType!=2)"
+                                  style="position: absolute;top: 4px;left: 35px;"></span>
+                        </span>
+
+                    </div>
+                        <p style="text-align: left;margin-left: 26px;margin-top: 2px;font-size: 15px;" ng-class="{'margin-left-0':$index==0}">{{li.targetName}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--底部固定-->
+            <!--<div class="download-wrap">-->
+                <!--<div ng-click="vm.download()" class="downloads">下载应用</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

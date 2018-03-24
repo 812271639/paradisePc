@@ -1,0 +1,9 @@
+<div class="text-right">
+    <ul uib-pagination boundary-links='true' first-text='首页' last-text='末页' previous-text='<' next-text='>'
+        total-items="totalItems*10" ng-model="currentPage" max-size="5"
+        class="pagination-sm" boundary-link-numbers="false" rotate="false" items-per-page="{{itemsPerPage}}"
+        num-pages="numPages"
+        force-ellipses=true ng-click="pageChange(currentPage)">
+    </ul>
+
+</div>

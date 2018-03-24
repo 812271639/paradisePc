@@ -1,0 +1,230 @@
+<!--5期-->
+<!--<div class="row pd-top-2">-->
+    <!--<div class="col-lg-12">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                <!--批量导入-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-lg-12">-->
+                        <!--<form class="form-horizontal" name="myForm">-->
+                            <!--<fieldset>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label class="col-sm-4 control-label"><span ng-class="{'hide':!myForm.name.$invalid}" class="star">*</span>学校</label>-->
+                                    <!--<div class="col-sm-4">-->
+                                        <!--<select ng-model="vm.params.schoolId" class="form-control" required ng-disabled="school">-->
+                                            <!--<option value="" ng-selected="vm.schoolId==''">请选择</option>-->
+                                            <!--<option ng-repeat="item in vm.schoolList" value="{{item.id}}" ng-selected="vm.schoolId&&vm.params.schoolId==vm.schoolId">{{item.name}}</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+
+                                <!--</div>-->
+
+                                <!--<div class="form-group">-->
+                                    <!--<label class="col-sm-4 control-label"><span ng-class="{'hide':!myForm.time.$invalid}" class="star">*</span>账号导入</label>-->
+                                    <!--<div class="col-sm-8">-->
+                                        <!--<label class="btn btn-primary" for="fil1e">上传</label>-->
+                                        <!--<div ng-if="vm.uploader">-->
+                                            <!--<input id="fil1e" style="display: none" type="file"-->
+                                                   <!--nv-file-select uploader="vm.uploader" required/>-->
+                                        <!--</div>-->
+
+                                        <!--<br/>-->
+                                        <!--<table class="table" ng-show="vm.uploader.queue.length">-->
+                                            <!--<thead>-->
+                                            <!--<tr>-->
+                                                <!--<th width="50%">图片名</th>-->
+                                                <!--<th ng-show="vm.uploader.isHTML5">大小</th>-->
+                                                <!--<th ng-show="vm.uploader.isHTML5">进度</th>-->
+                                                <!--<th>状态</th>-->
+                                                <!--<th>操作</th>-->
+                                            <!--</tr>-->
+                                            <!--</thead>-->
+                                            <!--<tbody>-->
+                                            <!--<tr ng-repeat="item in vm.uploader.queue" class="ng-scope" ng-if="$first">-->
+                                                <!--<td><strong class="ng-binding">{{item.file.name}}</strong></td>-->
+                                                <!--<td ng-show="vm.uploader.isHTML5" nowrap="" class="ng-binding">{{-->
+                                                    <!--item.file.size/1024/1024 | number:2 }} MB-->
+                                                <!--</td>-->
+                                                <!--<td ng-show="vm.uploader.isHTML5">-->
+                                                    <!--<div class="progress" style="margin-bottom: 0;">-->
+                                                        <!--<div class="progress-bar" role="progressbar"-->
+                                                             <!--ng-style="{ 'width': item.progress + '%' }"></div>-->
+                                                    <!--</div>-->
+                                                <!--</td>-->
+                                                <!--<td class="text-center">-->
+                                                    <!--<span ng-show="item.isSuccess"><i-->
+                                                            <!--class="glyphicon glyphicon-ok"></i></span>-->
+                                                    <!--<span ng-show="item.isCancel"><i-->
+                                                            <!--class="glyphicon glyphicon-ban-circle"></i></span>-->
+                                                    <!--<span ng-show="item.isError"><i-->
+                                                            <!--class="glyphicon glyphicon-remove"></i></span>-->
+                                                <!--</td>-->
+                                                <!--<td nowrap="">-->
+                                                    <!--<button type="button" class="btn btn-success btn-xs"-->
+                                                            <!--ng-click="vm.upload(item)"-->
+                                                            <!--ng-disabled="item.isReady || item.isUploading || item.isSuccess">-->
+                                                        <!--<span class="glyphicon glyphicon-upload"></span> 上传-->
+                                                    <!--</button>-->
+                                                    <!--<button type="button" class="btn btn-danger btn-xs"-->
+                                                            <!--ng-click="item.remove(); vm.clearFile()">-->
+                                                        <!--<span class="glyphicon glyphicon-trash"></span> 删除-->
+                                                    <!--</button>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                            <!--</tbody>-->
+                                        <!--</table>-->
+
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label class="col-sm-4 control-label"><span ng-class="{'hide':!myForm.price.$invalid}" class="star">*</span>是否设置会员</label>-->
+                                    <!--<div class="col-sm-3 control-label">-->
+                                        <!--<input class="pull-left" ng-click="vm.changeIsMember()" ng-model="vm.params.isMember"  type="checkbox">-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group" ng-if="vm.params.isMember==true">-->
+                                    <!--<label class="col-sm-4 control-label"><span-->
+                                            <!--ng-class="{'hide':!myForm.name.$invalid}" class="star">*</span>设置套餐类型</label>-->
+                                    <!--<div class="col-sm-4">-->
+                                        <!--<select ng-model="vm.params.PackageId" class="form-control" required-->
+                                                <!--ng-disabled="school">-->
+                                            <!--<option value="" ng-selected="vm.schoolId==''">请选择</option>-->
+                                            <!--<option ng-repeat="item in vm.PackageList" value="{{item.id}}">-->
+                                                <!--{{item.name}}-->
+                                            <!--</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+
+                                    <!--</div>-->
+                            <!--</fieldset>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row ">-->
+                    <!--<div class="col-sm-12 text-center">-->
+                        <!--<button class="btn btn-primary" ng-click="vm.save()" ng-disabled="myForm.$invalid||!vm.params.excelUrl" >保存</button>{{myForm.$invalid}}<br>{{!vm.params.excelUrl}}-->
+                        <!--<button class="btn btn-default" ng-click="vm.back()" >取消</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--4.5期-->
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                批量导入
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" name="myForm">
+
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"><span ng-class="{'hide':!myForm.name.$invalid}" class="star">*</span>学校</label>
+                                    <div class="col-sm-4">
+                                        <select name="select" ng-model="vm.params.schoolId" class="form-control" required ng-disabled="school">
+                                            <option value="" ng-selected="vm.schoolId==''">请选择</option>
+                                            <option ng-repeat="item in vm.schoolList" value="{{item.id}}" ng-selected="vm.schoolId&&vm.params.schoolId==vm.schoolId">{{item.name}}</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"><span ng-class="{'hide':!myForm.time.$invalid}" class="star">*</span>账号导入</label>
+                                    <div class="col-sm-8">
+                                        <label class="btn btn-primary" for="fil1e">上传</label>
+                                        <div ng-if="vm.uploader">
+                                            <input id="fil1e" style="display: none" type="file"
+                                                   nv-file-select uploader="vm.uploader" required/>
+                                        </div>
+
+                                        <br/>
+                                        <table class="table" ng-show="vm.uploader.queue.length">
+                                            <thead>
+                                            <tr>
+                                                <th width="50%">图片名</th>
+                                                <th ng-show="vm.uploader.isHTML5">大小</th>
+                                                <th ng-show="vm.uploader.isHTML5">进度</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="item in vm.uploader.queue" class="ng-scope" ng-if="$first">
+                                                <td><strong class="ng-binding">{{item.file.name}}</strong></td>
+                                                <td ng-show="vm.uploader.isHTML5" nowrap="" class="ng-binding">{{
+                                                    item.file.size/1024/1024 | number:2 }} MB
+                                                </td>
+                                                <td ng-show="vm.uploader.isHTML5">
+                                                    <div class="progress" style="margin-bottom: 0;">
+                                                        <div class="progress-bar" role="progressbar"
+                                                             ng-style="{ 'width': item.progress + '%' }"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span ng-show="item.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                                </td>
+                                                <td nowrap="">
+                                                    <button type="button" class="btn btn-success btn-xs"
+                                                            ng-click="vm.upload(item)"
+                                                            ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                        <span class="glyphicon glyphicon-upload"></span> 上传
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-xs"
+                                                            ng-click="item.remove(); vm.clearFile()">
+                                                        <span class="glyphicon glyphicon-trash"></span> 删除
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"><span ng-class="{'hide':!myForm.price.$invalid}" class="star">*</span>是否设置会员</label>
+                                    <div class="col-sm-3 control-label">
+                                        <input class="pull-left" ng-click="vm.changeIsMember()" ng-model="vm.params.isMember"  type="checkbox">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"><span ng-class="{'hide':!myForm.name.$invalid}" class="star">*</span>选择套餐</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" ng-model="vm.params.memberId" required ng-disabled="!vm.params.isMember">
+                                            <option ng-selected="vm.params.memberId ==''||undefined" value=''>全部</option>
+                                            <option ng-repeat=" li in vm.PackageList"    value="{{li.id}}"
+                                                    ng-selected="li.id == vm.params.memberId">{{li.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-sm-12 text-center">
+                        <button class="btn btn-primary" ng-click="vm.save()" ng-disabled="myForm.select.$invalid||!vm.params.excelUrl" >保存</button>
+                        <button class="btn btn-default" ng-click="vm.back()" >取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

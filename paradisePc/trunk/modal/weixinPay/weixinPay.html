@@ -1,0 +1,35 @@
+<div>
+    <!-- 未扫码支付 -->
+    <div ng-if="vm.status == 1" class="payHtml" style="height:331px;">
+        <div class="modal-header">
+            <img src="images/remove.jpg" alt="" ng-click="vm.cancel()">
+        </div>
+        <p style="font-size:26px;text-align:center;">微信扫码支付</p>
+        <p style="font-size:20px;text-align:center;padding-bottom:5px" ng-if="vm.price && !vm.discountPrice">付款金额：{{vm.price}}元</p>
+        <p style="font-size:20px;text-align:center;padding-bottom:5px" ng-if="vm.discountPrice">付款金额：{{vm.discountPrice}}元</p>
+        <div style="text-align: center;">
+            <qrcode data="{{vm.codeUrl}}" href="{{vm.codeUrl}}" size="200" color="black"></qrcode>
+        </div>
+    </div>
+    <!-- 支付中 -->
+
+    <div ng-if="vm.status == 2" class="payHtml" style="height:331px;">
+        <div class="modal-header">
+            <img src="images/remove.jpg" alt="" ng-click="vm.cancel()">
+        </div>
+        <div class="modal-body">
+            <p style="font-size: 30px;padding: 30px;">微信支付审核中</p>
+            <p style="font-size: 25px;padding: 30px;">请不要关闭页面</p>
+        </div>
+    </div>
+
+    <!-- 支付成功 -->
+    <div ng-if="vm.status == 3" class="modal-body" style="width:370px">
+        <p style="text-align:center;">
+            <img style="padding: 25px;" src="\images\seccess.png" alt="">
+        </p>
+
+        <p style="font-size: 25px;padding: 25px; text-align:center;" ng-if="vm.payW.thing!='subject'">开通会员成功</p>
+        <p style="font-size: 25px;padding: 25px; text-align:center;" ng-if="vm.payW.thing=='subject'">购买专题成功</p>
+    </div>
+</div>

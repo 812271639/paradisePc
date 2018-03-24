@@ -1,0 +1,119 @@
+<div class="row pd-top-2">
+	<div class="col-lg-12">
+		<div class="form-group panel panel-default panel-body">
+			<form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+				<div class="form-group mr0-ml0">
+					<label class="col-md-1 col-xs-12 control-label pd-left-0">会员套餐</label>
+					<div class="col-md-3">
+						<input type="text" class="form-control" ng-model="vm.searchParams.name" placeholder="请输入会员套餐名称">
+					</div>
+					<label class="col-md-1 col-xs-12 control-label">期&emsp;限</label>
+					<div class="col-md-3">
+						<input type="text" class="form-control" numberic max-length="9" ng-model="vm.searchParams.minPeriod">
+					</div>
+					<label class="col-md-1 col-xs-12 control-label text-center">一</label>
+					<div class="col-md-3">
+						<input type="text" class="form-control" numberic max-length="9" ng-model="vm.searchParams.maxPeriod">
+					</div>
+				</div>
+				<div class="form-group mr0-ml0">
+					<label class="col-md-1 col-xs-12 control-label pd-left-0">状&emsp;&emsp;态</label>
+					<div class="col-md-3">
+						<select class="form-control" ng-model="vm.searchParams.status">
+							<option ng-selected="vm.searchParams.status ==''||undefined" value=''>全部</option>
+							<option ng-repeat="(key,value) in vm.packageStatus" value="{{key}}"
+									ng-selected="key == vm.searchParams.status">{{value}}
+							</option>
+						</select>
+					</div>
+					<label class="col-md-1 col-xs-12 control-label">安卓价格</label>
+					<div class="col-md-3">
+						<input type="text" numberic3 class="form-control" ng-model="vm.searchParams.minPrice">
+					</div>
+					<label class="col-md-1 col-xs-12 control-label text-center">一</label>
+					<div class="col-md-3">
+						<input type="text" numberic3 class="form-control" ng-model="vm.searchParams.maxPrice">
+					</div>
+				</div>
+				<div class="form-group mr0-ml0">
+					<label class="col-md-1 col-xs-12 control-label">IOS价格</label>
+					<div class="col-md-3">
+						<input type="text" numberic3 class="form-control" ng-model="vm.searchParams.minIOSPrice">
+					</div>
+					<label class="col-md-1 col-xs-12 control-label text-center">一</label>
+					<div class="col-md-3">
+						<input type="text" numberic3 class="form-control" ng-model="vm.searchParams.maxIOSPrice">
+					</div>
+				</div>
+				<div class="col-md-12 search-btn text-right">
+					<button type="button" class="btn btn-danger" ng-click="vm.clear()">清空</button>
+					<button type="button" class="btn btn-success" ng-click="vm.search()">搜索</button>
+				</div>
+
+			</form>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				套餐管理
+				<div class="btn-group pull-right">
+					<button class="btn btn-primary btn-xs" ui-sref="field.packageDetail">
+						<i class="fa fa-plus-square fa-fw"></i>新增
+					</button>
+				</div>
+			</div>
+			<div class="panel-body">
+				<table class="table table-bordered table-striped" ng-if="vm.packageList.length!==0">
+					<thead>
+					<tr align="center" valign="middle">
+						<th>序号</th>
+						<th>会员套餐</th>
+						<th>期限(月)</th>
+						<th>安卓价格</th>
+						<th>ios价格</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+					</thead>
+					<tbody class="ul-table table-responsive table-striped">
+					<tr
+							ng-repeat=" item in vm.packageList"
+							align="center"
+							valign="middle">
+						<td><span class="iconfont icon-recommend" ng-show="item.recommend===1"></span>{{$index+1}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.period}}</td>
+						<td>{{item.price}}</td>
+						<td>{{item.iosPrice}}</td>
+						<td>{{item.status| articleFilter:'status'}}</td>
+						<td>
+							<button class="btn btn-default btn-xs"
+									ng-click="vm.deletePackage(item.id)">删除
+							</button>
+							<button class="btn btn-default btn-xs" ui-sref="field.packageDetail({id:item.id})">编辑
+							</button>
+							<button class="btn btn-danger btn-xs"
+									ng-click="vm.changeStatus(item.id,item.status,(item.status==1?2:1|articleFilter:'status'))"
+									ng-bind="item.status==1?2:1|articleFilter:'status'">
+							</button>
+							<button class="btn btn-success btn-xs"
+									ng-disabled="item.status===2"
+									ng-click="vm.changeRecommend(item.id,item.recommend,(item.recommend==1?2:1|btnContentFilter:'recommendBtn'))">
+								{{item.recommend==1?2:1|btnContentFilter:"recommendBtn"}}</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p ng-if="vm.packageList.length==0" class="text-center">搜索结果为空</p>
+				<nav class="pull-right" ng-if="vm.totalPage">
+					<page total-page="{{vm.totalPage}}"></page>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

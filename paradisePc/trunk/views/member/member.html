@@ -1,0 +1,62 @@
+
+<div class="container member">
+    <header>
+        <div class="img">
+            <img ng-src="{{vm.src}}" alt="">
+        </div>
+        <div class="img-p" ng-bind="vm.title">开通会员</div>
+    </header>
+    <div class="sidebar">
+        <div class="list">
+            <p class="list-p" ui-sref="main.member.memberPay" ui-sref-active="active"  ng-bind="vm.title">
+                开通会员
+            <p class="m-line"></p>
+            </p>
+
+        </div>
+        <div class="list" style=" margin-top: 26px;">
+            <p class="list-p" ui-sref="main.member.memberActive" ui-sref-active="active">卡券激活
+            <p class="m-line"></p>
+            </p>
+        </div>
+
+
+
+
+        <div class="list" style=" margin-top: 26px;">
+            <p class="list-p" ui-sref="main.survive" ui-sref-active="active">测试卡券激活
+            <p class="m-line"></p>
+            </p>
+        </div>
+
+
+        <div class="list" style=" margin-top: 26px;">
+            <p class="list-p" ui-sref="main.pay" ui-sref-active="active">支付激活
+            <p class="m-line"></p>
+            </p>
+        </div>
+
+        <div class="list" style=" margin-top: 26px;">
+            <p class="list-p" ui-sref="main.newMember" ui-sref-active="active">会员中心页面
+            <p class="m-line"></p>
+            </p>
+        </div>
+
+
+
+
+
+    </div>
+    <main>
+        <div class="mem-logo">
+            <span>会员特权</span>
+            <img src="images/member-2.png" alt="">
+        </div>
+        <div class="main">
+            <div class="introduction">
+                <img src="images/introduction.png" alt="">
+            </div>
+            <div ui-view></div>
+        </div>
+    </main>
+</div>

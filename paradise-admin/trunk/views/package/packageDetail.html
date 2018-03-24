@@ -1,0 +1,104 @@
+<div class="row pd-top-2">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				新增/编辑
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-12">
+						<form class="form-horizontal" name="myForm">
+							<fieldset>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><span ng-class="{'hide':!myForm.name.$invalid}" class="star">*</span>套餐名称</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="name"
+										       ng-model="vm.params.name" maxlength="15" required placeholder="长度不能超过15个汉字">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><span ng-class="{'hide':!myForm.orderBy.$invalid}" class="star">*</span>排&emsp;&emsp;序</label>
+									<div class="col-sm-3">
+										<input type="number" class="form-control" name="orderBy"
+											   ng-model="vm.params.orderBy"
+											   maxlength="4" required placeholder="输正整数，1为排在最前">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><span ng-class="{'hide':!myForm.time.$invalid}" class="star">*</span>期&emsp;&emsp;限</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" numberic3 name="time"
+										       ng-model="vm.params.period"  ng-change="vm.showPrice()"
+										       maxlength="6" required placeholder="请输入整数">
+									</div>
+									<div class="col-sm-1 control-label">
+										<span>个月</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><span ng-class="{'hide':!myForm.price.$invalid}" class="star">*</span>安卓价格</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" price name="price"
+										       ng-model="vm.params.price" ng-change="vm.showPrice()"
+										       maxlength="16" placeholder="请输入整数" required>
+									</div>
+									<div class="col-sm-1 control-label">
+										<span>元</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">安卓优惠价格</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" price name="discountPrice" ng-disabled="!vm.params.price"
+											   ng-model="vm.params.discountPrice" ng-change="vm.showPrice()"
+											   maxlength="16" placeholder="请输入整数">
+									</div>
+									<div class="col-sm-1 control-label">
+										<span>元</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><span ng-class="{'hide':!myForm.iosPrice.$invalid}" class="star">*</span>IOS价格</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" price name="iosPrice"
+											   ng-model="vm.params.iosPrice" ng-change="vm.showPrice()"
+											   maxlength="16" placeholder="请输入整数" required>
+									</div>
+									<div class="col-sm-1 control-label">
+										<span>元</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">IOS优惠价格</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" price name="iosDiscountPrice" ng-disabled="!vm.params.iosPrice"
+											   ng-model="vm.params.iosDiscountPrice" ng-change="vm.showPrice()"
+											   maxlength="16" placeholder="请输入整数">
+									</div>
+									<div class="col-sm-1 control-label">
+										<span>元</span>
+									</div>
+								</div>
+
+								<div class="col-sm-3 col-sm-offset-2 text-right pd-top-2">
+									<p>每月安卓费用：{{vm.average||0}}元</p>
+									<p>每月IOS费用：{{vm.iosAverage||0}}元</p>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="row ">
+					<div class="col-sm-10 col-sm-offset-2">
+						<button class="btn btn-primary" ng-click="vm.saveUpdate()" ng-disabled="myForm.$invalid||(vm.params.iosDiscountPrice-0>=vm.params.iosPrice-0&&vm.params.iosDiscountPrice!=undefined)||(vm.params.discountPrice-0>=vm.params.price-0&&vm.params.discountPrice!=undefined)" >保存</button>
+						<button class="btn btn-default" ng-click="vm.back()" >取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

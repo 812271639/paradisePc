@@ -1,0 +1,45 @@
+.payHtml {
+    width: 450px;
+    /*height: 241px;*/
+}
+.payHtml .modal-header {
+    padding: 0;
+    background: #73b2fd;
+    text-align: right;
+}
+.payHtml .modal-header img {
+    height: 33px;
+    cursor: pointer;
+}
+.payHtml .modal-body {
+    padding: 32px 10px;
+}
+.payHtml .modal-body p {
+    font-size: 1.6rem;
+    line-height: 28px;
+    text-align: center;
+    color: #555555;
+}
+.payHtml .modal-footer {
+    padding: 0 10px 10px;
+    border: none;
+    text-align: center;
+}
+.payHtml .modal-footer button {
+    font-size: 1.6rem;
+    margin-bottom: 19px;
+}
+.payHtml .modal-footer p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #cbcbcb;
+}
+.payHtml .modal-footer p span {
+    color: #73b2fd;
+}
+@media (max-width: 768px) {
+    .payHtml {
+        width: 300px;
+        height: 266px;
+    }
+}

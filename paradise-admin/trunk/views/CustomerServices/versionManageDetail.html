@@ -1,0 +1,97 @@
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                版本管理
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                最新版本
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form class="form-horizontal" name="version">
+
+                                            <div class="form-group mr0-ml0">
+                                                <label  class="col-sm-2 control-label">平台类型</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" ng-change='vm.check()' ng-disabled='true' ng-model="vm.params.os" >
+                                                        <option class="col-sm-12" ng-value="ios" >ios</option>
+                                                        <option class="col-sm-12" ng-value="android" >android</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0-ml0">
+                                                <label  class="col-sm-2 control-label">版本名称</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" ng-blur='vm.check()'  ng-model="vm.params.versionCode" oninput="value=value.replace(/[^(\d|\.)]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^(\d|\.)]/g,''))"  required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0-ml0">
+                                                <label  class="col-sm-2 control-label">版本号</label>
+                                                <div class="col-sm-10">
+                                                <!-- 未知指令 -->
+                                                <!-- numberic3  -->
+                                                    <input type="text" class="form-control"   maxlength="10" ng-model="vm.params.code" oninput="value=value.replace(/[^(\d)]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^(\d|\.)]/g,''))"  required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0-ml0">
+                                                <label  class="col-sm-2 control-label">URL地址</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control"   ng-model="vm.params.url" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0-ml0">
+                                                <label  class="col-sm-2 control-label">版本信息</label>
+                                                <div class="col-sm-10">
+
+                                                    <div style="border: 1px solid #ccc;border-radius: 4px;padding: 10px;">
+                                                        <div ng-repeat="li in vm.params.info track by $index" style="margin-bottom: 20px!important;" >
+                                                            <input type="text" class="form-control col-md-8" style="width: 80%;" ng-model="li.introduce">
+                                                            <button class="btn btn-danger" style="margin-left: 10px" ng-click="vm.delList($index)">删除</button>
+                                                        </div>
+                                                        <div style="text-align: center" ng-click="vm.addList()"><span class="glyphicon glyphicon-plus" style="font-size: 22px"></span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0-ml0">
+                                                <label  class="col-sm-2 control-label">强制更新</label>
+                                                <div class="col-sm-10">
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-value="true" name='update'  ng-model='vm.params.isForceUpdate'>是
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-value="false" name='update'  ng-checked='true'  ng-model='vm.params.isForceUpdate'>否   
+                                                </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-10"> 
+                                                    <button class="btn btn-success"  ng-disabled="version.$invalid" ng-if='!vm.addbol' ng-click="vm.update()">编辑</button>
+                                                    <button class="btn btn-success"  ng-disabled="version.$invalid" ng-if='vm.addbol'  ng-click="vm.add()">新增</button>
+                                                    <button class="btn btn-danger" ui-sref="field.versionManage">取消</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

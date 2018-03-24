@@ -1,0 +1,22 @@
+
+
+<div class="row pd-top-2 ng-scope pd-left-15 pd-right-15">
+    <div class="panel panel-default">
+        <div class="panel-heading contentManage-header ">
+            <strong ng-bind="vm.title">新增学校</strong>
+        </div>
+        <form class="form-horizontal ng-pristine ng-valid  padding-top-20 " role="form" name="ngForm" novalidate>
+            <div class="form-group mr0-ml0">
+                <label class="col-md-1 col-xs-12 control-label pd-right-0">学校名称</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="vm.name" placeholder="请输入学校名称" required>
+                </div>
+
+            <div class="col-md-12 search-btn text-left margin-top-50 padding-left-20">
+                <button type="button" class="btn btn-success margin-right-10" ng-click="vm.done()">保存</button>
+                <button type="button" class="btn btn-default " onClick="javascript :history.go(-1)">取消</button>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>

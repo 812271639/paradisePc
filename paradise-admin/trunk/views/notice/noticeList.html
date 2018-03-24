@@ -1,0 +1,85 @@
+<div class="row pd-top-2">
+	<div class="col-lg-12">
+		<div class="form-group panel panel-default panel-body">
+			<form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+				<div class="form-group mr0-ml0">
+					<label class="col-md-1 col-xs-12 control-label">标题</label>
+					<div class="col-md-3">
+						<input type="text" class="form-control" ng-model="vm.searchParams.title">
+					</div>
+
+					<label class="col-md-1 col-xs-12 control-label">状态</label>
+					<div class="col-md-3">
+						<select class="form-control" ng-model="vm.searchParams.status">
+							<option ng-selected="vm.searchParams.status==''||undefined" value=''>全部</option>
+							<option ng-repeat=" (key,value) in vm.noticeStatus" value="{{key}}"
+							        ng-selected="key == vm.searchParams.status">{{value}}
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-12 search-btn text-right">
+					<button type="button" class="btn btn-danger" ng-click="vm.clear()">重置</button>
+					<button type="button" class="btn btn-success" ng-click="vm.search()">搜索</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				公告栏管理
+				<div class="btn-group pull-right">
+					<button class="btn btn-primary btn-xs" ui-sref="field.noticeDetail">
+						<i class="fa fa-plus-square fa-fw"></i>新增公告
+					</button>
+				</div>
+			</div>
+			<div class="panel-body">
+				<table class="table table-bordered table-striped" ng-if="vm.noticeList.length!==0">
+					<thead>
+					<tr align="center" valign="middle">
+						<th>序号</th>
+						<th>标题</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+					</thead>
+					<tbody class="ul-table table-responsive table-striped">
+
+					<tr
+					    ng-repeat=" item in vm.noticeList"
+					    align="center"
+					    valign="middle">
+						<td ng-bind="$index+1"></td>
+						<td>{{item.title}}</td>
+						<td>{{item.status| articleFilter:'status'}}</td>
+						<td>
+							<button class="btn btn-default btn-xs"
+							        ui-sref="field.noticeDetail({id:item.id,disabled:true})">查看
+							</button>
+							<button class="btn btn-default btn-xs" ui-sref="field.noticeDetail({id:item.id})">编辑
+							</button>
+							<button class="btn btn-danger btn-xs"
+							        ng-click="vm.changeStatus(item.id,item.status,(item.status==1?2:1|articleFilter:'status'))"
+							        ng-bind="item.status==1?2:1|articleFilter:'status'">
+							</button>
+							<button class="btn btn-danger btn-xs"
+									ng-click="vm.delete(item.id,item.status)">
+							删除</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p ng-if="vm.noticeList.length===0" class="text-center">搜索结果为空</p>
+				<nav class="pull-right" ng-if="vm.totalPage">
+					<page total-page="{{vm.totalPage}}"></page>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

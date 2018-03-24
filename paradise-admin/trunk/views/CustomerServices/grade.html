@@ -1,0 +1,29 @@
+<div class="row pd-top-2 ng-scope">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>默认年级设置</strong>
+        </div>
+        <div class="panel-body" ng-if="vm.add!=1">
+            <div class="form-group panel panel-default panel-body">
+                <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                    <div class="form-group mr0-ml0">
+                        <label class="col-md-1 col-xs-12 control-label">默认年级</label>
+                        <div class="col-md-3">
+                            <select class="form-control" ng-model="vm.grade" ng-disabled="vm.disable!=1">
+                                <option ng-repeat=" li in vm.subjectAdd.content"    value="{{li.id}}"
+                                        ng-selected="li.id == vm.grade&& vm.grade != ''">{{li.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1" ng-if="vm.disable!=1">
+                            <button class="btn btn-default" ng-click="vm.change()">修改</button>
+                        </div>
+                        <div class="col-md-2" ng-if="vm.disable==1">
+                            <button class="btn btn-default" ng-click="vm.sure()">确认</button>
+                            <button class="btn btn-default" ng-click="vm.disable=2">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<!--选择题-->
+<div class="choice" ng-if="vm.data.data.taskType == 2 && (vm.data.data.specificType == 1 || vm.data.data.specificType == 4)" style="height: auto">
+    <div class="flash-head" id="choiceheader" ng-if="ipCookie('login2')==false">
+        <img src="../images/subject&course/course4.png" ng-click="vm.hideHeader()">
+        <p class="head-button-right" ng-click="vm.load()">登陆</p>
+        <p class="head-button-right" ng-click="vm.register()">注册</p>
+        <p class="flash-head-warn">登陆用户可以进行学习进度收藏啦~</p>
+    </div>
+    <div class="choice-title">
+        <p class="exp" ng-bind="vm.data.data.taskName"></p>
+        <p class="collection">收藏</p>
+        <img src="../images/subject&course/course5.png" ng-if="vm.collectionStatus == 2 || vm.collectionStatus == undefined" ng-click="vm.changeCollection()">
+        <img src="../images/subject&course/course6.png" ng-if="vm.collectionStatus == 1" ng-click="vm.changeCollection()">
+    </div>
+    <div class="choice-content">
+        <div class="topic">{{vm.data.data.taskName}}</div>
+        <div class="content">
+            <div ng-repeat="li in vm.data.unitList">
+                <div class="img" ng-if="li.mediaType==1"><img src="{{li.resourceLink}}" alt=""></div>
+                <div ng-if="li.mediaType==2">
+                    <p ng-bind="li.textContent"></p>
+                </div>
+                <div ng-if="li.mediaType==3">
+                    <audio src="{{li.resourceLink|urlFilter}}" controls="controls" preload></audio>
+                </div>
+                <div class="videoplay" ng-if="li.mediaType==5">
+                    <video src="{{li.resourceLink|urlFilter}}" style="width: 100%" preload poster="{{li.resourceURL}}" controls="controls"></video>
+                </div>
+            </div>
+        </div>
+        <div class="text">
+            <form>
+                <div ng-repeat="li in vm.data.answerList">
+                    <input type="radio" name="sex" id="{{$index}}" />
+                    <label for="{{$index}}">{{li.introduce}}</label>
+                    <br />
+                </div>
+            </form>
+        </div>
+        <div class="analysis" ng-if="vm.analysisShow==1">
+            <p class="color-99CC33">回答正确</p>
+            <p class="color-FF9933">回答错误</p>
+            <p>正确答案：{{vm.chooseAnswer}}</p>
+            <p ng-hide="vm.analysis.length==0">本题解析：</p>
+            <p ng-repeat="li in vm.analysis" ng-hide="vm.analysis.length==0">
+                {{li.textContent}}<img class="restrict" src="{{li.resourceLink}}" alt="">
+            </p>
+        </div>
+        <input id="deletebutton" type="button" value="提交" ng-click="vm.submit()" />
+    </div>
+</div>

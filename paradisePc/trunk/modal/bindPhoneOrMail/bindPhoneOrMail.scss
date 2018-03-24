@@ -1,0 +1,114 @@
+@charset "utf-8";
+//绑定手机或者邮箱模态框样式
+.bindPhoneOrMail-wrapper{
+	width:709px;
+	height:370px;
+	input{
+		height: 52px;
+	}
+	.modal-body{
+		height: 335px;
+		display: flex;
+	form{
+		width:100%;
+		form >div{
+			width:100%;
+		}
+	}
+	.phone-code button{
+		height: 52px;
+	}
+	.title{
+		height: 80px;
+		display: flex;
+		justify-content: center;
+		align-items:flex-start;
+
+	}
+	.title-content{
+		font-size: 16px;
+		margin-top:33px;
+
+	}
+	.account{
+		height: 52px;
+		margin-bottom:16px;
+	}
+	.phone-code{
+		height: 52px;
+		margin-bottom: 36px;
+	}
+	.phone-code-phone{
+		margin-bottom: 13px;
+	}
+	.button-wrapper{
+		height: 52px;
+		margin-bottom: 44px;
+	}
+	.button-wrapper-phone{
+		margin-bottom: 27px;
+	}
+	.button-wrapper button{
+		height: 52px;
+	}
+	.voice{
+		height: 13px;
+		font-size: 12px;
+		margin-bottom: 27px;
+	}
+	}
+	.VoiceGai{
+		color: grey;
+	}
+	.telLeft {
+		width: 100%;
+		margin-bottom: 9px;
+	}
+}
+//绑定手机或者邮箱模态框自适应样式
+@media(max-width:768px){
+	.bindPhoneOrMail-wrapper{
+		width:310px;
+		height: auto;
+		.modal-body{
+			height: auto;
+		    padding:10px;
+		    .title{
+		        margin:0px;
+		        height: 30px;
+		    }
+		    .title-content{
+		    	margin-top:0px;
+		    }
+		    .voice{
+		        margin-bottom:15px;
+		    }
+		}
+		 .modal-body .account,.modal-body .phone-code{
+			height: auto;
+		}
+		.modal-body .phone-code{
+			margin-bottom: 15px;
+		}
+		.register-row{
+		    flex-direction: column;
+		}
+		.account,.password,.image-code-new{
+		    margin-bottom: 15px;
+		}
+		.forget,.modal-body .button-wrapper,.modal-body .button-wrapper-phone{
+		    margin-bottom: 10px;
+		}
+		.left{
+		    width:290px;
+		    justify-content: flex-start;
+		}
+		.center{
+		    margin:0px;
+		    width:290px;
+		}
+		.rule input{
+		    height: 20px;
+		}
+	}
+}

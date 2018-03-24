@@ -1,0 +1,128 @@
+<div class="row pd-top-2 ng-scope">
+
+    <div class="panel-body">
+        <div class="form-group panel panel-default panel-body">
+            <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">用户名</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入用户名"
+                               ng-model="vm.params.nick" name="name">
+                    </div>
+                    <label class="control-label col-lg-1 col-md-1 col-xs-12">年级</label>
+                    <div class=" col-md-4 col-xs-12">
+                        <select class="form-control" ng-model="vm.params.grade">
+                            <option ng-selected="vm.params.grade ==''||undefined" value=''>全部</option>
+                            <option ng-repeat=" li in vm.courseGrade"    value="{{li.id}}"
+                                    ng-selected="li.id == vm.params.grade">{{li.name}}</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">学习星数</label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid"  numberic
+                               ng-model="vm.params.scoreStart" name="minPeriod">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid"  numberic
+                               ng-model="vm.params.scoreEnd" name="maxPeriod">
+                    </div>
+                    <label class="col-md-1 col-xs-12 control-label">学习课时数</label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid"  numberic
+                               ng-model="vm.params.learnPeriodStart" name="minPeriod">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid"  numberic
+                               ng-model="vm.params.learnPeriodEnd" name="maxPeriod">
+                    </div>
+                </div>
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">邮箱</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入邮箱"
+                               ng-model="vm.params.mail" >
+                    </div>
+                    <label class="control-label col-lg-1 col-md-1 col-xs-12">会员类型</label>
+                    <div class=" col-md-4 col-xs-12">
+                        <select class="form-control" ng-model="vm.params.member">
+                            <option ng-selected="vm.params.member ==''||undefined" value=''>全部</option>
+                            <option ng-repeat=" li in vm.memberlist"    value="{{li.name}}"
+                                    ng-selected="li.name == vm.params.member">{{li.name}}</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">手机号</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入手机号"
+                               ng-model="vm.params.mobile" name="mobile">
+                    </div>
+                </div>
+            </form>
+
+            <button class="btn btn-primary pull-right" ng-click="vm.search()">搜索
+            </button>
+            <button class="btn btn-primary pull-right" ng-click="vm.clear()" style="display:block;margin-right: 50px">清除
+            </button>
+
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>会员管理</strong>
+                <div class="btn-group pull-right">
+
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-striped text-center add-table-border">
+                    <thead>
+                    <tr>
+                        <th class="text-center ">序号</th>
+                        <th class="text-center ">ID</th>
+                        <th class="text-center ">用户名</th>
+                        <th class="text-center ">手机号</th>
+                        <th class="text-center ">年级</th>
+
+                        <th class="text-center ">学习星数</th>
+                        <th class="text-center ">学习课时数</th>
+                        <th class="text-center ">邮箱</th>
+                        <th class="text-center ">会员类型</th>
+                        <th class="text-center ">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="li in vm.list">
+                        <td >{{$index+1}}</td>
+                        <td>{{li.id}}</td>
+                        <td>{{li.nick}}</td>
+                        <td>{{li.mobile}}</td>
+                        <td>{{li.grade|userGradeFilter}}</td>
+
+                        <td>{{li.score}}</td>
+                        <td>{{li.learnScore}}</td>
+                        <td>{{li.mail}}</td>
+                        <td>{{li.memberName}}</td>
+                        <td>
+                            <button class="btn btn-default btn-xs" ui-sref="field.memberDetail({id:li.id})">会员详情</button>
+                            <button class="btn btn-default btn-xs" ui-sref="field.userDetail({id:li.id})">用户详情</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!--分页-->
+                <nav class="pull-right" ng-if="vm.totalPage">
+                    <page total-page="{{vm.totalPage}}"></page>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

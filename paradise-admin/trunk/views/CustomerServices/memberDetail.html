@@ -1,0 +1,164 @@
+<div class="row pd-top-2 ng-scope">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>会员详情</strong>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="subjectForm">
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">用户名</label>
+                    <div class="col-md-3" style="margin-top: 7px" style="margin-top: 7px">
+                        {{vm.params.nick}}
+                    </div>
+                    <label class="col-md-1 col-xs-12 control-label">手机号</label>
+                    <div class="col-md-3" style="margin-top: 7px">
+                        {{vm.params.mobile}}
+                    </div>
+                    <label class="col-md-1 col-xs-12 control-label">年级</label>
+                    <div class="col-md-3" style="margin-top: 7px">
+                        {{vm.params.grade|userGradeFilter}}
+                    </div>
+
+                </div>
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">邮箱</label>
+                    <div class="col-md-3" style="margin-top: 7px">
+                        {{vm.params.mail}}
+                    </div>
+                    <label class="col-md-1 col-xs-12 control-label">会员类型</label>
+                    <div class="col-md-3" style="margin-top: 7px">
+                        {{vm.params.memberName}}
+                    </div>
+                    <label class="col-md-1 col-xs-12 control-label">状态</label>
+                    <div class="col-md-3" style="margin-top: 7px">
+                        {{vm.params.status|freezeFilter}}
+                    </div>
+
+                </div>
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">学习星数</label>
+                    <div class="col-md-3" style="margin-top: 7px">
+                        {{vm.params.score}}
+                    </div>
+                    <label class="col-md-1 col-xs-12 control-label">学习课时数</label>
+                    <div class="col-md-3" style="margin-top: 7px">
+                        {{vm.params.learnScore}}
+                    </div>
+                    <button class="btn btn-default" ng-if="vm.params.recommendFlag==0" ng-click="vm.person()">设为推广人</button>
+                    <div ng-if="vm.params.recommendFlag==1">
+                        邀请码
+                    </div>
+                    <div ng-if="vm.params.recommendFlag==1">
+                        <input type="text" ng-model="vm.params.invitationCode" disabled>
+                    </div>
+                </div>
+
+            </form>
+
+
+            <div class="col-sm-12" style="color: #999">
+                <div class="col-xs-2 col-md-2 userDetail-table-title cursor" ng-click="vm.tab(1)"
+                     ng-class="{true:'color-black'}[vm.typeChoose==1]">
+                    当前会员状态
+                </div>
+                <div class="col-xs-2 col-md-2 userDetail-table-title cursor" ng-click="vm.tab(2)"
+                     ng-class="{true:'color-black'}[vm.typeChoose==2]">
+                    往期充值记录
+                </div>
+                <div class="col-xs-2 col-md-2 userDetail-table-title cursor" ng-click="vm.tab(3)"
+                     ng-class="{true:'color-black'}[vm.typeChoose==3]">
+                    最近登录记录
+                </div>
+            </div>
+            <!--我的收藏课程-->
+            <div class="panel-body " ng-if="vm.typeChoose==1">
+                <div class="form-horizontal add-table-border" style="margin-top: 30px;margin-left: -2px">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">会员状态</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">{{vm.params.memberName}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">会员到期时间</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">{{vm.params.vipEnd|date:"yyyy-MM-dd"}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">会员开始时间</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">{{vm.params.vipBegin|date:"yyyy-MM-dd"}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">当前总消费金额</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">{{vm.price}}元</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">当前会员剩余天数</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static" ng-if="vm.time>0" g>{{vm.time}}天</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--我的收藏课时-->
+            <div class="panel-body" ng-if="vm.typeChoose==2">
+                <table class="table table-striped text-center add-table-border">
+                    <thead>
+                    <tr>
+                        <th class="text-center width5">序号</th>
+                        <th class="text-center width5">会员类型</th>
+                        <th class="text-center width6">开始时间</th>
+                        <th class="text-center width15">到期时间</th>
+                        <th class="text-center width15">花费金额（元）</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <!-- ngRepeat: item in vm.list -->
+                    <tr ng-repeat="li in  vm.payList">
+                        <td >{{$index+1}}</td>
+                        <td>{{li.name}}</td>
+                        <td>{{li.startAt|date:'yyyy-MM-dd'}}</td>
+                        <td>{{li.endAt|date:'yyyy-MM-dd'}}</td>
+                        <td>{{li.price}}</td>
+                    </tr>
+                </table>
+                <!--分页-->
+                <nav class="pull-right" ng-if="vm.totalPage">
+                    <page total-page="{{vm.totalPage}}"></page>
+                </nav>
+            </div>
+
+
+
+            <!--我的资料-->
+            <div class="panel-body" ng-if="vm.typeChoose==3">
+                <table class="table table-striped text-center add-table-border">
+                    <thead>
+                    <tr>
+                        <th class="text-center width5">序号</th>
+                        <th class="text-center width5">登录端</th>
+                        <th class="text-center width6">登录时间</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr ng-repeat="li in  vm.params.loginRecords" ng-if="$index<20">
+                        <td >{{$index+1}}</td>
+                        <td>{{li.os}}</td>
+                        <td>{{li.loginAt|date:'yyyy-MM-dd HH:mm'}}</td>
+                    </tr>
+                </table>
+                <!--分页-->
+                <nav class="pull-right" ng-if="vm.totalPage">
+                    <page total-page="{{vm.totalPage}}"></page>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>

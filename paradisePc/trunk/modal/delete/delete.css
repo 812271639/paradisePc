@@ -1,0 +1,80 @@
+.delete-wrapper {
+  width: 384px;
+  height: 229px; }
+  .delete-wrapper > div {
+    width: 100%; }
+  .delete-wrapper .modal-header {
+    /*background-color: #73b2fd;*/
+    color: white;
+    height: 35px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+    .delete-wrapper .modal-header .close-model {
+      width: 40px;
+      height: 32px; }
+      .delete-wrapper .modal-header .close-model img {
+        width: 40px;
+        height: 32px; }
+  .delete-wrapper .modal-body {
+    height: 93px;
+    text-align: center;
+    font-size: 16px;
+    padding: 0;
+    position: relative;
+    }
+    .delete-wrapper .modal-body p {
+      height: 47px;
+    width: 272px;
+    font-size: 16px;
+    line-height: 26px;
+    position: absolute;
+    bottom: 30px;
+    left: 60px; }
+  .delete-wrapper .modal-footer {
+    padding: 0px;
+    height: 56px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-top: 0px; }
+    .delete-wrapper .modal-footer button {
+      border-radius: 4px;
+      width: 100px;
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0px; }
+  .delete-wrapper .cancel-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #a1a1a1;
+     }
+  .delete-wrapper .ok-btn {
+    background-color: #73b2fd;
+    color: white;
+    margin-right: 43px; }
+
+  .delet-record{
+    position: absolute;
+    top: 19px;
+    right: 19px;
+  }
+  .attention-wrap{
+    height: 80px;
+    text-align: center;
+  }
+  .attention-wrap img{
+        position: relative;
+    top: 34px;
+  }
+
+
+@media (max-width: 768px) {
+  .delete-wrapper {
+    width: 310px; } }
+
+
+/*# sourceMappingURL=delete.css.map */

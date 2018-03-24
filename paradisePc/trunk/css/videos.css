@@ -1,0 +1,169 @@
+
+/*最外层滑块*/
+.vjs-control-bar{
+    width:82%!important;
+    max-width: 600px!important;
+    height:60px!important;
+    position: absolute!important;
+    bottom: 22px!important;
+    left: 50%!important;
+    transform: translate(-50%,0);
+    border-radius: 7px;
+}
+/*播放按钮图标*/
+.vjs-icon-placeholder:before{
+    font-size: 35px!important;
+}
+/*音量键的图标大小*/
+.vjs-volume-panel .vjs-icon-placeholder:before{
+    font-size: 24px!important;
+    line-height: 60px;
+}
+/*全屏按钮图标大小*/
+.vjs-fullscreen-control .vjs-icon-placeholder:before{
+    font-size: 30px!important;
+    line-height: 60px;
+}
+.video-test{
+    position: relative;
+}
+/*视频时间*/
+.vjs-duration{
+    font-size: 14px!important;
+    display: inline!important;
+    position: absolute!important;
+    top: 25px;
+    /*left: 73.5%;*/
+    right:26%;
+}
+/*当前时间*/
+.vjs-control-bar>.vjs-current-time{
+    font-size: 14px!important;
+    display: inline!important;
+    position: absolute!important;
+    top: 25px;
+    left: 8.5%;
+}
+/*音量距离*/
+.video-js .vjs-volume-vertical{
+    bottom: 100px;
+    border-radius: 7px;
+}
+/*剩余时间*/
+.vjs-remaining-time{
+    display: none ;
+}
+/*进度条*/
+.vjs-progress-control{
+    width:65%!important;
+    max-width: 450px!important;
+    position: absolute!important;
+    left: 8.5%!important;
+    /*right:160px;*/
+}
+/*进度条行高*/
+vjs-progress-holder vjs-slider vjs-slider-horizontal{
+    height: 6px!important;
+}
+/*全屏按钮*/
+.vjs-fullscreen-control{
+    position: absolute!important;
+    right: 0px!important;
+}
+/*音量按钮*/
+.vjs-volume-panel{
+position: absolute!important;
+    /*left: 73%;*/
+    right:18%;
+}
+/*边框*/
+.vjs-control:focus{
+    outline:none;
+}
+.speed{
+    font-size: 16px;
+    flex:1;
+    line-height: 52px;
+}
+/*倍速按钮定位*/
+.speedside{
+    font-size: 20px;
+    /*left: 82%;*/
+    right:9.5%;
+    text-align: center!important;
+    /*line-height: 70px;*/
+    width:45px!important;
+
+}
+.speedside>.vjs-mute-control{
+    padding:0!important;
+    width:45px;
+}
+
+.speedsidechoose{
+    color: #65A1EB;
+}
+/*倍速选择面板*/
+.video-bar{
+    display: flex;
+    flex-direction: column-reverse;
+    left: -49px!important;
+    width: 59px!important;
+    bottom: 165px!important;
+}
+/*播放按钮位置调整*/
+.vjs-play-control{
+    width:8%!important;
+    left:0.5%;
+}
+/*音量进度条*/
+.vjs-volume-bar{
+    background-color: #1e1e1e!important;
+}
+/*当前时间hover时出现的提示*/
+.vjs-time-tooltip{
+    display:none!important;
+}
+
+/*大按钮样式*/
+.video-js .vjs-big-play-button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+/*试看样式*/
+.try-it{
+    position: absolute;
+    bottom: 85px;
+    /*left: 65px;*/
+    height: 40px;
+    width: 265px;
+    background-color: rgba(43, 51, 63, 0.7);
+    border-radius: 1.7em;
+    line-height: 40px;
+}
+.out-round{
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translate(0,-50%);
+    background: black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+.inside-round{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    left: 5px;
+}
+.close-btn{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translate(0,-54%);
+}

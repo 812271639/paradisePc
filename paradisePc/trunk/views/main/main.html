@@ -1,0 +1,233 @@
+<top></top>
+<header class="header-bg" >
+    <div class="container ">
+        <div class=" font-size text-center">
+            <div class=" font-size-0 inline-block width-33 fl" ng-click="vm.goHome()">
+                <a class="line-hgt media-768 fl" >
+                    <img class="mgn-right-23  " src="../../images/main/newlogo.png" style="width: 80px">
+                </a>
+                <span  style="cursor: pointer" class="ft-size-22px letter-spacing line-hgt fl" >用最小的力气学习</span>
+            </div>
+            <div id="nav-btn" class="nav-btn"> <img src="../../images/main/menu.png"></div>
+            <div class=" home-nav width-33 inline-block " ng-if="vm.url=='home'" style="cursor: pointer">
+                <span ui-sref="main.home({gradeDept:4})" ng-class="{'color529beb':vm.gradeDept == 4}" ng-click="vm.gradeDept=4">小学部</span>
+                <span ui-sref="main.home({gradeDept:1})" ng-class="{'color529beb':vm.gradeDept == 1}" ng-click="vm.gradeDept=1">初中部</span>
+                <span ui-sref="main.home({gradeDept:2})" ng-class="{'color529beb':vm.gradeDept == 2}" ng-click="vm.gradeDept=2" style="border-right: none;border-left: none">高中部</span>
+                <span ui-sref="main.home({gradeDept:3})" ng-class="{'color529beb':vm.gradeDept == 3}" ng-click="vm.gradeDept=3">留学部</span>
+            </div>
+            <div class="flex-justify text-right ft-size-20px inline-block fr">
+                <div ng-if="!(vm.userMsg)" class="mgn-right-20 bell-rel flex-align" >
+                        <img src="../../images/icon/bell_03.png" alt="" ng-click="vm.checkBell=1">
+                        <div class="bell-position" ng-if="vm.checkBell==1" ng-click="vm.checkBell=2">
+
+                        </div>
+                </div>
+                 <span ng-if="!(vm.userMsg)" >
+                     <a class=" color-73b2fd ft-size-16px" ng-click="vm.login()">登录</a>/
+                     <a class=" color-000000 ft-size-16px" ng-click="vm.register()">注册</a>
+                 </span>
+                <!--、、、、、、、、、、、、、-->
+                <ul ng-if="vm.userMsg"  class="header-nav">
+                    <li class="sign-relative mgn-right-20">
+                        <div class="triangle">
+
+                        </div>
+                        <div class="triangle2">
+
+                        </div>
+                        <img src="../../images/icon/SignIn_03.png" alt="">
+                        <div class="main-bell" style="left: -7px;top: -2px;display: none">
+
+                        </div>
+                        <sign ng-if='vm.data' class="sign-mgn-left" sign-list="vm.data" c ={{vm.continue}} f ="vm.signMsg()"></sign>
+                        <div class="signOk">
+                            <div class="mgn-b-24"><img src="../images/main/signOk.png"></div>
+                            <span id="number">签到成功，奖励5逆袭豆~</span>
+                        </div>
+                    </li>
+                    <li class="relative mgn-right-20">
+                        <div class="triangle">
+
+                        </div>
+                        <div class="triangle2">
+
+                        </div>
+                        <img src="../../images/icon/Collection_06.png" alt="">
+                        <div class="main-bell"  style="left: -6px;top: -2px;display: none">
+
+                        </div>
+                        <ul ng-if="vm.favoritesListData != '' &&vm.favoritesListData != undefined " class="study left-186" id="left-186">
+                            <li ng-repeat="data in vm.favoritesListData" data-ui-sref="main.course({id:data.periodId,taskId:data.id})" ><i class="mainCircle"></i><a>{{data.taskName}}</a></li>
+                            <li data-ui-sref="main.user.favorite" class="study-liLast">查看更多</li>
+                        </ul>
+                        <!--<div ng-if="vm.favoritesListData == '' ||vm.favoritesListData == undefined " class="study" id="left" >-->
+                        <div ng-if="vm.favoritesListData == '' ||vm.favoritesListData == undefined " class="study left-186" id="left" >
+                            <div class="center" style="padding: 60px 0 0;">
+                                <img src="../../images/main/noStudymessage.png">
+                            </div>
+                            <p class="noStudymessage">这里面和你脑子一样空空如也。</p>
+                        </div>
+                    </li>
+                    <li class=" relative mgn-right-20" >
+                        <div class="triangle">
+
+                        </div>
+                        <div class="triangle2">
+
+                        </div>
+                        <img src="../../images/icon/recording_08.png" alt="">
+                        <div class="main-bell" style="left: -8px;top: -2px;display: none">
+
+                        </div>
+                        <ul ng-if="vm.studyHistoryListData" class="study">
+                            <li ng-repeat="data in vm.studyHistoryListData" data-ui-sref="main.course({id:data.periodId,taskId:data.id})" ><i class="mainCircle"></i><a>{{data.taskName}}</a></li>
+                            <li data-ui-sref="main.user.history" class="study-liLast">查看更多</li>
+                        </ul>
+                        <div ng-if="vm.studyHistoryListData == '' ||vm.studyHistoryListData == undefined " class="study">
+                            <div class="center" style="padding: 60px 0 0;">
+                                <img src="../../images/main/noStudymessage.png">
+                            </div>
+                            <p class="noStudymessage">这里面和你脑子一样空空如也。</p>
+                        </div>
+
+                    </li>
+                    <li class=" relative mgn-right-20" >
+                        <img src="../../images/icon/bell_03.png" alt="" ng-click="vm.checkBell=1">
+                        <div class="main-bell" ng-if="vm.checkBell==1" ng-click="vm.checkBell=2">
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <a ui-sref ="main.user.detail" id="nameColor" class="ft-size-16px">{{vm.name}}
+                            <!--<img ng-if="vm.userMsg.isMember == 1" class="mgn-top-14" src="../../images/main/role.png">-->
+                            <!--<span class="mgn-rl-17px">|</span>-->
+                        </a>
+                        <img class="main-vip" src="../../images/icon/vip_03.png" alt="" ng-if="vm.userMsg.isMember==1">
+                        <img class="main-vip" src="../../images/icon/notVip_03.png" alt="" ng-if="vm.userMsg.isMember==2">
+                    </li>
+                    <li class="main-userHead">
+                        <div class="triangle">
+
+                        </div>
+                        <div class="triangle2">
+
+
+
+                        </div>
+                        <img src="{{vm.userMsg.img}}" alt="" class="user-head">
+                        <div class="main-userHead-div">
+                            <div ui-sref ="main.user.detail">
+                                <img src="../../images/icon/user_03.png" alt="">
+                                个人中心
+                            </div>
+                            <div ui-sref ="main.newMember" ui-sref-opts="{reload:true}">
+                                <img src="../../images/icon/memberCenter.png" alt="">
+                                会员中心
+                            </div>
+                            <div ng-click="vm.logout()">
+                                <img src="../../images/icon/loginOut_07.png" alt="">
+                                退出登录
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</header>
+<div class="home-announcement container-fluid" ng-if="vm.checkBell==1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 home-announcement-box col-xs-offset-2">
+                <div>
+                    <div>
+                        <div>
+                            <p class="ft-size-20px">号外号外</p>
+                            <p class="ft-size-18px">{{vm.year}}/{{vm.month}}/{{vm.day}}</p>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <span ng-bind-html="vm.content|to_trusted" class="color-333333" style="font-size:{{vm.pcFontSize}};font-family:{{vm.fontA | fontFilter}};color:{{vm.fontColor}};white-space:pre-wrap;" ng-class="{active: vm.fontA==2,xieti:vm.fontA==3}"></span>
+
+                 <!--<span ng-bind="vm.content" class="color-333333" style="font-size:{{vm.pcFontSize}};font-family:{{vm.fontA | fontFilter}};color:{{vm.fontColor}};"></span>-->
+            </div>
+            <div class="col-xs-1 col-xs-offset-1">
+                <img src="../../images/icon/close_03.png" alt="" style="margin-top: 80px" ng-click="vm.checkBell=2">
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view></div>
+<footer style="background-color:#252525">
+    <div class="container" style="padding-top: 32px;font-size: 16px;color:#696969;">
+        <div style="display: flex;">
+            <div style="flex:3;margin-top: 8px">
+                <p style="margin-bottom: 18px">南京逗你学信息科技有限公司</p>
+                <p style="margin-bottom: 18px"><span>商务合作：</span><sapn>sr@dounixue.net</sapn></p>
+                <p style="margin-bottom: 18px"><span >客服邮箱：</span><sapn>fy@dounixue.net</sapn></p>
+            </div>
+            <div style="flex: 5;margin-top: 8px">
+                <p style="margin-bottom: 18px"><a style="color: #696969;" href="#" data-ui-sref="main.about"   >关于我们</a>&nbsp; &nbsp;<strong>|</strong>&nbsp; &nbsp;<a style="color: #696969;" data-ui-sref="main.contact" >联系我们</a></p>
+                <p style="margin-bottom: 18px">客服热线：400-001-6698（工作日9:30-17:30）</p>
+                <p style="margin-bottom: 18px">地址：南京市雨花台区绿都大道4号绿地之窗商务广场C-2幢410</p>
+            </div>
+            <div style="flex:4">
+                <ul style="display: flex;">
+                <li class="center">
+                <img src="../../images/main/publicSgnac.png" style="width: 80%;">
+                <p class="center" style="margin-top: 8px;"><span>官方服务号</span></p>
+                </li>
+                <li class="center">
+                <img src="../../images/main/SubscriptionNumber.png" style="width: 80%;">
+                <p class="center"  style="margin-top: 8px;"><span>官方订阅号</span></p>
+                </li>
+
+                <li class="center ">
+                <img src="../../images/main/WechatNumber.png" style="width: 80%;">
+                <p class="center" style="margin-top: 8px;"><span >客服微信号:大白</span></p>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div style="position: relative;background-color: #1e1e1e;color:#818181">
+    <p class="center ft-size-15px" style="padding: 15px 0px"><a style="color: #818181;" target="_blank"
+    href="http://www.miitbeian.gov.cn/">南京逗你学信息科技有限公司的版权所有 苏ICP备 16034197号-4</a></p>
+        <ul style="position: absolute;right: 240px;top: 15px;"><span class="color-838383">关注我们</span>
+            <li class="qq" style="display: inline-block;">
+                <a class="mgn-left-18px"><img src="../../images/icon/newQQ.png"> </a>
+                <!--<div class="showqq">-->
+                    <!--<img class="showqq-width" src="../../images/main/showQQm.png">-->
+                <!--</div>-->
+            </li>
+            <li style="display: inline-block;">
+                <a target="_blank" href="https://shop129403628.taobao.com/?spm=a230r.7195193.1997079397.2.6Wz61H"
+                   class="mgn-left-18px"><img src="../../images/icon/newTaobao.png"> </a>
+            </li>
+            <li style="display: inline-block;">
+                <a target="_blank" href="http://weibo.com/u/5668262741?refer_flag=1001030101_ " class="mgn-left-18px"><img
+                        src="../../images/icon/newWeibo.png"> </a>
+            </li>
+
+        </ul>
+    </div>
+    
+</footer>
+
+<script>
+    $("#nav-btn").click(function () {
+        $("#tog-nav").toggle();
+    });
+    window.onresize=function(){
+        if($(window).width() > 768){
+            $("#tog-nav").show().css("display","inline-block");
+        }else {
+            $("#tog-nav").hide();
+        }
+    }
+</script>

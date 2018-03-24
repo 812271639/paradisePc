@@ -1,0 +1,20 @@
+<div class="delete-wrapper">
+<!-- <div class="modal-header"> -->
+    <div class="pointer close-model " ng-click="vm.cancel()">
+    	<img src="images/remove.png" class="delet-record" alt="">
+    </div>
+<!-- </div> -->
+<div class="attention-wrap">
+	<img src="images/member-attention.png" alt="" class="attention-img">
+</div>
+
+<div class="modal-body" id="modal-body">
+<p>你真的要清空记录？你确定不学了吗？要不再考虑考虑呗？</p>
+</div>
+<div class="modal-footer">
+    <button class="btn ok-btn" type="button" ng-click="vm.cancel()">取消</button>
+    <button class="btn cancel-btn " type="button" ng-click="vm.doubleClick||vm.ok()">确定</button>
+</div>
+</div>
+
+

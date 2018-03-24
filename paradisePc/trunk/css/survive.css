@@ -1,0 +1,117 @@
+
+.header-bg{
+        border-bottom: 7px solid #65a9fc;
+}
+.survive-wrapper{
+	background-color: white;
+}
+.suirvive-main{
+	padding: 45px 0 195px 0;
+}
+
+.cardactive-text1{
+font-size: 24px;
+}
+.cardactive-text2{
+	font-size: 16px;
+	    padding: 16px 0;
+      color: #858585;
+}
+.Voucher{
+	text-align: center;
+}
+.Voucher .member-img{
+    width: 272px;
+    height: 273px;
+    background: url("../images/card_03.png") no-repeat;
+    background-size: contain;
+}
+
+
+.Vouchercard-input {
+    margin-top: 10px;
+}
+.member-active-all{
+    margin-left: 15px;
+}
+.survive-wrapper .member-active label {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin-right: 7px;
+    color: #555555;
+}
+.survive-wrapper .member-active input {
+    width: 377px;
+    height: 55px;
+        margin-bottom: 17px;
+    }
+
+    .form-control::-webkit-input-placeholder{
+          color: #b3b3b3;
+    font-size: 16px;
+    letter-spacing: 1px;
+    }
+.survive-wrapper .member-active button {
+    margin: -3px 0 -8px;
+    width: 130px;
+    height: 44px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: white;
+    background: #79B5FD;
+    border: none;
+}
+.Vouchercardpsw-input{
+  margin-bottom: 7px;
+}
+.btn-sure{
+  width: 130px;
+  height: 44px;
+}
+.paopaoimg{
+	position: absolute;
+    left: 2.5rem;
+    top: -45px;
+}
+
+.ab1{
+  padding-left: 78px;
+}
+
+
+ @media screen and (min-width: 992px) and (max-width: 1125px){
+    .paopaoimg{
+        display: none;
+    }
+    .ab1{
+      isplay: flex;
+    justify-content: center;
+    }
+
+   }
+
+
+@media screen and (min-width:767px) and (max-width:992px){
+     .paopaoimg{
+        display: none;
+    }
+    .ab1{
+      isplay: flex;
+    justify-content: center;
+    }
+}
+
+
+
+ @media screen and (max-width: 768px) {
+     .cardactive-text {
+     text-align: center!important; }
+     .Vouchercard {
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+     }
+     .paopaoimg{
+        display: none;
+     }
+}

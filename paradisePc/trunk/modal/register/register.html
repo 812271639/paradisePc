@@ -1,0 +1,123 @@
+<div class="register-wrapper">
+    <!-- <div class="modal-header"> -->
+        <div class="pointer close-model" ng-click="vm.cancel()"><img src="images/remove.png" class="close-img" alt=""></div>
+    <!-- </div> -->
+    <div class="modal-body" id="modal-body">
+    	<form name="register" novalidate onsubmit="return false;">
+        <div class="title">用户注册</div>
+         <div class="left">账号</div>
+        <div class="account register-row">
+            <div class="center">
+                <input ng-model="vm.params.account" ng-blur="vm.focusAccount()"
+                ng-focus="vm.focusDisappear=false" ng-class="{'red-border':((vm.checkNameResult||register.name.$invalid)&&(register.name.$touched||vm.codeButton||vm.registerButton)&&vm.focusDisappear)}" placeholder="手机号码/邮箱" class="form-control" type="text" name="name" required ng-pattern="/(^1[34578]\d{9}$)|(^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$)/" onkeyup="this.value=this.value.replace(' ','')">
+            </div>
+            <div class="right"></div>
+        </div>
+<div class="left">图形验证码</div>
+        <div class="phone-code register-row">
+
+            <div class="center">
+                <input maxlength="4" type="text" ng-blur="vm.checkImage(!register.image.$invalid)" ng-model="vm.imageCode" name="image" ng-class="{'red-border':((!vm.checkImageResult)||(register.image.$invalid))&&(register.image.$touched||vm.codeButton||vm.registerButton)}" required class="form-control" placeholder="请输入右侧验证码">
+
+                <!-- <img ng-click="getImage()" ng-src="{{vm.img}}" alt=""> -->
+                <img id="imageCode" style="-webkit-user-select: none;border: 1px solid #ddd;border-radius: 5px;background-color: white;width: 100px;  height: 38px;position: absolute;right: 4px;top: 6px;" class="message Captchae " title="" onclick="this.src = '/a/captcha/generate?'+new Date().getTime()">
+
+            </div>
+            <div class="right"></div>
+        </div>
+<div class="left">验证码</div>
+        <div class="image-code register-row" >
+
+
+
+            <div class="center">
+                <input maxlength="6" name="code" ng-blur="vm.showError=false;vm.isVerifyAppear=true" type="text" ng-model="vm.params.verify" ng-focus="vm.isVerifyAppear=false"  ng-class="{'red-border':(register.code.$invalid)&&(register.code.$touched||vm.registerButton)&&(vm.isVerifyAppear)}" required  class="form-control vertystyle" readonly onfocus="this.removeAttribute('readonly');" placeholder="请输入收到的验证码" ng-pattern="/^\d{6}$/">
+
+
+                <button type="button" ng-show="!vm.getcode" ng-click="vm.getCode((!register.image.$invalid)&&(vm.checkImageResult)&&(!register.name.$invalid))" class="btn" ng-bind="vm.getTips">获取验证码</button>
+
+                <button type="button" style="background: #EBEBEB;color: #555555;padding: 0;border:none;opacity: 1!important;-msz-border-shadow: none; box-shadow:none" type="button" class="btn btn-default btn-lg active" ng-show="vm.getcode" ng-bind="vm.time" ng-disabled="vm.canClick" style="background: #F7F7F7;color: #555555;padding: 0;border:none;opacity: 0.65;-msz-border-shadow: none; box-shadow:none"></button>
+
+
+            </div>
+            <div class="right"></div>
+        </div>
+
+            <div class="voice register-row" ng-show="vm.params.account>0 && !vm.nameChange && vm.voice">
+               <!--  <div class="center">
+                    收不到短信?试试 <span ng-click="vm.canClickVoice || vm.getVoice((!register.image.$invalid)&&(vm.checkImageResult)&&(!register.name.$invalid)&&(!vm.checkNameResult))" ng-disabled="vm.canClickVoice" ng-class="{true:'VoiceGai'}[vm.canClickVoice]">&nbsp;语音验证</span>
+                </div> -->
+                <div class="center">
+                    收不到短信?试试 <span ng-click="vm.getVoice((!register.image.$invalid)&&(vm.checkImageResult)&&(!register.name.$invalid)&&(!vm.checkNameResult))" ng-disabled="vm.getcode" disabled="disabled" ng-class="{true:'VoiceGai'}[vm.getcode]">&nbsp;语音验证</span>
+                </div>
+                <div class="right"></div>
+            </div>
+
+     <div class="left">设置登录密码</div>
+        <div class="password register-row">
+            <div class="center">
+                <input maxlength="16" ng-model="vm.params.pwd" ng-blur="vm.isLoginVerify=true" ng-focus="vm.isLoginVerify=false" ng-change="vm.isLoginVerify=true" ng-class="{'red-border':(register.password.$invalid)&&(register.password.$touched||vm.registerButton)}" placeholder="密码" class="form-control shadowstyle" type="password" name="password" required ng-pattern="/^[0-9a-zA-Z]{6,16}$/" onkeyup="this.value=this.value.replace(' ','')">
+            </div>
+            <div class="right"></div>
+        </div>
+
+        <div class="button-wrapper register-row">
+            <!-- <div class="left"></div> -->
+            <div class="center enroll">
+                <button type="submit" ng-click="vm.doubleClick||vm.register(!register.$invalid)" class="btn" ng-class="{true:'btn-bg'}[(!register.$invalid)&&(vm.isLoginVerify)]">注册</button>
+            </div>
+            <!-- <div class="right"></div> -->
+        </div>
+
+        <div class="rule register-row">
+            <!-- <div class="left"></div> -->
+            <div class="center">
+                已有账号？<span class="immediately-login" ng-click="vm.login()">马上登陆</span>
+                </div>
+            <div class="right"></div>
+        </div>
+
+
+
+        </form>
+
+<!-- 下面的验证 -->
+ <div class="error-box" ng-messages="register.code.$error" ng-if="(register.code.$touched||vm.registerButton)&&(vm.isVerifyAppear)">
+                    <p ng-message="required">验证码不能为空</p>
+                    <p ng-message="pattern">请输入6位数字验证码</p>
+                </div>
+                <div class="error-box" ng-if="(!register.code.$invalid)&&(!vm.checkCodeResult)&&(vm.isVerifyAppear)">
+                <p>验证码错误</p>
+                </div>
+                <div class="error-box" ng-if="(vm.showError)&&(vm.isVerifyAppear)">
+                    <p ng-bind="vm.errorMessage"></p>
+                </div>
+                 <!-- 下面是验证次数超限 -->
+                <div class="error-box" ng-if="(vm.limitNumer)&&(vm.isVerifyAppear)">
+                    <p ng-bind="vm.errorMessage"></p>
+                </div>
+
+
+<div class="error-box" ng-messages="register.image.$error" ng-if="register.image.$touched||vm.codeButton||vm.registerButton">
+                    <p ng-message="required">图形验证码不能为空</p>
+                </div>
+                <div class="error-box" ng-if="(!register.image.$invalid)&&(!vm.checkImageResult)">
+                <p>图形验证码错误</p>
+                </div>
+
+
+ <div class="error-box" ng-messages="register.name.$error" ng-if="(register.name.$touched||vm.codeButton||vm.registerButton)&&(vm.focusDisappear)">
+                    <p ng-message="required">账号不能为空</p>
+                    <p ng-message="pattern">帐号格式错误，请输入邮箱或11位手机号</p>
+                </div>
+
+                <div class="error-box" ng-if="(!register.name.$invalid)&&(vm.checkNameResult)&&(vm.focusDisappear)">
+                    <p>该账号已被注册</p>
+                </div>
+<!-- 上面是实验 -->
+    </div>
+</div>
+
+<div ng-if="vm.tips==1" style="position: absolute;background: rgba(0,0,0,0.8);top: 50%;left: 50%;padding: 5px;border-radius: 5px;color: white;font-size: 16px;margin-left: -103px;margin-top: -16px;">
+    注册成功，赠送50逆袭豆。
+</div>

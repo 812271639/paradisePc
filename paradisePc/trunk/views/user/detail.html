@@ -1,0 +1,81 @@
+<div class="detail-wrapper">
+	<div class="user-detail">
+		<div class="user-detail-information">
+			<div>
+				<label for="uploadImage" ng-if="vm.params.img=='' " ng-click="vm.clearItems()">
+					<img style="border: 0px solid #79b5fd;" src="images/defaultAvatar.png" alt="" class="user-detail-information-headImg">
+				</label>
+				<label for="uploadImage" ng-if="vm.params.img!='' " ng-click="vm.clearItems()">
+					<img src="{{vm.params.img}}" alt="" class="user-detail-information-headImg">
+				</label>
+				<img src="../../images/icon/vip_03.png" alt="" ng-if="vm.params.isMember==1">
+				<img src="../../images/icon/notVip_03.png" alt="" ng-if="vm.params.isMember==2">
+				<input type="file" id="uploadImage" style="display: none;" nv-file-select uploader="uploader"/>
+
+			</div>
+			<div>
+				<p>个人资料</p>
+				<p class="color-65a9fc">
+					昵称
+					<span ng-bind="vm.params.alias" class="color-545454" ng-if="!vm.changeName"></span>
+					<input class="f16 " id="nickName"  maxlength="10" ng-model="vm.params.alias" type="text" ng-if="vm.changeName"
+						   onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')">
+					<a class="color-65a9fc" ng-if="!vm.changeName" ng-click="vm.changeName1()">修改</a>
+					<a class="color-65a9fc" ng-click="vm.changeName2()" ng-if="vm.changeName">修改</a>
+					<a class="color-65a9fc" ng-click="vm.getInfo()" ng-if="vm.changeName">取消</a>
+				</p>
+				<p class="color-65a9fc">
+					年级
+					<span ng-bind="vm.params.grade |userFilter:'grade'" ng-if="(vm.params.grade!='')&&!vm.changeGrade" class="color-545454"></span>
+					<button ng-if="!vm.changeGrade&&(vm.params.grade=='')" ng-click="vm.changeGrade1()">设置年级</button>
+					<a class="color-65a9fc" ng-if="!vm.changeGrade&&(vm.params.grade!='')" ng-click="vm.changeGrade1()">修改</a>
+					<select id="grade"  ng-model="vm.params.grade" ng-if="vm.changeGrade" style="min-width: 90px"
+							ng-options="x.type as x.name for x in vm.gradeOption">
+					</select>
+					<a class="color-65a9fc" ng-click="vm.changeGrade2()" ng-if="vm.changeGrade">修改</a>
+					<a class="color-65a9fc" ng-click="vm.getInfo()" ng-if="vm.changeGrade">取消</a>
+				</p>
+				<p class="color-545454">
+					已有<span class="color-65a9fc single-margin" ng-bind="vm.params.score"></span>颗逆袭豆<img src="images/questionGreen_03.png" alt="" class="user-detail-tipsImg">
+
+					<span class="user-detail-tips">
+						每日签到即送逆袭豆，连续签到会得到更多噢~届时可以用来兑换学渣乐园周边、steam付费游戏解锁红包、热门游戏皮肤、Q币、手机流量等等，还有超多神秘壕礼等你来换！
+					</span>
+					<span class="triangle-douw"></span>
+					<span class="triangle-doug"></span>
+
+				</p>
+				<p>
+					<button ng-if="vm.params.isMember==2"
+							ui-sref="main.newMember">开通会员</button>
+					<button ng-if="vm.params.isMember==1" ui-sref="main.newMember">续费会员</button>
+				</p>
+				<p class="color-65a9fc">
+					<span ng-if="vm.params.isMember==2">开通会员可以观看vip视频</span>
+					<span ng-if="vm.params.isMember==1">会员还有天<span ng-bind="vm.params.period"></span>到期</span>
+				</p>
+
+			</div>
+		</div>
+		<div class="user-detail-account">
+			<p>账户设置</p>
+			<p class="color-65a9fc user-detail-account-p">
+				<span>手机号</span>
+				<span ng-bind="vm.params.mobile|hideFilter" class="color-545454" ng-if="vm.params.mobile>0"></span>
+				<button ng-if="vm.params.mobile==0" ng-click="vm.bindPhoneOrMail('phone')" style="width: 100px">设置手机号</button>
+				<a class="color-65a9fc" ng-if="vm.params.mobile!=''" ng-click="vm.changePhoneNumber()">修改</a>
+			</p>
+			<p class="color-65a9fc user-detail-account-p">
+				<span>邮箱</span>
+				<span ng-bind="vm.params.mail|hideFilter"  ng-if="vm.params.mail!=0" class="color-545454"></span>
+				<button ng-if="vm.params.mail==0" ng-click="vm.bindPhoneOrMail('mail')">设置邮箱</button>
+				<a class="color-65a9fc" ng-if="vm.params.mail!=0" ng-click="vm.bindPhoneOrMail('mail')">修改</a>
+			</p>
+			<p class="color-65a9fc user-detail-account-p">
+				<span>密码</span>
+				<span class="color-545454">**********</span>
+				<a class="color-65a9fc"  ng-click="vm.changePassword()">修改</a>
+			</p>
+		</div>
+	</div>
+</div>

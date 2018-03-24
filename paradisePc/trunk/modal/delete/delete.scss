@@ -1,0 +1,73 @@
+@charset "utf-8";
+$backgroundBlue:#73b2fd;
+//confirm模态框的样式
+.delete-wrapper {
+    width: 337px;
+    height: 245px;
+    >div {
+        width: 100%;
+    }
+    .modal-header {
+        background-color: $backgroundBlue;
+        color: white;
+        height: 35px;
+        padding: 0px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .close-model {
+            width: 40px;
+            height: 32px;
+            img {
+                width: 40px;
+                height: 32px;
+            }
+        }
+    }
+    .modal-body {
+        height: 125px;
+        text-align: center;
+        font-size: 1.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top:34px;
+        p{
+            height: 15px;
+            margin-bottom: 10px;
+        }
+    }
+    .modal-footer {
+        padding: 0px;
+        height: 85px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        border-top: 0px;
+        button {
+            border-radius: 0px;
+            width: 72px;
+            height: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+        }
+    }
+    .cancel-btn {
+        background-color: white;
+        color: black;
+        border: 1px solid #a1a1a1;
+        margin-right: 43px;
+    }
+    .ok-btn {
+        background-color: $backgroundBlue;
+        color: white;
+    }
+}
+@media(max-width:768px){
+    .delete-wrapper{
+        width:310px;
+    }
+}

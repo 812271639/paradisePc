@@ -1,0 +1,140 @@
+$backgroundGrey:#f4f4f4;
+$fontGrey:#545454;
+$fontBlue:#79b5fd;
+@media(min-width:1230px){
+	.container{
+		width:1200px;
+		padding: 0px;
+	}
+}
+@media(min-width:992px) and (max-width:1230px) {
+	.container{
+		width:970px;
+	}
+}
+@media(max-width:768px){
+	.container{
+		width:95%;
+		margin:0 auto;
+	}
+}
+
+body{
+	font-family: "Microsoft YaHei" , sans-serif;
+	background: #f4f4f4;
+	font-size: 62.5%;
+}
+//sidebar
+.container-flex{
+	display:flex;
+	flex-direction: column;
+	.content-title{
+		display:flex;
+		font-size: 2rem;
+		align-items:flex-end;
+		color:$fontGrey;
+		height: 90px;
+		background-color:$backgroundGrey;
+		width:100%;
+		padding-bottom:20px;
+		img{
+			width:40px;
+			height: 45px;
+			margin-right:5px;
+		}
+	}
+
+	.content-body{
+		display:flex;
+		.sidebar{
+			display: flex;
+			width: 25.833%;
+			.sidebar-list{
+				display: flex;
+				flex-direction: column;
+				border:1px solid #ddd;
+				width: 64.5%;
+				background-color:white;
+				align-self:flex-start;
+				.sidebar-column{
+					display: flex;
+					margin-top: 14px;
+					align-items:center;
+					padding-left:15px;
+					font-size:1.8rem;
+					height: 56px;
+					cursor: pointer;
+					border-left:5px solid transparent;
+					color:$fontGrey;
+				}
+				.sidebar-hover{
+					border-left:5px solid $fontBlue;
+					color:$fontBlue;
+				}
+				.bottom-line{
+					margin:0 15px;
+					height: 14px;
+					border-bottom:2px solid $backgroundGrey;
+				}
+			}
+		}
+		.content{
+			display: flex;
+			width:74.167%;
+			background-color:white;
+			// border: 1px solid #ddd;
+		}
+	}
+}
+@media(max-width:992px){
+	.container-flex{
+		.content-body{
+			flex-direction: column;
+			.sidebar{
+				width:100%;
+				.sidebar-list{
+					width:100%;
+				}
+			}
+		}
+	}
+	.container-flex .content-body .content{
+		margin-top: 10px;
+		width:100%;
+	}
+}
+
+.detail-wrapper .user-detail .user-content{
+	flex-direction: column;
+	// .content-right{
+	// 	margin-top: 10px;
+	// }
+}
+.detail-wrapper .user-detail .user-content .content-left,
+.detail-wrapper .account-setting .user-content .content-left{
+	width:90%;
+}
+.detail-wrapper .user-detail .user-content .content-right .nick-name-wrapper .name-crown-wrapper,
+.detail-wrapper .user-detail .user-content .content-right .grade-wrapper .name-crown-wrapper,
+.detail-wrapper .account-setting .user-content .content-right .nick-name-wrapper .name-crown-wrapper,
+.detail-wrapper .account-setting .user-content .content-right .grade-wrapper .name-crown-wrapper{
+	width:auto;
+	margin-left:5px;
+}
+.detail-wrapper .account-setting .account-content > div{
+	width:100%;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+
+.font-size-0{
+	font-size: 0;
+}
+.pointer{
+	cursor:pointer;
+}
+.VoiceGai{
+	color: #ccc!important;
+	cursor: default!important;
+}

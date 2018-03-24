@@ -1,0 +1,53 @@
+
+<div class="login-wrapper">
+<div class="">
+    <div class="pointer close-model" ng-click="vm.cancel()"><img src="images/remove.png alt=""></div>
+</div>
+<div class="modal-body" id="modal-body">
+ <div class="title" ng-bind="vm.title"></div>
+
+ <div class="code-wrapper" ng-if="!vm.codeLogin">
+ <div class="username">
+ 	<p>账号</p>
+ 	<input ng-model="vm.name" placeholder="手机号码/邮箱" class="form-control" type="text">
+ </div>
+ <div class="password"><input ng-model="vm.password" placeholder="密码" class="form-control" type="text"></div>
+ <div class="save-username"><div class="save-checkbox f14"><input type="checkbox">记住用户名</div><div class="forget-password f14 pointer" ng-click="vm.forgetPassword()">忘记密码？</div></div>
+ <div class="button-wrapper"><button ng-click="vm.ok()" class="btn">登录</button></div>
+ </div>
+
+
+
+ <div class="code-wrapper" ng-if="vm.codeLogin">
+ 	<div class="code-img">
+ 		<img src="images/qrCode.png" alt="">
+ 	</div>
+ 	<div class="code-text">
+ 	<div class="code-text-img">
+ 		<img src="images/scan.png" alt="">打开微信|扫一扫
+ 	</div>
+ 	</div>
+ </div>
+
+
+ <div class="last-line" ng-if="!vm.codeLogin">
+ 	<div class="wechat pointer" ng-click="vm.wechatLogin()">
+ 		<img src="images/wechatIcon.png" alt="">微信账号登录
+ 	</div>
+ 	<div class="register">还没账户？
+ 		<span class="font-blue pointer" ng-click="vm.register()">立即注册</span>
+ 	</div>
+ </div>
+<!--
+ <div class="other-login">
+ 	<div class="line"></div>
+ 	<div class="login-text">其他方式登录</div>
+ 	<div class="line"></div>
+ </div> -->
+
+
+ <div class="last-line" ng-if="vm.codeLogin"><div class="wechat pointer" ng-click="vm.normalLogin()">账号密码登录</div><div class="register"><span class="font-blue pointer" ng-click="vm.register()">立即注册</span></div></div>
+
+
+</div>
+</div>

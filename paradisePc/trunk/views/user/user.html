@@ -1,0 +1,29 @@
+<div class="user-wrapper">
+    <div class="container">
+        <div class="container-flex">
+            <!--<div class="content-title"><img src="images/user.jpg" alt=""><strong>个人中心</strong></div>-->
+            <div class="content-body padding-10">
+                <div class="sidebar">
+                    <div class="sidebar-list">
+                        <div class="sidebar-column" ui-sref="main.user.detail" ui-sref-active="sidebar-hover">
+                            个人中心
+                        </div>
+                        <div class="sidebar-column" ui-sref="main.user.favorite" ui-sref-active="sidebar-hover" style="margin-top: -5px;z-index: 1">
+                            收藏夹
+                        </div>
+                        <div class="sidebar-column" ui-sref="main.user.history" ui-sref-active="sidebar-hover" style="margin-top: -5px;z-index: 2">
+                            学习记录
+                        </div>
+                        <div class="sidebar-column" ui-sref="main.user.puychased" ui-sref-active="sidebar-hover" style="margin-top: -5px;z-index: 2">
+                            已购专题
+                        </div>
+
+                    </div>
+                </div>
+                <div class="content">
+                    <div ui-view></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

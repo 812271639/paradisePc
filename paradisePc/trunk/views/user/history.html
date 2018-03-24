@@ -1,0 +1,57 @@
+<div style="width: 100%;height: 100%;border-radius: 0 10px 10px 10px;border:1px solid #ddd;">
+	<div class="history-wrapper">
+		<div class="history-detail" infinite-scroll="vm.myPagingFunction()" infinite-scroll-distance="0">
+			<div ng-if="!vm.empty" class="history-title"><div class="clear color-fff f18 pointer" ng-click="vm.deleteAll()">清空所有记录</div></div>
+			<div ng-if="!vm.empty" class="history-content">
+
+				<div class="video-wrapper" ng-repeat="x in vm.lists">
+					<div class="video-content">
+						<div class="img pointer">
+							<video ng-src="{{x.taskVideoLink}}" style="display: none" class="video"></video>
+							<img src="images/practice.png" alt="" ng-if="x.taskType!=1" ui-sref="main.course({id:x.periodId,taskId:x.id})">
+							<img ng-src="{{x.frontCoverURL}}" alt="" ng-if="x.taskType==1" ui-sref="main.course({id:x.periodId,taskId:x.id})">
+							<p class="video-content-titleTips">
+								<img src="../../images/icon/triangle_04.png" alt="" ng-if="x.taskType==1&&(x.specificType!=2)" style="width: 10px!important;">
+								<img src="../../images/icon/Pentagram_03.png" style="width:31px;height:31px;" alt="" ng-if="x.taskType==1&&(x.specificType==2)">
+								<img src="../../images/icon/book_03.png" alt="" ng-if="x.taskType!=1" style="width: 13px!important;">
+								<span ng-if="x.taskType==1&&(x.specificType==2)">刷题先锋</span>
+								<span ng-if="x.taskType!=1">习题</span>
+								<span ng-if="x.taskType==1&&(x.specificType!=2)">逗你学</span>
+							</p>
+						</div>
+						<div class="text pointer" ui-sref="main.course({id:x.periodId,taskId:x.id})">
+							<div class="text-first f18">
+
+								<div class="time" ng-if="x.taskType==1" ng-bind="vm.time[$index]"></div>
+								<span ng-bind="x.taskName"></span>
+								<img ng-if="x.isLock==1" src="images/vip.png" style="margin-left: 10px;" alt="">
+							</div>
+							<div class="text-second f16" title="{{x.periodName}}>{{x.lessonName}}>{{x.subjectName}}>{{x.gradeDept|gradeDeptFilter:'gradeDept'}}">
+					<span>{{x.periodName}}>{{x.lessonName}}>{{x.subjectName}}>{{x.gradeDept|gradeDeptFilter:'gradeDept'}}
+					</span></div>
+						</div>
+						<div class="delete">
+							<div><img src="images/trash.png" alt="" ng-click="vm.delete(x.id)"></div>
+						</div>
+					</div>
+					<div class="history-boxBorder-line">
+
+					</div>
+				</div>
+
+				<div class="loading-img">
+					<div  ng-show="!vm.empty">
+						<img ng-if="!vm.end" src="images/loading.gif" alt="" style="width:75px;height: 75px;">
+					</div>
+					<p ng-if="vm.end" class="f16" style="font-weight: 700;">没有更多记录啦~</p>
+
+				</div>
+
+			</div>
+			<div class="empty" ng-if="vm.empty">
+				<div class="empty.image"><img src="images/novallue_03.png" alt=""></div>
+				<div class="empty-text">空空如也,暂无学习记录哦</div>
+			</div>
+		</div>
+	</div>
+</div>

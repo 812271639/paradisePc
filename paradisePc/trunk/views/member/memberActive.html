@@ -1,0 +1,13 @@
+<form class="form-inline card">
+    <div class="form-group card-input">
+        <label for="exampleInputName2">卡号</label>
+        <input type="text" ng-model="vm.params.number" class="form-control" id="exampleInputName2"  placeholder="请输入你的会员卡号">
+    </div>
+    <br>
+    <div class="form-group psw-input">
+        <label for="exampleInputEmail2">卡密</label>
+        <input type="password"  ng-model="vm.params.pwd" class="form-control" id="exampleInputEmail2" placeholder="请输入会员卡背面密码">
+    </div>
+    <br>
+    <button type="submit" ng-click="vm.doubleClick||vm.activeBtn()" class="btn btn-info">立即激活</button>
+</form>

@@ -1,0 +1,117 @@
+<div class="row pd-top-2" ng-switch on="vm.disabled">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				内容编辑
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-12">
+						<form class="form-horizontal" name="myForm">
+							<fieldset ng-disabled="vm.disabled">
+								<div class="form-group">
+									<label for="status" class="col-sm-2 control-label">*标题</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="status" placeholder="" ng-model="vm.params.title" maxlength="25" required>
+									</div>
+								</div>
+
+								<picker class="form-group" label-class="col-sm-2 control-label" option-class="col-sm-8" select-name="类型" options="vm.articleOptions.type" ng-model="vm.params.type" default="2" required form-name="myForm"></picker>
+								<!--文章封面图-->
+								<div class="form-group">
+									<label class="col-sm-2 control-label">首页封面</label>
+									<div class="col-sm-8">
+										<label class="btn btn-primary" for="file" ng-if="vm.disableNum!=1">上传</label>
+										<span ng-show="vm.params.type==1">(上传文件在5M以内，推荐使用640*310分辨率或相同比例的图片)</span>
+										<span ng-show="vm.params.type==2">(上传文件在5M以内，推荐使用75*75分辨率或相同比例的图片)</span>
+										<div ng-if="vm.uploader">
+											<input id="file" style="display: none" accept=".jpg,.png,.bmp" type="file" nv-file-select uploader="vm.uploader" required/>
+										</div>
+
+										<br/>
+										<img ng-src="{{vm.params.img}}" alt="with responsive image feature" class="img-responsive" style="max-height: 300px;max-width: 700px">
+										<table class="table" ng-show="vm.uploader.queue.length">
+											<thead>
+												<tr>
+													<th width="50%">图片名</th>
+													<th ng-show="vm.uploader.isHTML5">大小</th>
+													<th ng-show="vm.uploader.isHTML5">进度</th>
+													<th>状态</th>
+													<th>操作</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="item in vm.uploader.queue" class="ng-scope" ng-if="$first">
+													<td><strong class="ng-binding">{{item.file.name}}</strong></td>
+													<td ng-show="vm.uploader.isHTML5" nowrap="" class="ng-binding">{{ item.file.size/1024/1024 | number:2 }} MB
+													</td>
+													<td ng-show="vm.uploader.isHTML5">
+														<div class="progress" style="margin-bottom: 0;">
+															<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+														</div>
+													</td>
+													<td class="text-center">
+														<span ng-show="item.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+														<span ng-show="item.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+														<span ng-show="item.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+													</td>
+													<td nowrap="">
+														<button type="button" class="btn btn-success btn-xs" ng-click="vm.upload(item)" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                        <span class="glyphicon glyphicon-upload"></span> 上传
+                                                    </button>
+														<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove(); vm.clearImg()">
+                                                        <span class="glyphicon glyphicon-trash"></span> 删除
+                                                    </button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+
+								</div>
+
+								<div class="form-group">
+									<label for="author" class="col-sm-2 control-label">作者</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="author" placeholder="" ng-model="vm.params.author" maxlength="14" required>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">摘要</label>
+									<div class="col-sm-8">
+										<textarea class="form-control" rows="1" ng-model="vm.params.summary" maxlength="28" required></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">正文</label>
+									<div class="col-sm-8" ng-switch-default>
+										<!--编辑器-->
+										<textarea style="margin:auto;height:300px;width:100%;" ng-model="vm.params.content" meta-umeditor meta-umeditor-config='config' required>
+                                        </textarea>
+
+									</div>
+									<div class="col-sm-8" ng-switch-when="true">
+										<textarea class="form-control" rows="5" style="width:100%" ng-bind="vm.params.content" required></textarea>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<button class="btn btn-primary" ng-click="vm.back()" ng-switch-when="true">返回</button>
+						<button class="btn btn-primary" ng-click="vm.saveUpdate()" ng-switch-default ng-disabled="myForm.$invalid||!vm.params.img||!vm.params.content">保存
+                        </button>
+						<button class="btn btn-danger" ng-click="vm.cancelUpdate()" ng-switch-default>取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

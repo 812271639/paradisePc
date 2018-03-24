@@ -1,0 +1,83 @@
+<div class="login-wrapper">
+
+    <div class="pointer close-model" ng-click="vm.cancel()">
+        <img src="images/remove.png" class="close-img" alt="">
+    </div>
+
+    <div class="modal-body" id="modal-body">
+        <div class="title" ng-bind="vm.title"></div>
+
+        <div class="code-wrapper" ng-if="!vm.codeLogin">
+            <form name="login" novalidate>
+                <div class="username">
+                    <p class="account-text">账号</p>
+                    <input ng-model="vm.params.account" ng-focus="vm.showError=false;vm.showError2=false;vm.isAcountAppear=false" ng-blur="vm.isAcountAppear=true" ng-change="vm.isAcountAppear=true" ng-class="{'red-border':login.name.$invalid&&(login.name.$touched||login.$submitted)&&vm.isAcountAppear}" placeholder="请输入手机号码/邮箱" class="form-control" type="text" name="name" required ng-pattern="/(^1[34578]\d{9}$)|(^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$)/" onkeyup="this.value=this.value.replace(' ','')">
+
+                </div>
+                <div class="password">
+                    <p class="psw-text">密码</p>
+                    <input ng-model="vm.params.pwd" ng-focus="vm.showError=false;vm.isPwdAppear=false" ng-blur="vm.isPwdAppear=true" ng-change="vm.isPwdAppear=true" ng-class="{'red-border':login.password.$invalid&&(login.password.$touched||login.$submitted)&&vm.isPwdAppear}" placeholder="请输入登录密码" class="form-control" type="password" name="password" required ng-pattern="/^[0-9a-zA-Z]{6,16}$/" onkeyup="this.value=this.value.replace(' ','')">
+                    <div class="error-box" ng-messages="login.name.$error" ng-if="(login.name.$touched||login.$submitted)&&vm.isAcountAppear">
+                        <p ng-message="required">账号不能为空</p>
+                        <p ng-message="pattern">帐号格式错误，请输入邮箱或11位手机号</p>
+                    </div>
+                    <div class="error-box" ng-if="vm.showError">
+                        <p>账号或者密码错误</p>
+                    </div>
+                    <div class="error-box" ng-if="vm.showError2">
+                        <p>账号已被冻结</p>
+                    </div>
+                    <div class="error-box" ng-messages="login.password.$error" ng-if="(login.password.$touched||login.$submitted)&&vm.isPwdAppear">
+                        <p ng-message="required">密码不能为空</p>
+                        <p ng-message="pattern">密码格式错误，请输入由字母或数字组成的6-16位密码</p>
+                    </div>
+                </div>
+                <div class="save-username">
+                    <div class="save-checkbox f14">
+                        <input type="checkbox" ng-model="vm.remember">记住用户名</div>
+                    <div class="forget-password f14 pointer" ng-click="vm.forgetPassword()">忘记密码？</div>
+                </div>
+                <div class="button-wrapper">
+                    <button style="margin-bottom: 10px" type="submit" ng-click="vm.doubleClick||vm.ok(!login.$invalid)" ng-class="{true:'button-bg'}[!login.$invalid&&vm.isPwdAppear&&vm.isAcountAppear]" class="btn">登录</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="code-wrapper" ng-if="vm.codeLogin">
+            <div class="code-img" id="wechat">
+                <!-- <img src="images/qrCode.png" alt=""> -->
+            </div>
+
+            <div class="code-text">
+                <div class="code-text-img">
+                    <img src="images/scan.png" alt="">打开微信|扫一扫
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="last-line" ng-if="!vm.codeLogin">
+            <!--  <div class="wechat pointer" ng-click="vm.wechatLogin()"><img src="images/wechatIcon.png" alt="">微信账号登录</div> -->
+
+            <div class="register">还没账户？<span class="font-blue pointer" ng-click="vm.register()">立即注册</span></div>
+        </div>
+        <div class="last-line codePsw" ng-if="vm.codeLogin">
+            <div class="wechat pointer" ng-click="vm.normalLogin()">账号密码登录</div>
+            <div class="register"><span class="font-blue pointer" ng-click="vm.register()">立即注册</span></div>
+        </div>
+
+        <div class="other-login" ng-if="!vm.codeLogin">
+            <div class="line-bar barA"></div>
+            <div class="login-text">其他方式登录</div>
+            <div class="line-bar barB"></div>
+        </div>
+
+
+        <div class="wx-login"  ng-if="!vm.codeLogin">
+            <img class="wx-login-img" src="images/wx_03.png" ng-click="vm.wechatLogin()" alt="">
+            <p class="wx-login-text" ng-click="vm.wechatLogin()">微信登陆</p>
+        </div>
+
+    </div>
+</div>

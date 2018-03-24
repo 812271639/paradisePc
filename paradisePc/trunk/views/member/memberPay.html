@@ -1,0 +1,46 @@
+
+<div class="price"  ng-repeat="li in vm.list track by $index">
+    <input type="radio" name="date" id="date{{$index}}" ng-value="li.id"  ng-model="vm.status"  >
+    <label class="price-box" for="date{{$index}}" ng-class="{true:'active'}[vm.status==li.id]">
+        <div class="price-total" ng-bind="li.price+'元'" >
+            798元
+        </div>
+        <div class="price-day" >
+            <div><span class="cor-ori" ng-bind="li.period | monthFilter">365</span>天</div>
+            <div>每天<span class="cor-ori" ng-bind="(li.price/ (li.period | monthFilter)).toFixed(2)">2.19</span>元</div>
+            <img class="recommend" src="images/recommend.png" alt=""  ng-show="li.recommend==1" >
+            <img class="selected" src="images/selected.png" alt=""  ng-show="vm.status==li.id" >
+        </div>
+        <div class="cl"></div>
+    </label>
+    <div class="price-p" ng-bind="li.name">
+        年度会员
+    </div>
+    <div class="cl"></div>
+</div>
+
+
+<div class="pay-p" ng-init="vm.ali=true">
+    请选择支付方式
+</div>
+<div class="alipay"  ng-click="vm.ali=true" ng-class="{true: 'active'}[vm.ali]">
+    <img class="pay" src="images/alipay.png" alt="">
+    <img class="selected" src="images/selected.png" alt="" ng-show="vm.ali">
+
+</div>
+<div class="wechatpay"  ng-click="vm.ali=fasle" ng-class="{true: 'active'}[!vm.ali]">
+    <img class="pay" src="images/wechatpay.png" alt="">
+    <img class="selected" src="images/selected.png" alt="" ng-hide="vm.ali">
+</div>
+
+<div class="pay-agreement">
+    <input type="checkbox" ng-checked="vm.payAgreement" ng-model="vm.payAgreement">
+    我已阅读并同意
+    <a data-toggle="modal" data-target="#myModal">《逗你学平台用户协议》</a>
+    <p class="tips" ng-show="vm.tip">请你阅读并同意用户协议</p>
+</div>
+<button type="submit"    ng-click="vm.payBtn()" class="btn btn-info pay-btn">立即支付</button>
+<div class="cl"></div>
+
+<div agreement></div>
+

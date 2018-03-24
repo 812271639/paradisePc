@@ -1,0 +1,77 @@
+
+<div class="color-fff">
+    <!--客服样式-->
+    <div class="customer-service">
+        <img src="images/customer.gif" alt="客服悬浮窗">
+        <img src="images/sverve-content.png" class="customer-hovers">
+        <p class="official-tell"><span style="padding-right: 10px">官方热线&nbsp:</span><span>400-001-6698</span></p>
+        <p class="official-wechat"><span style="padding-right: 10px;">微信客服&nbsp:</span><span>dounixue521</span></p>
+    </div>
+
+    <div class="home-QRcode">
+        <div>
+            <img src="../../images/icon/QRcode_03.png" alt="">
+            <div>下载手机应用</div>
+        </div>
+        <img src="../../images/icon/2FA7CBCB90B314AB1305492950AF721E.png" alt="">
+    </div>
+    <div class="container ">
+
+        <div class="home-content">
+            <div ng-if="vm.arr" class="banner col-xs-12">
+                <div id="carousel" class="carousel slide" >
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner " role="listbox" >
+                        <div ng-repeat="a in vm.arr" ng-class="{active:$first}" class="item" style="border-radius: 10px" id="carouselImg">
+                            <img style="cursor: pointer;border-radius: 10px" id="img{{$index}}"  ng-click="vm.state(a)"   class="cursor-pointer heg-300px" ng-src="{{a.img}}">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="//#carousel" role="button" data-slide="prev" style="border-radius: 10px">
+                        <span style="display: none" class="glyphicon glyphicon-chevron-left arrow" aria-hidden="true" ></span>
+                        <span  class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="//#carousel" role="button" data-slide="next" style="border-radius: 10px">
+                        <span style="display: none" class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="home-carousel-small" id="carouselSmallImg">
+                    <div>
+                        <div ng-repeat="li in vm.arr track by $index"  class="img{{$index}} carouselSmallImg">
+                            <img src="{{li.img}}" alt=""  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="clear: both"></div>
+        </div>
+        <div class="home-subjectDiv">
+            <span class="home-subjectList">
+                <a ng-repeat="d in vm.data" ng-click="vm.setActive($index)" ng-class="{'border-bottom-4-65a9fc':vm.select == $index}" ng-href="{{'#' + d.id }}">
+                    {{d.subjectName}}
+                </a>
+            </span>
+        </div>
+
+    </div>
+    <p class="middleLine"></p>
+    <div class="container" style="padding-bottom: 42px">
+        <div id="{{d.id}}" class="subjecDetails" ng-repeat="d in vm.data" >
+            <div class="title">
+                <div class="pd-tb-3 home-subjectImg" >
+                    <img class="img-width" alt="" ng-src="{{d.frontCoverURL}}">
+                    <p class="home-subjectImg-name">{{d.subjectName}}</p>
+                </div>
+            </div>
+            <div class="special" >
+
+                <p ng-repeat="c in d.lessonList" >
+                    <a class="home-lessonList-a" ng-click="vm.verify(c.lessonId,c.isLock)" ng-style="{'color':'#{{d.fontColour}}'}" >{{c.lessonName}}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

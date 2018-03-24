@@ -1,0 +1,85 @@
+<div class="row pd-top-2 ng-scope">
+    <div class="panel panel-default">
+        <div class="panel-heading contentManage-header">
+            <strong>新增消息</strong>
+        </div>
+
+        <div class="panel-body">
+            <div class="form-group panel panel-default panel-body">
+                <form class="form-horizontal col-lg-12" name="detailsMessageManageForm">
+                    <div class="form-group">
+                        <label  class="col-lg-2 control-label">标题</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" maxlength="15" placeholder="最多15字" ng-model="vm.params.name" ng-disabled="vm.disableNum==1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">发送人群</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" ng-model="vm.params.grade" ng-disabled="vm.disableNum==1" required>
+                                <!--<option ng-selected="vm.params.work_job == ''">请选择</option>-->
+                                <option ng-repeat=" li in vm.messageGrade"   ng-value="li.id"
+                                        ng-selected="li.id == vm.params.grade">{{li.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">消息类型</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" ng-model="vm.params.messageType" ng-disabled="vm.disableNum==1" required>
+                                <!--<option ng-selected="vm.params.work_job == ''">请选择</option>-->
+                                <option ng-repeat=" li in vm.message"   ng-value="li.id"
+                                        ng-selected="li.id == vm.params.messageType">{{li.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="vm.params.messageType==2">
+                        <label class="col-lg-2 control-label">发送时间</label>
+                        <div class="col-lg-10 ">
+                           <div class="col-xs-12 ">
+                               <label style="float: left">选择日期</label>
+                               <input type="text" class=" col-md-10 form-control" size="6" bs-datepicker data-date-format="yyyy-MM-dd" data-date-type="number" ng-model="vm.params.startAt" ng-disabled="vm.disableNum==1">
+
+                           </div>
+                            <div class="col-xs-12 ">
+                                <label style="float: left">选择时间</label>
+                                <input type="text" class=" col-md-10 form-control" size="5" ng-model="vm.params.start" data-time-type="number" bs-timepicker ng-disabled="vm.disableNum==1" ng-change="vm.aaaa()">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">正文</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" ng-model="vm.params.content" maxlength="50" ng-disabled="vm.disableNum === 1" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-lg-2 control-label">链接</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" ng-model="vm.params.url" ng-disabled="vm.disableNum==1">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">第三方通知</label>
+                        <div class="col-lg-10">
+                            <label class="checkbox-inline">
+                                <input type="checkbox"  value="option1" ng-model="vm.params.status"  ng-disabled="vm.disableNum==1">同步
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 pd-top-2 margin-top-5">
+                        <button class="btn btn-primary " ng-click="vm.add()" ng-if="!vm.id" ng-disabled="detailsMessageManageForm.$invalid||vm.addDisable==1">新增</button>
+                        <button class="btn btn-primary " ng-click="vm.change()" ng-if="vm.disableNum==0" ng-disabled="detailsMessageManageForm.$invalid">修改</button>
+                        <button class="btn btn-default margin-left-2" ng-click="vm.back()" >取消</button>
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="confirm-wrapper">
+<div class="modal-header">
+<!-- test <img src="images/remove.jpg" alt=""> -->
+    <!-- <div class="close pointer" ng-click="vm.cancel()">test</div> -->
+    <!-- <div><span class="glyphicon glyphicon-remove"></span></div> -->
+    <div class="pointer close-model" ng-click="vm.cancel()"><img src="images/remove.jpg" alt=""></div>
+</div>
+<div class="modal-body" id="modal-body">
+ <p ng-bind="vm.content"></p>
+</div>
+<div class="modal-footer">
+    <button class="btn cancel-btn" type="button" ng-click="vm.cancel()">取消</button>
+    <button class="btn ok-btn" type="button" ng-click="vm.ok()">确定</button>
+</div>
+</div>

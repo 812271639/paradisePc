@@ -1,0 +1,51 @@
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                版本管理
+            </div>
+            <div class="panel-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        最新版本
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped add-table-border">
+                            <thead>
+                            <tr>
+                                <th class="text-center">平台类型</th>
+                                <th class="text-center">版本名称</th>
+                                <th class="text-center">版本号</th>
+                                <th class="text-center">强制更新</th>
+                                <th class="text-center">URL地址</th>
+                                <th class="text-center">版本信息</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr >
+                                <td class="text-center">{{vm.android.os}}</td>
+                                <td class="text-center">{{vm.android.versionCode}}</td>
+                                <td class="text-center">{{vm.android.code}}</td>
+                                <td class="text-center">{{vm.android.isForceUpdate}}</td>
+                                <td class="text-center">{{vm.android.url}}</td>
+                                <td class="text-center"><p ng-repeat="li in vm.android.info track by $index" class="text-left">{{li.introduce}}</p></td>
+                                <td class="text-center"><button class='btn btn-xs btn-primary' ui-sref='field.versionManageDetail({id:vm.android.id,os:vm.android.os,versionCode:vm.android.versionCode})'>更新</button></td>
+                            </tr>
+                            <tr >
+                                <td class="text-center">{{vm.ios.os}}</td>
+                                <td class="text-center">{{vm.ios.versionCode}}</td>
+                                <td class="text-center">{{vm.ios.code}}</td>
+                                <td class="text-center">{{vm.ios.isForceUpdate}}</td>
+                                <td class="text-center">{{vm.ios.url}}</td>
+                                <td class="text-center"><p ng-repeat="li in vm.ios.info track by $index" class="text-left">{{li.introduce}}</p></td>
+                                <td class="text-center"><button class='btn btn-xs btn-primary' ui-sref='field.versionManageDetail({id:vm.ios.id,os:vm.ios.os,versionCode:vm.ios.versionCode})'>更新</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

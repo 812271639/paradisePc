@@ -1,0 +1,34 @@
+.agreement{
+  position: fixed;
+  width: 100%;
+  height: 80%;
+  top: 10%;
+  left: 0;
+  background: white;
+}
+.agreement-head{
+  height: 35px;
+  width: 100%;
+  background: #73b2fd;
+}
+.agreement-head>img{
+  height: 35px;
+  width: 35px;
+  float: right;
+  cursor: pointer;
+}
+.agreement-content{
+  width: 100%;
+  height: calc(100% - 35px);
+  overflow-y: scroll;
+  font-size: 12px;
+  text-indent: 20px;
+  padding: 20px;
+  line-height: 25px;
+}
+.agreement-content-title{
+  font-weight: bold;
+  font-size: 16px;
+  padding: 20px 0;
+  text-align: center;
+}

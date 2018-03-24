@@ -1,0 +1,242 @@
+<!--<button ng-click="vm.say()">调试用</button>-->
+<div class="row pd-top-2 position-r" ng-switch on="vm.disabled" ng-controller="TeacherController as tc">
+	<div class="shade-back" ng-show="vm.addMenu">
+		<div class="panel col-md-8 col-md-offset-2 mr-t-40">
+			<div class="panel-body ">
+				<button class="panel-colse" ng-click="vm.addMenu=false"></button>
+				<form class="form-horizontal" name="myForm1" novalidate>
+					<div class="form-group panel-pd-40">
+						<label class="col-sm-2 control-label">老师昵称</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" placeholder=""
+							       ng-model="tc.teacher.name" maxlength="10" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">头　　像</label>
+						<div class="col-sm-8">
+							<label class="btn btn-primary" for="fil1e" ng-if="tc.disableNum!=1">上传</label>
+							<span>(上传文件在5M以内,推荐使用75*75分辨率或相同比例的图片)</span>
+							<div ng-if="tc.uploader">
+								<input id="fil1e" style="display: none" accept=".jpg,.png,.bmp" type="file"
+								       nv-file-select uploader="tc.uploader" required/>
+							</div>
+
+							<br/>
+							<img ng-src="{{tc.teacher.photo}}" alt="with responsive image feature"
+							     class="img-responsive" style="max-height: 300px;">
+							<table class="table" ng-show="tc.uploader.queue.length">
+								<thead>
+								<tr>
+									<th width="50%">图片名</th>
+									<th ng-show="tc.uploader.isHTML5">大小</th>
+									<th ng-show="tc.uploader.isHTML5">进度</th>
+									<th>状态</th>
+									<th>操作</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr ng-repeat="item in tc.uploader.queue" class="ng-scope" ng-if="$first">
+									<td><strong class="ng-binding">{{item.file.name}}</strong></td>
+									<td ng-show="tc.uploader.isHTML5" nowrap="" class="ng-binding">{{
+										item.file.size/1024/1024 | number:2 }} MB
+									</td>
+									<td ng-show="tc.uploader.isHTML5">
+										<div class="progress" style="margin-bottom: 0;">
+											<div class="progress-bar" role="progressbar"
+											     ng-style="{ 'width': item.progress + '%' }"></div>
+										</div>
+									</td>
+									<td class="text-center">
+                                                    <span ng-show="item.isSuccess"><i
+		                                                    class="glyphicon glyphicon-ok"></i></span>
+										<span ng-show="item.isCancel"><i
+												class="glyphicon glyphicon-ban-circle"></i></span>
+										<span ng-show="item.isError"><i
+												class="glyphicon glyphicon-remove"></i></span>
+									</td>
+									<td nowrap="">
+										<button type="button" class="btn btn-success btn-xs"
+										        ng-click="tc.upload(item)"
+										        ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+											<span class="glyphicon glyphicon-upload"></span> 上传
+										</button>
+										<button type="button" class="btn btn-danger btn-xs"
+										        ng-click="item.remove(); tc.clearImg()">
+											<span class="glyphicon glyphicon-trash"></span> 删除
+										</button>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+
+						</div>
+
+					</div>
+				</form>
+				<hr>
+				<div class="row">
+					<div class="col-xs-2"></div>
+					<div class="col-xs-10 text-center">
+						<button class="btn btn-primary" ng-click="tc.saveUpdate()"
+						        ng-disabled="myForm1.$invalid||!tc.teacher.photo" ng-switch-default>保存
+						</button>
+						<button class="btn btn-danger" ng-click="tc.cancelUpdate();vm.addMenu=false" ng-switch-default>取消</button>
+						<button class="btn btn-primary" ui-sref="field.videoList" ng-switch-when="true">返回</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				内容编辑
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-12">
+						<form class="form-horizontal" name="myForm" novalidate>
+							<fieldset ng-disabled="vm.disabled">
+								<div class="form-group">
+	                                <label class="col-sm-2 control-label">所属年级</label>
+	                                <div class="col-md-1 checkbox" ng-repeat="item in vm.videoOptions.gradeDetail">
+	                                    <label>
+	                                        <input type="checkbox" name="grade"
+	                                            ng-model="vm.gradeList[$index+1]"
+	                                            ng-checked="vm.grade.indexOf($index+1)!==-1">{{item.name}}
+	                                    </label>
+	                                </div>
+								</div>
+								<div class="form-group">
+									<!--<picker label-class="col-sm-2 control-label" option-class="col-md-3"
+									        options="vm.videoOptions.gradeDetail" ng-model="vm.params.grade"
+									        select-name="所属年级" form-name="myForm" required default="1"></picker>-->
+									<picker label-class="col-sm-2 control-label" option-class="col-md-3"
+									        options="vm.videoOptions.subjectDetail" ng-model="vm.params.subject"
+									        select-name="所属科目" form-name="myForm" required default="1"></picker>
+
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">教师</label>
+									<div class=" col-md-3">
+										<select class="form-control" ng-model="vm.teacher" >
+											<option ng-repeat=" li in teacherList" value="{{li}}"
+											        ng-selected="li.name === vm.params.teacherName">{{li.name}}
+											</option>
+										</select>
+									</div>
+									<div class="col-md-2 col-sm-4 control-label text-left">
+										<button class="btn btn-xs" ng-click="vm.addMenu=true">添加</button>
+										<button class="btn btn-xs" ng-click="tc.remove(vm.teacher)">删除</button>
+									</div>
+
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">头像</label>
+									<div class="col-md-3">
+										<img class=" avatar img-thumbnail" ng-model="vm.params.teacherImg"
+										     src-set="vm.teacher" ng-src="{{vm.params.teacherImg}}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="status" class="col-sm-2 control-label">标题</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" id="status" placeholder=""
+										       ng-model="vm.params.title" maxlength=40 required>
+									</div>
+								</div>
+								<div class="form-group">
+									<picker label-class="col-sm-2 control-label" option-class="col-md-8"
+									        options="vm.videoOptions.type"
+									        select-name="类型" ng-model="vm.params.type" form-name="myForm"
+									        required default="2"></picker>
+								</div>
+								<!--封面-->
+								<upload-img ng-model="vm.params.coverImg" label-name="封面"
+								            ng-show="vm.params.type===1"></upload-img>
+								<!--收费-->
+								<div class="form-group">
+									<div class="col-sm-2">
+										<label class="control-label pull-right">&emsp;收费</label>
+										<input type="checkbox" class="checkbox pull-right" value="1" ng-model="vm.params.charge"
+										       ng-true-value=1 ng-false-value=2>
+									</div>
+								</div>
+								<!--视频简介-->
+								<div class="form-group">
+									<label class="col-sm-2 control-label">视频简介</label>
+									<div class="col-xs-8">
+                                        <textarea class="form-control" rows="2" ng-model="vm.params.summary"
+                                                  maxlength="140" required></textarea>
+									</div>
+								</div>
+								<!--视频链接-->
+								<div class="form-group">
+									<label class="col-sm-2 control-label">视频链接</label>
+									<div class="col-xs-8 ">
+										<div class="border-1-radius">
+											<div class="panel-body">
+												<div class="form-group">
+													<label for="status" class="col-sm-2 control-label">URL</label>
+													<div class="col-md-8">
+														<input type="text" class="form-control"
+														       placeholder="请输入MP4格式视频链接" name="url"
+														       ng-model="vm.params.url"
+														       ng-blur="vm.test=(vm.params.url|urlCheck:'mp4')"
+														       ng-class="{'border-1-red':!vm.test&&myForm.url.$touched}"
+														       required>
+													</div>
+													<span class="col-sm-offset-2 col-sm-10" style="color:red"  ng-show="!vm.loadSuccess&&myForm.url.$touched">无法解析视频，请检查URL是否错误</span>
+												</div>
+												<!--视频截图封面-->
+
+												<up-loader label-name="封面" ng-model="vm.params.cutImg"></up-loader>
+
+												<div class="row">
+													<div class="col-md-8 col-md-offset-2">
+														<video class="col-xs-12" controls
+														       media-time="vm.params.duration"
+														       load-success="vm.loadSuccess"
+														       ng-src="{{vm.params.url|urlFilter}}"></video>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group flex-wrap-start">
+									<label class="col-xs-2 control-label text-right">正文</label>
+									<div class="col-sm-8" ng-switch-default>
+										<!--编辑器-->
+										<textarea style="margin:auto;height:300px;width:100%;"
+										          ng-model="vm.params.content"
+										          meta-umeditor meta-umeditor-config='config' required>
+                                        </textarea>
+
+
+									</div>
+									<div class="col-sm-8" ng-switch-when="true">
+                                        <textarea class="form-control" rows="5" style="width:100%"
+                                                  ng-bind="vm.params.content" required></textarea>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2"></div>
+					<div class="col-xs-12 text-center">
+						<button class="btn btn-primary" ng-click="vm.back()" ng-switch-when="true">返回</button>
+						<button class="btn btn-primary" ng-click="vm.saveUpdate()" ng-disabled="myForm.$invalid||!vm.params.duration||(!vm.params.teacherImg&&!vm.teacher.teacherImg)||!vm.params.cutImg||(vm.params.type===1&&!vm.params.coverImg)"  ng-switch-default>
+							保存
+						</button>
+						<button class="btn btn-danger" ng-click="vm.cancelUpdate()"  ng-switch-default>取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

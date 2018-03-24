@@ -1,0 +1,46 @@
+<div class="choosePay">
+    <div class="choosePay-head">
+        课程支付
+        <span class="glyphicon glyphicon-remove" ng-click="vm.cancel()"></span>
+    </div>
+    <div class="choosePay-content">
+        <div>
+            <img src="{{vm.data.data.frontCoverURL}}" alt="" class="choosePay-content-img">
+            <div class="choosePay-content-name">
+                <p>{{vm.data.data.lessonName}}</p>
+                <p style="text-align: justify"><span style="font-weight: 700">购买说明</span>：购买该专题后，将会获得该专题下所有视频和任务的<span style="font-weight: 700">一年使用权</span>,请尽快观看哦，本次购买<span style="font-weight: 700">不支持退款</span></p>
+            </div>
+        </div>
+        <div>
+            <p class="choosePay-content-chooseName">微信支付</p>
+            <!-- 2018.2.27 隐藏支付宝支付功能 -->
+            <!--<p class="choosePay-content-payWay">-->
+                <!--<img src="../../images/icon/checked_03.png" alt="" ng-if="vm.payWay==1" ng-click="vm.payWay=1">-->
+                <!--<img src="../../images/icon/uncheck_05.png" alt="" ng-if="vm.payWay!=1" ng-click="vm.payWay=1">-->
+                <!--<button class="choosePay-content-check" ng-class="{'border-1-65a9fc':vm.payWay==1}" ng-click="vm.payWay=1">-->
+                    <!--<img src="../../images/icon/pay1_03.png" alt="">-->
+                <!--</button>-->
+                <!--<img src="../../images/icon/checked_03.png" alt="" ng-if="vm.payWay==2" ng-click="vm.payWay=2">-->
+                <!--<img src="../../images/icon/uncheck_05.png" alt="" ng-if="vm.payWay!=2" ng-click="vm.payWay=2">-->
+                <!--<button class="choosePay-content-check" ng-class="{'border-1-65a9fc':vm.payWay==2}" ng-click="vm.payWay=2">-->
+                    <!--<img src="../../images/icon/pay2_03.png" alt="">-->
+                <!--</button>-->
+            <!--</p>-->
+            <p class="choosePay-content-payWay">
+                <img src="../../images/icon/checked_03.png" alt="" ng-if="vm.payWay==2" ng-click="vm.payWay=2">
+                <img src="../../images/icon/uncheck_05.png" alt="" ng-if="vm.payWay!=2" ng-click="vm.payWay=2">
+                <button class="choosePay-content-check" ng-class="{'border-1-65a9fc':vm.payWay==2}" ng-click="vm.payWay=2">
+                    <img src="../../images/icon/pay2_03.png" alt="">
+                </button>
+            </p>
+        </div>
+    </div>
+    <div class="choosePay-foot">
+        <div>
+            课程价格：{{vm.data.data.price}}￥
+        </div>
+        <div ng-class="{'bg-65a9fc':vm.payWay}" ng-click="vm.pay()">
+            立即支付
+        </div>
+    </div>
+</div>

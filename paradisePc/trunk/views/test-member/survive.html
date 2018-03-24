@@ -1,0 +1,33 @@
+<div class="survive-wrapper">
+    <div class="container suirvive-main">
+      <div class="ab1 row">
+        <div class="Voucher col-sm-4 col-md-4 col-lg-4">
+           <div class="member-img"></div>
+         </div>
+        <div class="member-active col-sm-6 col-md-5 col-lg-5">
+          <div class="member-active-all">
+            <div class="cardactive-text">
+                <p class="cardactive-text1"><b>卡券激活</b></p>
+                <p class="cardactive-text2">激活会员即可享有所有会员特权</p>
+            </div>
+
+            <form class="form-inline Vouchercard">
+              <div class="form-group Vouchercard-input">
+                   <input type="text" ng-model="vm.params.number" class="form-control" id="inputName2"  placeholder="请输入你的会员卡号">
+              </div>
+            <br>
+              <div class="form-group Vouchercardpsw-input">
+                  <input type="text"  ng-model="vm.params.pwd" class="form-control" id="inputName3"  placeholder="请输入会员卡背面密码">
+              </div>
+            <br>
+              <button type="submit" ng-click="vm.doubleClick||vm.activeBtn()" class="btn btn-info btn-sure">立即激活</button>
+            </form>
+
+        </div>
+        </div>
+                 <div class="paopao col-sm-4 col-md-3 col-lg-3">
+                <img src="images/paopao.png" class="paopaoimg" alt="">
+            </div>
+        </div>
+    </div>
+</div>

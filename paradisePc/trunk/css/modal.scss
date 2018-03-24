@@ -1,0 +1,813 @@
+@charset "utf-8";
+$backgroundBlue:#73b2fd;
+$backgroundGreen:#86ce2f;
+$backgroundGrey:#f2f2f2;
+//模态框垂直居中
+.modal-dialog{
+
+	margin:0px;
+	width:100%;
+	height:100vh;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	.modal-content{
+		border-radius:0px;
+		zoom: 1.1;
+	}
+}
+//防止模态框抖动
+.modal-open {
+  padding-right: 0 !important;
+  overflow-y: scroll;
+}
+//confirm模态框的样式
+.confirm-wrapper{
+	width:337px;
+	height:245px;
+	>div{
+		width:100%;
+	}
+	.modal-header{
+		background-color: $backgroundBlue;
+		color:white;
+		height: 35px;
+		padding:0px;
+		display: flex;
+		justify-content: flex-end;
+		align-items:center;
+		.close-model{
+			width:40px;
+			height: 32px;
+			img{
+				width:40px;
+				height: 32px;
+			}
+		}
+
+	}
+	.modal-body{
+		height: 125px;
+		text-align: center;
+		font-size: 1.6rem;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		p{
+			padding-top:15px;
+		}
+	}
+	.modal-footer{
+		padding:0px;
+		height: 85px;
+		display: flex;
+		align-items:flex-start;
+		justify-content: center;
+		border-top:0px;
+		button{
+			border-radius:0px;
+			padding:5px 17px;
+		}
+	}
+	.cancel-btn{
+		background-color: white;
+		color:black;
+		border:1px solid #a1a1a1;
+		margin-right: 43px;
+	}
+	.ok-btn{
+		background-color: $backgroundBlue;
+		color:white;
+	}
+}
+//登录模态框的样式
+.login-wrapper{
+	width:505px;
+	height:453px;
+	>div{
+		width:100%;
+	}
+	.modal-header{
+		background-color: $backgroundBlue;
+		color:white;
+		height: 35px;
+		padding:0px;
+		display: flex;
+		justify-content: flex-end;
+		align-items:center;
+		.close-model{
+			width:40px;
+			height: 35px;
+			display: flex;
+			align-items:center;
+			justify-content: center;
+			img{
+				width:40px;
+				height: 32px;
+			}
+		}
+
+	}
+	.modal-body{
+		padding:40px 100px 0;
+	}
+	.code-wrapper{
+		width:305px;
+		height: 301px;
+		justify-content: center;
+		align-items:center;
+		flex-direction: column;
+	}
+	//微信登录页面样式
+	.code-img{
+		padding-top:10px;
+		height: 195px;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		img{
+			width:205px;
+			height: 185px;
+		}
+	}
+	.code-text{
+		display: flex;
+		justify-content: center;
+		flex:1;
+		align-items:flex-start;
+		padding-top:30px;
+	}
+	.code-text-img{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		font-size: 1.4rem;
+		letter-spacing: 2px;
+		img{
+			width:20px;
+			height: 20px;
+			margin-right: 5px;
+		}
+	}
+	//到这里
+	.title{
+		height: 40px;
+		display: flex;
+		align-items:flex-start;
+		justify-content: flex-start;
+		font-size: 14px;
+	}
+	.password{
+		margin:23px 0 13px;
+		input{
+			height: 50px;
+		}
+	}
+	.username{
+
+	input{
+		height: 50px;
+	}
+	}
+	.save-checkbox{
+		display: flex;
+	}
+	.save-username{
+		display: flex;
+		justify-content: space-between;
+		align-items:center;
+	}
+	.forget-password{
+		color:$backgroundBlue;
+	}
+	.button-wrapper{
+		button{
+			height: 50px;
+			width:100%;
+			margin-top: 50px;
+			margin-bottom:10px;
+			background-color:#86ce2f;
+			font-size: 20px;
+			color:white;
+			letter-spacing:1em;
+		}
+	}
+	.last-line{
+		display: flex;
+		justify-content: space-between;
+		align-items:flex-start;
+		>div{
+			font-size: 14px;
+		}
+		.wechat img{
+			margin-right: 5px;
+		}
+	}
+}
+//注册模态框的样式
+.register-wrapper{
+	width:349px;
+	height:488px;
+	>div{
+		width:100%;
+	}
+	input{
+		height: 50px;
+	}
+	.rule input{
+		height: 100%;
+	}
+	.modal-header{
+		background-color: $backgroundBlue;
+		color:white;
+		height: 35px;
+		padding:0px;
+		display: flex;
+		justify-content: flex-end;
+		align-items:center;
+		.close-model{
+			width:40px;
+			height: 35px;
+			display: flex;
+			align-items:center;
+			justify-content: center;
+			img{
+				width:40px;
+				height: 32px;
+			}
+		}
+
+	}
+	.modal-body{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		flex-direction: column;
+		padding:0px;
+		>div{
+			width:100%;
+			margin-bottom: 20px;
+		}
+
+	.title{
+		height: 60px;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		font-size: 16px;
+		margin-bottom:0px;
+	}
+	}
+	.register-row{
+		display: flex;
+		justify-content: center;
+	}
+	.left{
+		font-size: 16px;
+		width:195px;
+		display: flex;
+		justify-content: flex-end;
+		align-items:center;
+
+	}
+	.center{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		width:320px;
+		margin-left:15px;
+	}
+	.right{
+		flex:1;
+	}
+	.phone-code,.image-code{
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		margin-bottom: 25px;
+		.center{
+			display: flex;
+			justify-content: space-between;
+
+		}
+		input{
+			width:170px;
+
+		}
+		button,img{
+			width:130px;
+			height: 50px;
+			font-size: 16px;
+			background-color:$backgroundBlue;
+			color:white;
+			letter-spacing: 2px;
+
+		}
+	}
+	.rule{
+		padding-top:7px;
+		margin-bottom:15px;
+		font-size: 14px;
+	}
+	.button-wrapper{
+		display: flex;
+		align-items:flex-start;
+		justify-content: center;
+		flex:1;
+		button{
+			height: 55px;
+			width:100%;
+			background-color:$backgroundGreen;
+			color:white;
+			letter-spacing: 5px;
+			font-size: 20px;
+		}
+	}
+
+}
+//忘记密码，更改手机号，绑定手机或者邮箱,更改密码或者设置密码模态框样式
+.forgetPassword-wrapper,.changePhoneNumber-wrapper,.bindPhoneOrMail-wrapper,.changePassword-wrapper{
+	width:715px;
+	height:463px;
+	>div{
+		width:100%;
+	}
+	input{
+		height: 50px;
+	}
+	.rule input{
+		height: 100%;
+	}
+	.modal-header{
+		background-color: $backgroundBlue;
+		color:white;
+		height: 35px;
+		padding:0px;
+		display: flex;
+		justify-content: flex-end;
+		align-items:center;
+		.close-model{
+			width:40px;
+			height: 35px;
+			display: flex;
+			align-items:center;
+			justify-content: center;
+			img{
+				width:40px;
+				height: 32px;
+			}
+		}
+
+	}
+	.modal-body{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		flex-direction: column;
+		padding:0px;
+		height: 428px;
+		>div{
+			width:100%;
+			margin-bottom: 20px;
+		}
+
+	.title{
+		height: 60px;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		font-size: 16px;
+		margin-bottom:0px;
+	}
+	}
+	// .phone-code{
+	// 	margin-right: 10px;
+	// }
+	.register-row{
+		display: flex;
+		justify-content: center;
+	}
+	.left{
+		font-size: 16px;
+		width:195px;
+		display: flex;
+		justify-content: flex-end;
+		align-items:center;
+
+	}
+	.center{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		width:320px;
+		margin-left:15px;
+	}
+	.right{
+		flex:1;
+		color:#ef4a24;
+		font-size: 12px;
+		display: flex;
+		align-items:center;
+		justify-content: flex-start;
+		padding-left:10px;
+	}
+	.modal-body .account{
+		margin-bottom:15px;
+	}
+	.modal-body .phone-code{
+		margin-bottom: 10px;
+	}
+	.modal-body .affirm{
+		margin-bottom: 10px;
+	}
+	.step{
+		img{
+			width:320px;
+			height: 34px;
+			margin-bottom:20px;
+		}
+		.center{
+			position:relative;
+		}
+		.step-text-left,.step-text-left-phone{
+			position:absolute;
+			left:67px;
+			top:40px;
+			font-size: 12px;
+
+		}
+		.step-text-right,.step-text-right-phone{
+			position:absolute;
+			right:60px;
+			top:40px;
+			font-size: 12px;
+		}
+		.step-text-left-phone{
+			left:59px;
+
+		}
+		.step-text-right-phone{
+			right:60px;
+		}
+	}
+	.modal-body .voice{
+		height: 20px;
+		margin-bottom: 27px;
+		.center{
+			color:#ccc;
+			display: flex;
+			justify-content: flex-start;
+			font-size: 14px;
+
+		}
+	}
+	.phone-code{
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		margin-bottom: 10px;
+		.center{
+			display: flex;
+			justify-content: space-between;
+
+		}
+		input{
+			width:170px;
+
+		}
+		button,img{
+			width:130px;
+			height: 50px;
+			font-size: 16px;
+			background-color:$backgroundBlue;
+			color:white;
+			letter-spacing: 2px;
+
+		}
+	}
+	.modal-body .button-wrapper{
+		display: flex;
+		align-items:flex-start;
+		justify-content: center;
+		height: 50px;
+		margin-bottom: 70px;
+		position:relative;
+		button{
+			height: 50px;
+			width:100%;
+			background-color:$backgroundGreen;
+			color:white;
+			letter-spacing: 5px;
+			font-size: 20px;
+		}
+		.tips{
+			display: flex;
+			width: 100%;
+			height: 18px;
+			justify-content: center;
+			color:#979797;
+			position:absolute;
+			bottom: -45px;
+			right: 0px;
+
+		}
+	}
+}
+//绑定手机或者邮箱模态框样式
+.bindPhoneOrMail-wrapper{
+	width:709px;
+	height:370px;
+	input{
+		height: 52px;
+	}
+	.modal-body{
+		height: 335px;
+		display: flex;
+	.phone-code button{
+		height: 52px;
+	}
+	.title{
+		height: 80px;
+		display: flex;
+		justify-content: center;
+		align-items:flex-start;
+
+	}
+	.title-content{
+		font-size: 16px;
+		margin-top:33px;
+
+	}
+	.account{
+		height: 52px;
+		margin-bottom:16px;
+	}
+	.phone-code{
+		height: 52px;
+		margin-bottom: 36px;
+	}
+	.phone-code-phone{
+		margin-bottom: 13px;
+	}
+	.button-wrapper{
+		height: 52px;
+		margin-bottom: 44px;
+	}
+	.button-wrapper-phone{
+		margin-bottom: 27px;
+	}
+	.button-wrapper button{
+		height: 52px;
+	}
+	.voice{
+		height: 13px;
+		font-size: 12px;
+		margin-bottom: 27px;
+	}
+	}
+}
+
+//设置密码或者更改密码模态框样式
+.changePassword-wrapper{
+	width:709px;
+	height:auto;
+	.modal-header{
+		height: 40px;
+	}
+	input{
+		height: 53px;
+	}
+	.modal-body{
+		height: auto;
+		display: flex;
+		>div{
+			height: 53px;
+			margin-bottom: 15px;
+		}
+	.title{
+		height: 70px;
+		display: flex;
+		justify-content: center;
+		align-items:flex-start;
+		.title-content{
+			font-size: 16px;
+			margin-top:20px;
+		}
+	}
+	.title-change{
+		height: 60px;
+	.title-content{
+		font-size: 16px;
+		margin-top:20px;
+	}
+	}
+	.confirm-password{
+		height: 53px;
+		margin-bottom:53px;
+	}
+	.button-wrapper{
+		height: 53px;
+		margin-bottom: 34px;
+	}
+	.button-wrapper-change{
+		margin-bottom: 47px;
+	}
+	.button-wrapper button{
+		height: 53px;
+	}
+	}
+}
+//微信登录之后绑定模态框的样式
+.afterWeChat-wrapper{
+	width:852px;
+	>div{
+		width:100%;
+	}
+	input{
+		height: 53px;
+	}
+	.rule input{
+		height: 100%;
+	}
+	.modal-header{
+		background-color: $backgroundGrey;
+		color:white;
+		height: 53px;
+		padding:0px;
+		display: flex;
+		justify-content: flex-end;
+		align-items:center;
+		.header-left{
+			display: flex;
+			justify-content: center;
+			align-items:center;
+			height: 100%;
+			width:50%;
+			font-size: 18px;
+			color:#555;
+		}
+		.header-right{
+			position:relative;
+			display: flex;
+			justify-content: center;
+			align-items:center;
+			height: 100%;
+			width:50%;
+			font-size: 18px;
+			color:#555;
+		}
+		.active{
+			background-color:$backgroundBlue;
+			color:white;
+		}
+		.close-model{
+			position:absolute;
+			top:0px;
+			right: 0px;
+			padding:8.5px 0;
+
+			width:40px;
+			height: 52px;
+			display: flex;
+			align-items:center;
+			justify-content: center;
+			img{
+				width:40px;
+				height: 32px;
+			}
+		}
+
+	}
+	.modal-body{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		flex-direction: column;
+		padding:0px;
+		>div{
+			width:100%;
+		}
+
+	.title{
+		height: 60px;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		font-size: 14px;
+		margin-bottom:27px;
+		margin-top: 23px;
+		color:$backgroundGreen;
+		img{
+			width:56px;
+			height: 56px;
+			border:2px solid $backgroundBlue;
+			border-radius:50%;
+			margin-right: 10px;
+		}
+	}
+	}
+	.register-row{
+		display: flex;
+		justify-content: center;
+	}
+	.left{
+		font-size: 16px;
+		width:266px;
+		display: flex;
+		justify-content: flex-end;
+		align-items:center;
+
+	}
+	.center{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		width:310px;
+		margin-left:10px;
+	}
+	.right{
+		flex:1;
+	}
+	.account{
+		margin-bottom: 27px;
+	}
+	.password{
+		margin-bottom: 18px;
+	}
+	.password-new{
+		margin-bottom: 30px;
+	}
+	.modal-body .voice{
+		height: 13px;
+		margin-bottom: 10px;
+		font-size: 12px;
+		.center{
+			color:#ccc;
+			display: flex;
+			justify-content: flex-start;
+			font-size: 14px;
+
+		}
+	}
+	.phone-code,.image-code{
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		margin-bottom: 8px;
+		.center{
+			display: flex;
+			justify-content: space-between;
+
+		}
+		input{
+			width:170px;
+
+		}
+		button,img{
+			width:130px;
+			height: 50px;
+			font-size: 16px;
+			background-color:$backgroundBlue;
+			color:white;
+			letter-spacing: 2px;
+
+		}
+	}
+	.image-code-new{
+		margin-bottom: 35px;
+	}
+	.phone-code-new{
+		margin-bottom: 5px;
+	}
+	.forget{
+		height: 17px;
+		margin-bottom:24px;
+		.center{
+			justify-content: flex-end;
+			font-size: 14px;
+			color:$backgroundBlue;
+		}
+	}
+	.rule{
+		height: 16px;
+
+		margin-bottom:15px;
+		font-size: 14px;
+	}
+	.button-wrapper{
+		display: flex;
+		align-items:flex-start;
+		justify-content: center;
+		flex:1;
+		margin-bottom:33px;
+		button{
+			height: 53px;
+			width:100%;
+			background-color:$backgroundGreen;
+			color:white;
+			letter-spacing: 5px;
+			font-size: 20px;
+		}
+	}
+
+}

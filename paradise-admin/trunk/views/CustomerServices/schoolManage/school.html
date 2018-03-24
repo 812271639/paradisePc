@@ -1,0 +1,67 @@
+<div class="row pd-top-2 ng-scope pd-left-15 pd-right-15">
+    <div class="panel panel-default">
+        <div class="panel-body form-group panel-default">
+            <form class="form-horizontal col-md-12">
+                <div class="form-group col-md-5">
+                    <label  class="col-md-3 control-label pd-left-0">学校名称</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control"  ng-model="vm.params.name">
+                    </div>
+                </div>
+                <div class="form-group col-md-5">
+                    <label  class="col-md-3 control-label pd-left-0">学校ID</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control"  ng-model="vm.params.id">
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-default pull-right " ng-click="vm.clear()">重置
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary pull-right" ng-click="vm.search()">搜索
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row pd-top-2 ng-scope pd-left-15 pd-right-15">
+    <div class="panel panel-default">
+        <div class="panel-heading contentManage-header">
+            <strong style="border-left:2px solid red;padding-left: 1em">学校管理</strong>
+            <div class="btn-group pull-right">
+                <button class="btn btn-primary btn-xs" ui-sref="field.new-school">
+                    <i class="fa fa-plus-square fa-fw"></i>新增
+                </button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped text-center add-table-border">
+                <thead>
+                <tr>
+                    <th class="text-center col-xs-2">ID</th>
+                    <th class="text-center col-xs-8">学校名称</th>
+                    <th class="text-center col-xs-2">编辑</th>
+                </tr>
+                </thead>
+
+                <tbody dnd-list="vm.list" class="ul-table">
+                <tr ng-repeat="item in vm.list"  ng-class="{'selected': vm.list.selected == item}" class="text-center">
+
+                    <td class="text-center col-xs-2" ng-bind="item.id"></td>
+                    <td class="text-center col-xs-8" ng-bind="item.name"></td>
+                    <td class="text-center col-xs-2">
+                        <button class="btn btn-success btn-xs" ui-sref="field.new-school({id:item.id,name:item.name})" >编辑</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--分页-->
+            <nav class="pull-right" ng-if="vm.totalPage&&!vm.add">
+                <page total-page="{{vm.totalPage}}" ></page>
+            </nav>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">帖子详情</div>
+            <div class="panel-body">
+                <div class="col-md-8 col-md-offset-2" style="padding-bottom: 30px">
+                    <h3 style="position: relative;">{{vm.postsDetail.title}}<img ng-if="vm.postsDetail.digest==2" src="../../images/jinghua.png" alt="" style="position: absolute;bottom: 2px;margin-left: 60px;"></h3>
+                    <p ng-bind="vm.postsDetail.author"></p>
+                    <p>发布时间：{{vm.postsDetail.createAt|date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                    <div class="row">
+                        <p class="col-xs-4 ">所属板块：{{vm.postsDetail.grade|postsFilter:'grade'}}</p>
+                        <p class="col-xs-4">阅读数：{{vm.postsDetail.readCount}}</p>
+                        <p class="col-xs-4">评论数：{{vm.postsDetail.repliesCount}}</p>
+                    </div>
+                    <div style="padding-top: 20px" ng-bind-html="vm.postsDetail.content|trust"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">全部评论</div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped ">
+                    <thead>
+                    <tr class="info">
+                        <th>序号</th>
+                        <th>评论者</th>
+                        <th>评论</th>
+                        <th>评论时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="li in vm.replyList">
+                        <td>{{li.floor}}楼</td>
+                        <td>{{li.author}}</td>
+                        <td str-limit="li.content"></td>
+                        <td>{{li.createAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-xs" ng-click="vm.delete(li)" ng-disabled="!li.content" ng-if="li.content">删除</button>
+                            <button class="btn btn-default btn-xs" ng-disabled="!li.content" ng-if="!li.content">已删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--分页-->
+                <!--<nav class="pull-right" ng-if="vm.totalPage">-->
+                    <!--<page total-page="{{vm.totalPage}}" ></page>-->
+                <!--</nav>-->
+                <paging total-items="vm.totalPage" current-page="vm.currentPage" max-size="5" items-per-page="10"
+                        page-change="vm.pageChange(vm.currentPage)" ng-if="vm.totalPage"></paging>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="alert-wrap" ng-show="textContent.open">
+    <div class="alert-content">
+        <button class="alert-close" ng-click="textContent.open=false">×</button>
+        <p class="col-xs-8 col-xs-offset-2" ng-bind="textContent.content"></p>
+    </div>
+</div>

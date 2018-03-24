@@ -1,0 +1,54 @@
+<div class="bindPhoneOrMail-wrapper">
+<div class="modal-header">
+    <div class="pointer close-model" ng-click="vm.cancel()"><img src="images/remove.jpg" alt=""></div>
+</div>
+<div class="modal-body" id="modal-body">
+
+ <div class="title"><div class="title-content" ng-bind="vm.title"></div></div>
+
+
+
+ <div class="account register-row" ng-if="!vm.phone">
+ <div class="left">邮箱</div>
+ <div class="center"><input type="text" class="form-control" placeholder="请输入邮箱"></div>
+ <div class="right"></div>
+ </div>
+ <div class="phone-code register-row" ng-if="!vm.phone">
+ <div class="left">验证码</div>
+ <div class="center"><input type="text" class="form-control" placeholder="请输入收到的验证码"><button class="btn">获取验证码</button></div>
+ <div class="right"></div>
+ </div>
+
+<!--  <div class="phone-code-phone register-row" ng-if="vm.phone">
+ <div class="left">验证码</div>
+ <div class="center"><input type="text" class="form-control" placeholder="请输入收到的验证码"><button class="btn">获取验证码</button></div>
+ <div class="right"></div>
+ </div> -->
+
+<!-- 修改密码界面 -->
+<div class="account register-row" ng-if="vm.phone">
+<div class="left">手机号</div>
+<div class="center"><input type="text" class="form-control" placeholder="请输入手机号"></div>
+<div class="right"></div>
+</div>
+<div class="phone-code-phone phone-code register-row" ng-if="vm.phone">
+<div class="left">验证码</div>
+<div class="center"><input type="text" class="form-control" placeholder="请输入收到的验证码"><button class="btn">获取验证码</button></div>
+<div class="right"></div>
+</div>
+
+ <div class="register-row voice" ng-if="vm.phone">
+ <div class="left"></div>
+ <div class="center">收不到短信？试试<span class="font-blue pointer">语音验证</span></div>
+ <div class="right"></div>
+ </div>
+
+ <div class="button-wrapper register-row" ng-if="!vm.phone"><div class="left"></div><div class="center"><button ng-click="vm.next()" class="btn">立即绑定</button></div><div class="right"></div>
+ </div>
+
+ <div class="button-wrapper button-wrapper-phone register-row" ng-if="vm.phone"><div class="left"></div><div class="center"><button ng-click="vm.next()" class="btn">立即绑定</button></div><div class="right"></div>
+ </div>
+
+ 
+</div>
+</div>

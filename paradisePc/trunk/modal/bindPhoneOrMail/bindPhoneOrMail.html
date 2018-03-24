@@ -1,0 +1,111 @@
+<div class="bindPhoneOrMail-wrapper">
+  <div class="pointer close-model" ng-click="vm.cancel()">
+    <img src="images/remove.png" class="close-img" alt=""></div>
+ <div class="modal-body" id="modal-body">
+  <form name="mail" novalidate>
+   <div class="title" ng-if="!vm.phone"><div class="title-content" ng-bind="vm.title"></div></div>
+   <div ng-if="!vm.phone"> <div class="left1">邮箱</div></div>
+   <div class="account register-row" ng-if="!vm.phone">
+    <div class="center">
+     <input ng-model="vm.mail" ng-blur="vm.checkName(mail.name.$invalid)" ng-class="{'red-border':(vm.checkNameResult||mail.name.$invalid)&&(mail.name.$touched||mail.$submitted)}" placeholder="请输入邮箱" class="form-control" type="text" name="name" required ng-pattern="/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/" onkeyup="this.value=this.value.replace(' ','')">
+
+    </div>
+   </div>
+   <div ng-if="!vm.phone"><div class="left1">验证码</div></div>
+   <div class="phone-code register-row" ng-if="!vm.phone">
+
+    <div class="center">
+     <input type="text"  ng-model="vm.params.verify" name="code" maxlength="6" ng-class="{'red-border':(mail.code.$invalid)&&(mail.code.$touched||vm.mailButton)}" required  class="form-control" placeholder="请输入收到的验证码" ng-pattern="/^\d{6}$/" type="button">
+     <button ng-click="vm.getCode((!mail.name.$invalid)&&(!vm.checkNameResult))" class="btn" ng-show="!vm.getcode" ng-bind="vm.getTips" >获取验证码</button>
+     <button style="background: #F7F7F7;color: #555555;padding: 0;border:none;opacity: 0.65;-msz-border-shadow: none; box-shadow:none" type="button" class="btn btn-default btn-lg active" ng-show="vm.getcode" ng-bind="vm.time" ng-disabled="vm.canClick" ></button>
+
+    </div>
+   </div>
+   <div class="button-wrapper register-row" ng-if="!vm.phone">
+    <div class="center">
+     <button ng-click="vm.doubleClick||vm.bindMail((!mail.$invalid)&&(!vm.checkNameResult))" type="submit" class="btn" ng-class="{true:'btn-bg'}[(!mail.$invalid)&&(!vm.checkNameResult)]">完成</button>
+    </div>
+   </div>
+   <div class="error-box" ng-messages="mail.code.$error" ng-if="mail.code.$touched||vm.mailButton">
+    <p ng-message="required">验证码不能为空</p>
+    <p ng-message="pattern">请输入6位数字验证码</p>
+   </div>
+   <div class="error-box" ng-if="(!mail.code.$invalid)&&(!vm.checkCodeResult)">
+    <p>验证码错误</p>
+   </div>
+   <div class="error-box" ng-messages="mail.name.$error" ng-if="mail.name.$touched||mail.$submitted">
+    <p ng-message="required">邮箱不能为空</p>
+    <p ng-message="pattern">邮箱格式错误</p>
+   </div>
+   <div class="error-box" ng-if="(!mail.name.$invalid)&&(vm.checkNameResult)">
+    <p>该邮箱已被注册</p>
+   </div>
+
+  </form>
+  <!--  <div class="phone-code-phone register-row" ng-if="vm.phone">
+   <div class="left">验证码</div>
+   <div class="center"><input type="text" class="form-control" placeholder="请输入收到的验证码"><button class="btn">获取验证码</button></div>
+   <div class="right"></div>
+   </div> -->
+
+
+
+
+
+  <!-- 绑定手机界面 -->
+  <form name="phone" novalidate>
+   <div class="title" ng-if="vm.phone"><div class="title-content" ng-bind="vm.title"></div></div>
+   <div ng-if="vm.phone"> <div class="telLeft">手机号</div></div>
+   <div class="account register-row" ng-if="vm.phone">
+
+    <div class="center">
+     <input ng-model="vm.name2" maxlength="11" ng-change="vm.nameChange2=true" ng-blur="vm.checkName2(phone.name.$invalid)" ng-class="{'red-border':(vm.checkNameResult2||phone.name.$invalid)&&(phone.name.$touched||phone.$submitted)}" placeholder="请输入手机号" class="form-control" type="text" name="name" required ng-pattern="/^1[34578]\d{9}$/" onkeyup="this.value=this.value.replace(' ','')">
+
+    </div>
+    <div class="right"></div>
+   </div>
+   <div ng-if="vm.phone"> <div class="telLeft">验证码</div></div>
+   <div class="phone-code-phone phone-code register-row" ng-if="vm.phone">
+
+    <div class="center">
+     <input type="text" ng-model="vm.code2" name="code" maxlength="6" ng-class="{'red-border':(phone.code.$invalid)&&(phone.code.$touched||vm.phoneButton)}" required  class="form-control" placeholder="请输入收到的验证码" ng-pattern="/^\d{6}$/">
+     <button type="button"  ng-click="vm.getCode2((!phone.name.$invalid)&&(!vm.checkNameResult2))" class="btn" ng-show="!vm.getcode2" ng-bind="vm.getTips2">获取验证码</button>
+     <button style="background: #EBEBEB;color: #555555;padding: 0;border:none;opacity: 1!important;-msz-border-shadow: none; box-shadow:none" type="button" class="btn btn-default btn-lg active" ng-show="vm.getcode2" ng-bind="vm.time2" ng-disabled="vm.canClick2" ></button>
+
+    </div>
+    <div class="right"></div>
+   </div>
+
+   <div class="register-row voice" ng-if="vm.phone">
+    <div class="left"></div>
+    <div class="center" ng-show="vm.name2>0 && vm.voice2 && !vm.nameChange2">收不到短信？试试<span class="font-blue pointer" ng-class="{true:'VoiceGai'}[vm.canClickVoice2]" ng-click="vm.canClickVoice2 || vm.getVoice2((!phone.name.$invalid)&&(!vm.checkNameResult2))">语音验证</span></div>
+    <div class="right"></div>
+   </div>
+
+   <div class="button-wrapper button-wrapper-phone register-row" ng-if="vm.phone">
+    <div class="center">
+     <button type="submit"  ng-click="vm.doubleClick||vm.bindPhone((!phone.$invalid)&&(!vm.checkNameResult2))" class="btn">完成</button>
+    </div>
+   </div>
+   <div class="error-box" ng-messages="phone.name.$error" ng-if="phone.name.$touched||phone.$submitted">
+    <p ng-message="required">手机号不能为空</p>
+    <p ng-message="pattern">手机号格式错误，请输入11位手机号</p>
+   </div>
+   <div class="error-box" ng-if="(!phone.name.$invalid)&&(vm.checkNameResult2)">
+    <p>该手机号已被注册</p>
+   </div>
+   <div class="error-box" ng-messages="phone.code.$error" ng-if="phone.code.$touched||vm.phoneButton">
+    <p ng-message="required">验证码不能为空</p>
+    <p ng-message="pattern">请输入6位数字验证码</p>
+   </div>
+   <div class="error-box"
+        ng-if="(!phone.code.$invalid)&&(!vm.checkCodeResult2)">
+    <p>验证码错误</p>
+   </div>
+
+
+  </form>
+
+
+ </div>
+</div>

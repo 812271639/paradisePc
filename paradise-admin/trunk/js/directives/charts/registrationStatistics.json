@@ -1,0 +1,95 @@
+{
+  "data": [
+    {
+      "date": "2017-12-21",
+      "member": "3",
+      "buy": "5",
+      "user": "8",
+      "registers": "2"
+    },
+    {
+      "date": "2017-12-20",
+      "member": "3",
+      "buy": "1",
+      "user": "9",
+      "registers": "12"
+    },
+    {
+      "date": "2017-12-19",
+      "member": "6",
+      "buy": "3",
+      "user": "9",
+      "registers": "4"
+    },
+    {
+      "date": "2017-12-18",
+      "member": "0",
+      "buy": "7",
+      "user": "13",
+      "registers": "6"
+    },
+    {
+      "date": "2017-12-17",
+      "member": "0",
+      "buy": "0",
+      "user": "3",
+      "registers": "22"
+    },
+    {
+      "date": "2017-12-16",
+      "member": "3",
+      "buy": "1",
+      "user": "17",
+      "registers": "10"
+    },
+    {
+      "date": "2017-12-15",
+      "member": "1",
+      "buy": "0",
+      "user": "3",
+      "registers": "8"
+    },
+    {
+      "date": "2017-12-14",
+      "member": "4",
+      "buy": "3",
+      "user": "10",
+      "registers": "5"
+    },
+    {
+      "date": "2017-12-13",
+      "member": "2",
+      "buy": "0",
+      "user": "31",
+      "registers": "6"
+    },
+    {
+      "date": "2017-12-12",
+      "member": "4",
+      "buy": "6",
+      "user": "27",
+      "registers": "7"
+    },
+    {
+      "date": "2017-12-11",
+      "member": "2",
+      "buy": "0",
+      "user": "2",
+      "registers": "23"
+    },
+    {
+      "date": "2017-12-10",
+      "member": "0",
+      "buy": "0",
+      "user": "4",
+      "registers": "9"
+    },
+    {
+      "date": "2017-12-09",
+      "member": "1",
+      "buy": "0",
+      "user": "3",
+      "registers": "3"
+    }
+  ]
+}

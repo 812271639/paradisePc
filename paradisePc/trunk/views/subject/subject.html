@@ -1,0 +1,64 @@
+<div class="container-fluid clear-padding">
+    <div class="subject-head">
+        <div class="container text-left">
+            <span class="title" ng-bind="vm.data.data.lessonName"></span> </br>
+            <span class="font">{{vm.data.data.introText}}</span>
+            <button class="subject-button bg-ffffff"
+                    ng-if="(vm.data.data.isLock==1&&vm.user.isMember==2)||(vm.user==null&&vm.data.data.isLock==1)"
+                    ng-click="vm.buySubject()">
+                <span class="color-65a9fc">购买专题</span>
+                <span style="color: #ffc600" ng-if="vm.data.data.price!=0&&vm.data.data.price!=''"> ￥{{vm.data.data.price}}</span>
+            </button>
+            <button class="subject-button right-140 bg-ffc600"
+                    ng-if="(vm.data.data.isLock==1&&vm.user.isMember==2)||(vm.user==null&&vm.data.data.isLock==1)"
+                    ng-click="vm.buyVip()">加入VIP免费拿下
+            </button>
+        </div>
+    </div>
+    <div class="container" style="min-height: 450px;">
+        <div style="border: 1px solid #dddddd;margin-bottom: 40px;border-radius: 10px;box-shadow: 0 0 10px 5px #e9e9e9">
+            <div class="pd-62" style="border-radius: 10px">
+                <div class="content" ng-repeat="x in vm.data.periodList" style="border-radius: 10px">
+                    <div class="pic-list">
+                        <div class="subject-pic">
+                            <img ng-src="{{x.periodFrontCoverURL}}">
+
+                        </div>
+                        <span class="subject-title">
+                <a ng-click="vm.goTask(x.periodId,x.periodTasks[0].taskId)">
+                    {{x.periodName}}
+                </a>
+            </span>
+                        <span class="subject-article" ng-bind="x.periodIntroText"></span>
+                    </div>
+                    <div class="list">
+                        <div class="list-element" ng-repeat="y in x.periodTasks">
+                            <!--<img ng-if="y.taskType == 1 && y.learningProcess == 3" src="../images/subject&course/play.png">-->
+                            <!--<img ng-if="y.taskType == 2 && y.learningProcess == 3" src="../images/subject&course/text.png">-->
+                            <img ng-if="y.taskType == 1 && y.specificType == 1&&y.learningProcess==1"
+                                 src="../images/subject&course/subject2.png">
+                            <img ng-if="y.taskType == 1 && y.specificType == 1&&y.learningProcess!=1"
+                                 src="../../images/icon/subject2_03.png">
+                            <img ng-if="y.taskType == 2&&y.learningProcess==1"
+                                 src="../images/subject&course/subject3.png">
+                            <img ng-if="y.taskType == 2&&y.learningProcess!=1" src="../../images/icon/subject3_10.png">
+                            <img ng-if="y.taskType == 1 && y.specificType == 2&&y.learningProcess==1"
+                                 src="../images/subject&course/subject4.png">
+                            <img ng-if="y.taskType == 1 && y.specificType == 2&&y.learningProcess!=1"
+                                 src="../../images/icon/subject4_07.png">
+                            <a class="color-838383" ng-bind="y.taskName" ng-click="vm.goCourse(x.periodId,y.taskId,y)"
+                               style="color: #{{y.color}}!important;"></a>
+                            <img ng-if="vm.data.data.isLock != 0||y.isLock==1||y.isLock==3" src="../images/subject&course/VIP.png">
+                        </div>
+                        <div class="clearfloat"></div>
+                    </div>
+                    <div class="clearfloat"></div>
+                    <p class="lessonLine" ng-if="vm.data.periodList.length!=($index+1)"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="subject-tips" ng-if="vm.tips==1">
+    <span>请先购买专题或办理会员</span>
+</div>

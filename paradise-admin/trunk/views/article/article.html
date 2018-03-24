@@ -1,0 +1,119 @@
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="form-group panel panel-default panel-body">
+            <form class="form-horizontal ng-pristine ng-valid" role="form" name="ngForm" novalidate>
+                <div class="form-group mr0-ml0">
+                    <label class="col-md-1 col-xs-12 control-label">标题</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" ng-model="vm.searchParam.title">
+                    </div>
+
+                    <label class="col-md-1 col-xs-12 control-label">作者</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" ng-model="vm.searchParam.author">
+                    </div>
+                    <limit-section label-name="点赞数" start="vm.searchParam.minLike"
+                                   end="vm.searchParam.maxLike"></limit-section>
+                </div>
+                <div class="form-group mr0-ml0">
+                    <label class="control-label col-lg-1 col-md-1 col-xs-12">分类</label>
+                    <div class=" col-md-3 col-xs-12">
+                        <select class="form-control" ng-model="vm.searchParam.type">
+                            <option ng-selected="vm.article.type ==''||undefined" value=''>全部</option>
+                            <option ng-repeat=" li in vm.articleOptions.type" value="{{li.type}}"
+                                    ng-selected="li.type == vm.searchParam.type">{{li.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <picker select-name="状态" label-class="control-label col-lg-1 col-md-1 col-xs-12"
+                            option-class="col-md-3 col-xs-12" options="vm.articleOptions.status"
+                            ng-model="vm.searchParam.status" all="true"></picker>
+
+                    <limit-section label-name="收藏数" start="vm.searchParam.minCollection"
+                                   end="vm.searchParam.maxCollection"></limit-section>
+                </div>
+
+                <div class="col-md-12 search-btn text-right">
+                    <button type="button" class="btn btn-danger" ng-click="vm.rest()">清空</button>
+                    <button type="button" class="btn btn-success" ng-click="vm.search()">搜索</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                文章管理
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary btn-xs" ui-sref="field.articleDetail">
+                        <i class="fa fa-plus-square fa-fw"></i>新增内容
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped" >
+                    <thead>
+                    <tr align="center" valign="middle">
+                        <th>序号</th>
+                        <th>标题</th>
+                        <th>封面</th>
+                        <th>分类</th>
+                        <th>作者</th>
+                        <th>摘要</th>
+                        <th>收藏数</th>
+                        <th>点赞数</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody dnd-list="vm.list" class="ul-table">
+                    <tr dnd-draggable="item"
+                        data-dnd-moved="vm.list.splice($index, 1)"
+                        data-dnd-effect-allowed="move"
+                        data-dnd-selected="vm.list.selected == item?vm.list.selected = '':vm.list.selected = item"
+                        ng-class="{'selected': vm.list.selected == item}"
+                        ng-repeat=" item in vm.list"
+                        style="height: 100px"
+                        align="center"
+                        valign="middle">
+                        <td ng-bind="$index+1"></td>
+                        <td>{{item.title}}</td>
+                        <td><img class="coverImg" ng-src="{{item.img}}"></td>
+                        <td ng-bind="item.type|articleFilter:'type'"></td>
+                        <td>{{item.author}}</td>
+                        <td>{{item.summary}}</td>
+                        <td>{{item.collection}}</td>
+                        <td>{{item.love}}</td>
+                        <td ng-bind="item.status|articleFilter:'status'"></td>
+                        <td>
+                            <button class="btn btn-default btn-xs"
+                                    ui-sref="field.articleDetail({id:item.id,disabled:true})">查看
+                            </button>
+                            <button class="btn btn-default btn-xs" ui-sref="field.articleDetail({id:item.id})">编辑
+                            </button>
+                            <button class="btn btn-danger btn-xs"
+                                    ng-click="vm.changeStatus(item.id,(item.status==1?2:1|articleFilter:'status'),item.type)"
+                                    ng-bind="item.status==1?2:1|articleFilter:'status'"></button>
+	                        <button class="btn btn-primary btn-xs"
+	                         ng-click="vm.setSticky(item.id,item.rank,(item.rank===1?2:1|articleFilter:'stickyBtn'))">
+		                        {{item.rank==1?2:1|articleFilter:'stickyBtn'}}
+	                        </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <nav class="pull-right" ng-if="vm.totalPage">
+                    <page total-page="{{vm.totalPage}}"></page>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

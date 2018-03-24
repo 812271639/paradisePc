@@ -1,0 +1,224 @@
+.subject-head {
+  position: relative;
+  width: 100%;
+}
+.active{
+  font-weight: bolder;
+}
+.xieti{
+     font-style: oblique;
+   }
+.color-79b5fd {
+  color: #79b5fd; }
+
+.color-ff {
+  background: white;
+  border-bottom: 12px solid white; }
+
+.color-838383 {
+  color: #838383; }
+
+.pd-62 {
+  /*padding-bottom: 200px;*/
+  background: #fff; }
+
+.subject-head {
+  position: relative;
+  text-align: center;
+  background: #79b5fd;
+  padding: 22px 0 20px 0;
+  margin-bottom: 10px;
+  color: white;
+}
+  .subject-head .title {
+    /*display: block;*/
+    font-size: 1.8rem;
+    color: #ffffff; }
+  .subject-head .font {
+    display: inline-block;
+    font-size: 1.4rem;
+    color: #ffffff;
+    padding-top: 10px; }
+
+.head-blank {
+  background: white;
+  height: 50px;
+  margin: 0 15px;
+  border-bottom: solid 2px #cbcbcb; }
+
+.content {
+  background: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  height: auto; }
+  .content .lessonLine {
+    border-bottom: 2px solid #f4f4f4;
+    margin: 20px 0 0 240px; }
+  .content .pic-list {
+    float: left;
+    width: 55%; }
+    .content .pic-list .subject-pic {
+      margin-left: 60px;
+      width: 170px;
+      height: 100px;
+      float: left;
+      /*background: grey;*/
+    }
+      .content .pic-list .subject-pic img {
+        width: 170px;
+        height: 100px;
+        border-radius: 5px;
+      }
+    .content .pic-list .subject-title {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-left: 20px;
+      width: 360px;
+      margin-top: 19px; }
+      .content .pic-list .subject-title a {
+        color: #545454; }
+    .content .pic-list .subject-article {
+      display: inline-block;
+      font-size: 1.6rem;
+      margin-left: 20px;
+      width: 360px;
+      margin-top: 10px;
+      color: #cbcbcb; }
+  .content .list {
+    font-size: 1.4rem;
+    position: relative;
+    float: right;
+    width: 45%; }
+    .content .list .list-element {
+      width: 100%;
+      float: left;
+      margin-top: 10px;
+      margin-left: 40px;
+      display: flex;
+      align-items: center; }
+      .content .list .list-element a {
+        float: left;
+        margin-left: 10px; }
+      .content .list .list-element img {
+        margin-left: 0.5rem;
+        float: left; }
+      .content .list .list-element p {
+        margin-left: 1rem;
+        float: left; }
+    .content .list .clearfloat {
+      clear: both; }
+  .content .clearfloat {
+    clear: both; }
+
+@media (min-width: 1230px) {
+  .pic-list {
+    width: 55%;
+    padding: 0px; }
+
+  .list {
+    width: 45%;
+    padding: 0px; } }
+@media (max-width: 1230px) {
+  .content .pic-list {
+    width: 100%;
+    padding: 0px; }
+
+  .content .list {
+    width: 100%;
+    padding: 0px; }
+
+  .content .list .list-element {
+    padding-left: 20px;
+    width: 400px; } }
+@media (max-width: 992px) {
+  .content .pic-list .subject-title {
+    width: 100%;
+    padding-left: 50px; }
+
+  .content .pic-list .subject-article {
+    width: 100%;
+    padding-left: 50px; }
+
+  .content .list {
+    width: 100%;
+    clear: both; }
+
+  .content .list .list-element {
+    padding-left: 20px;
+    width: 100%; } }
+@media (max-width: 768px) {
+  .content .pic-list .subject-article {
+    width: 100%; }
+
+  .content .list .list-element {
+    width: 100%; } }
+
+/*# sourceMappingURL=subject.css.map */
+
+
+.subject-button{
+  border: none;
+  height: 37px;
+  line-height: 35px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+.subject-head>div{
+  position: relative;
+}
+.subject-tips{
+  position: fixed;
+  left: 0;
+  top:0;
+  right: 0;
+  bottom: 0;
+}
+.subject-tips>span{
+  display: inline-block;
+  position: absolute;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  top:50%;
+  left: 50%;
+  margin-top: -16px;
+  margin-left: -93px;
+}
+.subject-intro-head{
+  border: 1px solid #dddddd;margin-bottom: 9px;border-radius: 10px;box-shadow: 0 0 10px 5px #e9e9e9
+}
+.subject-intro-cont{
+  border-radius: 10px;padding: 25px 19px;position: relative;
+}
+.subject-intro-price{
+  color: #65a9fc;font-size: 18px;font-weight: 600;
+}
+.subject-intro-time{
+  margin-top: 10px;margin-bottom: 18px;
+}
+.subject-intro-buy{
+  border: none;border-radius:5px;color: #fff;background-color: #65a9fc;height: 37px;line-height: 35px;text-align: center;padding: 0 3%;font-size: 14px;
+}
+.subject-intro-vip{
+  border: none;border-radius:5px;color: #fff;background-color: #ffc600;height: 37px;line-height: 35px;text-align: center;margin-left: 13px;padding: 0 1.5%;font-size: 14px;
+}
+.subject-intro-middle{
+  background: #fff;float: left;width: 68%;border: 1px solid #dddddd;margin-bottom: 40px;border-radius: 10px;box-shadow: 0 0 10px 5px #e9e9e9
+}
+.subject-intro-middle>div{
+  border-radius: 10px;padding: 17px 39px 60px;
+}
+.subject-intro-footrt{
+  background: #fff;float:left;width: 31%;border: 1px solid #dddddd;margin-bottom: 40px;border-radius: 10px;box-shadow: 0 0 10px 5px #e9e9e9;margin-left: 1%;
+}
+.subject-intro-footrt>div{
+  border-radius: 10px;padding: 19px 20px;
+}
