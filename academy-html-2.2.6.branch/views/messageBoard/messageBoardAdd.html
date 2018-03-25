@@ -1,0 +1,59 @@
+<div class="mb-detail-header flex-box-vrtical-center flex-box-justfy-center" >
+    <div class="back-btn flex-box-vrtical-center" ui-sref="messageBoardList"></div>
+    <p style="color:#fff;font-size:5.6vw">发表主题</p>
+    <button class="flex-box-vrtical-center send-btn" ng-click="vm.posting()">发帖</button>
+</div>
+<div class="flex-box-vrtical-center mb-edit-header2 pd-lr-15" style="color:#a4a4a4;font-size: 4.6vw">
+    <p style="margin-right: 1vw">选择板块 ></p>
+    <div ng-bind="vm.params.grade|gradeType" ng-click="vm.setGrade()" style="width: 18vw;text-align: center;position: absolute;left: 29vw;"></div>
+    <div class="mb-grade-bar">
+        <p ng-click="vm.setGrade(1)">初中部</p>
+        <p ng-click="vm.setGrade(2)">高中部</p>
+    </div>
+</div>
+<div class="pd-lr-15 edit-wrap">
+    <div class="edit-title-wrap">
+        <input class="edit-title"  type="text" placeholder="输入标题" maxlength="20" ng-model="vm.params.title">
+    </div>
+    <div class="content-wrap" style="-webkit-user-select:text;color:#a4a4a4">
+        <p ng-show="vm.placeholder" style="position: absolute;top:10px;left: 0;color:#b5b5b5">请输入内容...</p>
+        <div id="content" style="min-height: 100%;word-break: break-all;max-width: 100%;-webkit-user-select:text;-webkit-user-modify:read-write" contenteditable="true" ng-keydown="vm.check()" ng-model="vm.content"></div>
+    </div>
+</div>
+<div id="edit-toolbar" class="edit-toolbar">
+    <!--<button data-name="print">打印</button>-->
+    <!--<span high-lighted data-name="insertImage" class="insert-img-icon" ng-click="vm.insertImage()">图片</span>-->
+    <img src="../../images/edit-img.png" alt="" data-name="insertImage" ng-click="vm.insertImage()">
+    <span style="position: relative;">
+    <img src="../../images/edit-color.png" ng-if='false' ng-click="vm.colorBar=!vm.colorBar">
+        <i class="line" ng-show="vm.colorBar"></i>
+    </span>
+    <img src="../../images/weigth.png" ng-if='false'  set-style data-name="bold">
+
+
+    <!--&lt;!&ndash;<button data-name="italic">斜线</button>&ndash;&gt;-->
+    <!--<button high-lighted data-name="underline">下划线</button>-->
+
+    <!--<button data-name="fontsize" data-value="16px">大号字体</button>-->
+
+    <!--<button data-name="forecolor" data-value="red">红色文本</button>-->
+    <!--<button data-name="forecolor" data-value="blue">蓝色文本</button>-->
+    <!--<button data-name="backcolor" data-value="gray">灰色背景</button>-->
+    <!--<button data-name="selectAll">全选</button>-->
+    <!--<button data-name="delete">删除</button>-->
+    <!--<button data-name="undo">撤销</button>-->
+    <!--<button data-name="removeFormat">清空格式</button>-->
+    <!--颜色选择菜单-->
+    <div class="color-bar flex-box-vrtical-center flex-box-justfy-around" ng-show="vm.colorBar">
+        <button data-name="forecolor" style="background: #0bc3c2" data-value="#0bc3c2" ng-click="vm.colorBar=!vm.colorBar"></button>
+        <button data-name="forecolor" style="background: #f13b58" data-value="#f13b58" ng-click="vm.colorBar=!vm.colorBar"></button>
+        <button data-name="forecolor" style="background: #ff8f3a" data-value="#ff8f3a" ng-click="vm.colorBar=!vm.colorBar"></button>
+        <button data-name="forecolor" style="background: #a7cc43" data-value="#a7cc43" ng-click="vm.colorBar=!vm.colorBar"></button>
+        <button data-name="forecolor" style="background: #4bebc3" data-value="#4bebc3" ng-click="vm.colorBar=!vm.colorBar"></button>
+        <button data-name="forecolor" style="background: #2496ed" data-value="#2496ed" ng-click="vm.colorBar=!vm.colorBar"></button>
+        <button data-name="forecolor" style="background: #9184f0" data-value="#9184f0" ng-click="vm.colorBar=!vm.colorBar"></button>
+        <button data-name="forecolor" style="background: #020202" data-value="#020202" ng-click="vm.colorBar=!vm.colorBar"></button>
+    </div>
+</div>
+<div class="cancel-wrap" ng-click="vm.setGrade()" ng-show="vm.gradeBarStatus"></div>
+<div class="tip-edit" ng-show="vm.tip.status" ng-bind="vm.tip.text"></div>

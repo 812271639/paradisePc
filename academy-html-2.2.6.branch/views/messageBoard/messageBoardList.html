@@ -1,0 +1,83 @@
+<div id="message-board" style="min-height: 100vh;background: #f3f3f3" move-more="vm.loadMore()" load-statu="vm.loading">
+    <div>
+        <!--<div><span>初中部</span></div>-->
+        <!--<div><span>高中部</span></div>-->
+        <div class="ui-row  video-menu video-menu-font flex-box-vrtical-center flex-box-justfy-center">
+            <div class="flex-box-vrtical-center back-btn" ui-sref="map"></div>
+            <span ng-click="vm.changeGrade(1)" ng-class="{'grade-style-right':vm.params.grade==2}">初中部</span>
+            <span style="margin-left: 10px;margin-right: 10px" ng-show="vm.params.grade==1">/</span>
+            <span style="margin-left: 10px;margin-right: 10px" ng-show="vm.params.grade==2">\</span>
+            <span ng-click="vm.changeGrade(2)" ng-class="{'grade-style-left':vm.params.grade==1}">高中部</span>
+        </div>
+    </div>
+    <hr class="line2" ng-if="vm.postsStickyList.length==0">
+    <div class="mb-posts-top bd-b-eee pd-lr-6-vw" ng-repeat="li in vm.postsStickyList"  ng-click="vm.messageBoardDetail(li)">
+        <span class="mb-posts-top-icon">顶</span>
+        <p class="pd-l-15" ng-bind="li.title"></p>
+    </div>
+    <div class="ui-tab" ng-switch="vm.params.type">
+        <ul class="ui-row ui-whitespace video-menu video-menu-font flex-box-vrtical-center" style="height:11vw">
+            <li class="ui-col ui-col-50 ">
+                <p ng-click="vm.changePage(1)" ng-class="{'color-e7':vm.params.type==2}">精华</p></li>
+            <li class="video-menu-separator"></li>
+            <li class="ui-col ui-col-50">
+                <p ng-click="vm.changePage(2)" ng-class="{'color-e7':vm.params.type==1}">所有</p>
+            </li>
+        </ul>
+        <!--精华贴-->
+        <ul ng-switch-default>
+            <li class="pd-tb-3-vw bd-b-fff pd-l-6-vw" ng-repeat="li in vm.postsList" ng-click="vm.messageBoardDetail(li)">
+                <div class="flex-box-justfy-between" style="min-height: 70px">
+                    <p class="text-pre-in pd-t-5 pd-r-15 mb-posts-title" style="color: #40403f;font-size: 4vw;" ng-bind="li.title" ></p>
+                    <img class="mb-posts-cover" ng-src="{{li.firstImg}}" alt="" ng-if="li.firstImg">
+                </div>
+                <div class="flex-box-vrtical-center color-868686">
+                    <p class="flex-item-average flex-box-vrtical-center">
+                        <img class="img-round mb-posts-head" ng-src="{{li.img}}" style="width: 5.3vw;height: 5.3vw" alt="" ng-if="li.img">
+                        <span class="mb-posts-portrait-span" style="padding-left: 10px" ng-bind="li.author|limitTo:5"></span>
+                    </p>
+                    <p class="flex-item-average" ng-bind="li.createAt|dateConvert"></p>
+                    <p class="flex-item-average flex-box-justfy-around">
+                        <span class="mb-posts-read" ng-bind="li.readCount"></span>
+                        <span class="mb-posts-reply" ng-bind="li.repliesCount"></span>
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <!--所有帖-->
+        <ul ng-switch-when="2">
+            <li class="pd-tb-3-vw bd-b-fff pd-l-6-vw"  ng-repeat="li in vm.postsList" ng-click="vm.messageBoardDetail(li)">
+                <div class="flex-box-justfy-between" style="min-height: 70px" >
+                    <p class="text-pre-in pd-t-5 pd-r-15 mb-posts-title" style="color: #40403f;font-size: 4vw;" ng-bind="li.title"></p>
+                    <img class="mb-posts-cover" ng-src="{{li.firstImg}}" alt="" ng-if="li.firstImg">
+                </div>
+                <div class="flex-box-vrtical-center color-868686">
+                    <p class="flex-item-average flex-box-vrtical-center">
+                        <img class="img-round mb-posts-head" style="width: 5.3vw;height: 5.3vw" ng-src="{{li.img}}" alt="">
+                        <span class="mb-posts-portrait-span" style="padding-left: 10px" ng-bind="li.author|limitTo:5"></span>
+                    </p>
+                    <p class="flex-item-average" ng-bind="li.createAt|dateConvert"></p>
+                    <p class="flex-item-average flex-box-justfy-around">
+                        <span class="mb-posts-read" ng-bind="li.readCount"></span>
+                        <span class="mb-posts-reply" ng-bind="li.repliesCount"></span>
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <div class="no-posts" ng-if="vm.postsList.length==0&&!vm.nextPage">
+            <span>点我！ 点我！ 点我！</span>
+            <img class="arrow" src="../../images/arrow.png" alt="">
+            <img class="add" src="../../images/add.png" alt="新增帖子"
+                 ui-sref="messageBoardAdd({grade:vm.params.grade})">
+        </div>
+        <img class="mb-posts-add" src="../../images/add.png" alt="新增帖子"
+             ui-sref="messageBoardAdd({grade:vm.params.grade})" ng-if="vm.postsList.length>0">
+    </div>
+
+</div>
+<!--加载更多-->
+<div id="loading" style=" height:11vw;width:100%;position:fixed;display: none;bottom: 0;background:rgba(229,203,178,.5);text-align: center;z-index: 9999">
+    <i class="bottom-loading"></i>
+</div>
+<loading ng-if="vm.loaded<2"></loading>
+    <!--<div load-more more-data="vm.more()" next-page="vm.nextPage"></div>-->

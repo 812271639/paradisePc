@@ -1,0 +1,20 @@
+<ul class="ui-row video-menu video-menu-font flex-box-vrtical-center">
+    <li class="ui-col ui-col-50  video-menu-bar" ng-click="gradeMenu()" ng-class="{active:currentBtn===0}" ng-bind="gradeValue|paramConvert:videoData:'grade'"></li>
+    <li class="video-menu-separator" ng-hide="currentBtn===0||currentBtn===1"></li>
+    <li class="ui-col ui-col-50  video-menu-bar" ng-click="subMenu()" ng-class="{active:currentBtn===1}" ng-bind="subjectValue|subjectConvert:subjectList"></li>
+</ul>
+<div class="video-menu-wrap">
+    <ul class="ui-row  video-menu-box" ng-show="grade">
+        <li class="ui-col ui-col-33" ng-repeat="item in videoData.grade">
+            <button class="" type="button" ng-click="choose(0,item.type,item.name)" ng-bind="item.name"
+                    ng-class="{active:gradeValue===item.type}"></button>
+        </li>
+    </ul>
+    <ul class="ui-row  video-menu-box" ng-show="subject">
+        <li class="ui-col ui-col-33" ng-repeat="item in subjectList" ng-if="item.haveVideo==1">
+            <button type="button" ng-click="choose(1,item.id,item.name);subjectName=item.name" ng-bind="item.name"
+                    ng-class="{active:subjectValue===item.id}"></button>
+        </li>
+    </ul>
+    <div class="shade" style="top:13.5vw;background: rgba(0,0,0,.7)" ng-click="closeMenu()" ng-show="subject||grade"></div>
+</div>

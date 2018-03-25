@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+    <!--<meta http-equiv="Pragma" content="no-cache"/>-->
+    <!--<meta http-equiv="Expires" content="0"/>-->
+    <base href="/">
+    <!--<meta name="viewport" content="width=640px,user-scalable=no">-->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <!--忽略数字变为号码-->
+    <meta content="telephone=no" name="format-detection">
+    <title>学渣乐园</title>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/frozen.css" rel="stylesheet">
+    <!--样式表已修改动态加载-->
+    <!--<link href="styles/public.css?ver=1.2.0" rel="stylesheet">-->
+    <!--&lt;!&ndash;<link href="styles/base.css" rel="stylesheet">&ndash;&gt;-->
+    <!--<link href="styles/Main.css?ver=1.2.0" rel="stylesheet">-->
+    <!--<link href="styles/module.css?ver=1.2.0" rel="stylesheet">-->
+</head>
+<body ng-app="paradiseApp">
+<div class="page-wrap" style="background: #f3f3f3" ui-view></div>
+<div class="ui-dialog" ng-class="{'show':dialog.status}">
+    <div class="dialog-box2">
+        <div class="dialog-text">
+            <div style="text-align: center">
+                <!--<h4>标题</h4>-->
+                <div ng-bind="dialog.text"></div>
+            </div>
+        </div>
+        <div class="dialog-btn-group">
+            <button type="button" data-role="button" class="select" ng-click="dialog.cancle()" ng-show="dialog.cancle">
+                取消
+            </button>
+            <button type="button" data-role="button" class="select" ng-click="dialog.action()">确定</button>
+        </div>
+    </div>
+</div>
+<!--<script src="libs/zepto.min.js"></script>-->
+<script src="libs/zepto.min-1.2.0.js"></script>
+<script src="libs/frozen.js"></script>
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+<script src="//cdn.bootcss.com/oclazyload/1.0.9/ocLazyLoad.min.js"></script>
+<script src="//cdn.bootcss.com/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js"></script>
+<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll-zoom.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+<!--<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+<!--<script src="libs/carousel/angular-carousel.js"></script>-->
+<!--<script src="libs/carousel/angular-touch.js"></script>-->
+<!--<script>-->
+<!--var router = document.createElement("script"),-->
+<!--time = new Date().getTime();-->
+<!--router.src = "js/app/router.js?ver="+time;-->
+<!--router.onload = function () {-->
+<!--angular.bootstrap(document,["paradiseApp"]);-->
+<!--}-->
+<!--document.getElementsByTagName("body")[0].appendChild(router);-->
+<!--</script>-->
+<script src="js/app/router.js?ver="></script>
+<script src="js/service/AjaxService.js?ver="></script>
+<script src="js/app/appRun.js?ver="></script>
+<script src="js/constants/constants.js?ver="></script>
+<script src="js/service/ajaxAddress.js?ver="></script>
+<script src="js/service/services.js?ver="></script>
+<script src="js/filters/filters.js?ver="></script>
+<script src="js/directives/directives.js?ver="></script>
+</body>
+</html>

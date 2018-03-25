@@ -1,0 +1,38 @@
+
+<div style="min-height: 100vh;background:#fff;padding-top: 13.5vw">
+    <div class="mb-detail-header-tree flex-box-vrtical-center flex-box-justfy-center" style="z-index: 2;position: fixed;top:0;width: 100vw;background: #e5cbb2">
+        <div class="back-btn flex-box-vrtical-center" ng-click="vm.back()"></div>
+        <p style="color:#fff;font-size:5.6vw">阅览室</p>
+        <div class="mb-detail-del flex-box-vrtical-center" ng-if="vm.currentUser" ng-click="vm.deletePosts()"></div>
+    </div>
+    <div class="ui-whitespace  wrap-pd-tm font-dis" style="background: #fff" ng-cloak ng-if="vm.article">
+        <strong class="mr-t-5 font-default font-18" ng-bind="vm.article.title"></strong>
+        <p class="mr-tb font-size-12">
+            <span class="mr-r" ng-bind="vm.article.publishAt|dateConvert"></span>
+            <span ng-bind="vm.article.author"></span>
+        </p>
+        <div class="ui-txt-justify mr-tb content" ng-bind-html="vm.article.content|trust"></div>
+        <div class="flex-box-justfy-center mr-tb pd-5 ">
+            <!--点赞-->
+            <div class="text-center mr-r-50">
+                <p class="icon-like h-30" ng-class="{'icon-liked':vm.article.likeStatus}" ng-click="vm.like()"></p>
+                <p class="font-20-dis mr-t-10" ng-class="{'font-20--like':vm.article.likeStatus}"
+                   ng-bind="vm.article.love"></p>
+            </div>
+            <!--收藏-->
+            <div class="text-center position-par">
+                <div class="dialog-box" ng-show="vm.tip">
+                    <span class="dialog-box-arrow"></span>
+                    <span ng-bind="vm.article.collectionStatus?'收藏成功':'取消收藏'"></span>
+                </div>
+                <p class="icon-collect h-30 " ng-class="{'icon-collected':vm.article.collectionStatus}"
+                   ng-click="vm.collect()"></p>
+                <p class="mr-t-10 font-20-dis" ng-class="{'font-20--collect':vm.article.collectionStatus}"
+                   ng-bind="vm.article.collection"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<loading ng-if="vm.loaded<1"></loading>
+

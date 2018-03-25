@@ -1,0 +1,37 @@
+<div class="buyMember">
+    <div class="buyMember-title">
+        <img src="../../../images/back.png" alt="" ng-click="vm.goBack()">
+        <span>学生会</span>
+    </div>
+    <div class="buyMember-user">
+        <img src="{{vm.user.img}}" alt="">
+        <div>
+            <p>
+                {{vm.user.alias}}
+                <img src="../../../images/buyMemberNotVip_03.png" alt="" ng-if="vm.user.isMember==2">
+                <img src="../../../images/buyMemberVip_03.png" alt="" ng-if="vm.user.isMember==1">
+            </p>
+            <p ng-if="vm.user.isMember==2">您还未开通会员</p>
+            <p ng-if="vm.user.isMember==1">会员还有{{vm.lessDay}}天到期</p>
+        </div>
+    </div>
+    <div class="buyMember-list">
+        <div ng-repeat="li in vm.list" ng-class="{'bg-f5f0ea':vm.chooseMember==li.id}" ng-click="vm.choose(li)">
+            <p><span>{{li.name}}</span><img src="../../../images/recommend_03.png" alt="" class="buyMember-recommend" ng-if="li.recommend==1"></p>
+            <p><span class="color-e5cbb2">{{li.period}}</span>个月，每月<span class="color-e5cbb2">{{li.price/li.period|fundFilter2}}</span>元</p>
+            <span>{{li.price}}元</span>
+        </div>
+        <div>
+            <p>支付金额:<span class="color-e5cbb2">{{vm.pay}}元</span></p>
+            <button type="button" ng-if="vm.user.isMember==2" ng-click="vm.order()">立即支付</button>
+            <button type="button" ng-if="vm.user.isMember==1" ng-click="vm.order()">立即续费</button>
+        </div>
+    </div>
+    <div class="buyMember-card" ui-sref="card">
+        <p>
+            <span>卡劵激活</span>
+            <img src="../../../images/arrow_07.png" alt="">
+            <span>去激活</span>
+        </p>
+    </div>
+</div>

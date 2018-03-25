@@ -1,0 +1,25 @@
+<div class="identity-back">
+    <div class="bound-logo">
+        <img src="../../images/binding-_03.png">
+    </div>
+    <div class="bund-text">
+        <p>已绑手机</p>
+        <p ng-bind="vm.user.mobile" ng-cloak></p>
+        <button class="btn-binding" ui-sref="binding({type:'mobile'})" ng-if="!vm.user.mobile&&vm.load" ng-cloak>未绑定
+        </button>
+    </div>
+    <div class="bund-text">
+        <p>已绑邮箱</p>
+        <p ng-bind="vm.user.mail" ng-cloak></p>
+        <button class="btn-binding" ui-sref="binding({type:'mail'})" ng-if="!vm.user.mail&&vm.load" ng-cloak>未绑定
+        </button>
+    </div>
+</div>
+<div style="width: 100vw;height: 100vh;background-color: #fff;position: absolute;top: 0;z-index: 9999" ng-if="loading">
+    <div class="ui-loading-block show loading">
+        <div class="ui-loading-cnt">
+            <i class="ui-loading-bright"></i>
+            <p>正在加载中...</p>
+        </div>
+    </div>
+</div>

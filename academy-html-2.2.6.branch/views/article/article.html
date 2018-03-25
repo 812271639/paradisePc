@@ -1,0 +1,55 @@
+<div class="mb-detail-header-tree flex-box-vrtical-center flex-box-justfy-center" style="z-index: 2;position: fixed;width: 100vw;background: #e5cbb2">
+    <div class="back-btn flex-box-vrtical-center" ui-sref="map"></div>
+    <p style="color:#fff;font-size:5.6vw">阅览室</p>
+    <div class="mb-detail-del flex-box-vrtical-center" ng-if="vm.currentUser" ng-click="vm.deletePosts()"></div>
+</div>
+<div ng-class="{'scroll-wrap--collection':stateCurrent.is('collection.article')}" style="padding-top: 13.5vw">
+
+    <!--轮播-->
+    <div class="ui-slider banner-wrap " banner-carousel ng-if="vm.bannerList.length>0">
+        <ul class="ui-slider-content">
+            <li ng-repeat="banner in vm.bannerList|limitTo:8" back-img="{{banner.img}}"
+                ui-sref="articleDetail({id:banner.id})"></li>
+        </ul>
+    </div>
+    <!--列表-->
+    <div class="list-wrap">
+        <div class="ui-flex ui-flex-align-center article-wrap" ng-repeat="item in vm.article track by $index"
+             ui-sref="articleDetail({id:item.id})" ng-cloak>
+            <div class="article-cover pd-tb-20">
+                <img ng-src="{{item.img}}" class="ui-avatar-s">
+            </div>
+            <div class="ui-list-info rest-pd">
+                <p class="article-title" ng-bind="item.title|textLimit:14"></p>
+                <p class="font-default" ng-bind="item.author"></p>
+                <p class="font-size-12" ng-bind="item.summary|textLimit:25"></p>
+                <div class="flex-box-justfy-center font-dis">
+                    <p class="ui-flex ui-flex-pack-start ui-flex-align-center ui-col pd-5 ">
+                        <i class="icon-like width-14 mr-r-5"></i>
+                        <span class="mr-r-20  font-size-10" ng-bind="item.love"></span>
+                        <i class="icon-collect width-14 mr-r-5"></i>
+                        <span class=" font-size-10" ng-bind="item.collection"></span>
+                    </p>
+                    <div>
+                        <p class="text-r-nwrap update font-size-10" ng-bind="item.publishAt|dateConvert"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="no-found" ng-if="vm.notfound" ng-class="{'mr-t-25vh':!vm.bannerList||vm.bannerList==0}">
+            <span class="nocontent-font">页面空空如也~</span>
+        </div>
+        <div class="pd-tb-10" ng-if="vm.article&&vm.article.length>0">
+            <div load-more more-data="vm.more()" next-page="vm.nextPage"></div>
+        </div>
+    </div>
+</div>
+<loading ng-if="vm.loaded<2"></loading>
+<!--<div style="width: 100vw;height: 100vh;background-color: #fff;position: absolute;top: 0;z-index: 9999" ng-if="loading">-->
+    <!--<div class="ui-loading-block show loading">-->
+        <!--<div class="ui-loading-cnt">-->
+            <!--<i class="ui-loading-bright"></i>-->
+            <!--<p>正在加载中...</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

@@ -1,0 +1,16 @@
+<div class="mb-detail-header-tree flex-box-vrtical-center flex-box-justfy-center" style="z-index: 2">
+    <div class="back-btn flex-box-vrtical-center" ui-sref="map"></div>
+    <p style="color:#fff;font-size:5.6vw">藏片树叶</p>
+    <div class="mb-detail-del flex-box-vrtical-center" ng-if="vm.currentUser" ng-click="vm.deletePosts()"></div>
+</div>
+<div class="tree-hole-bg">
+    <div class="textarea-wrap">
+        <textarea class="leaves-content" maxlength="80" placeholder="请输入内容..." ng-model="vm.content"></textarea>
+        <span>{{vm.content.length||0}}/80</span>
+    </div>
+
+    <div class="leaves-btn-wrap">
+        <button ui-sref="treeHole">取消</button>
+        <button ng-click="vm.perfection()">完成</button>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="mb-detail-header-tree flex-box-vrtical-center flex-box-justfy-center" style="z-index: 2">
+    <div class="back-btn flex-box-vrtical-center" ui-sref="map"></div>
+    <p style="color:#fff;font-size:5.6vw">树洞</p>
+    <div class="mb-detail-del flex-box-vrtical-center" ng-if="vm.currentUser" ng-click="vm.deletePosts()"></div>
+</div>
+<div class="ui-dialog show" style="background: rgba(0,0,0,.7);z-index: 1" ng-class="{'show':dialog.status}">
+    <div class="ui-dialog-cnt dialog-box3" style="font-size: 4.6vw">
+        <div class="ui-dialog-bd" style="padding:9px">
+            <p style="text-align: center;color: #723e1a;word-break: break-all">学渣乐园的树洞里藏着很多人写有心里话的小树叶，去探索一下吧！</p>
+        </div>
+        <div class="btn-treewelcome">
+            <div class="btn-wrap">
+                <button type="button" data-role="button" class="select" ng-click="jump()">去探索</button>
+            </div>
+
+        </div>
+    </div>
+</div>

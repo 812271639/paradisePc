@@ -1,0 +1,70 @@
+<div ng-class="{'scroll-wrap--collection':stateCurrent.is('collection.video')}" ng-show="!vm.loading">
+
+    <div class="menu-wrap" video-menu=true ng-if="stateCurrent.is('video')&&vm.subjectList" grade-value="vm.video.grade"
+         subject-value="vm.video.subject" subject-list="vm.subjectList" reload-data="vm.getData()"></div>
+    <div class="ui-slider banner-wrap" banner-carousel ng-if="vm.bannerList.length>0&&vm.reload">
+        <ul class="ui-slider-content">
+            <li ng-repeat="banner in vm.bannerList|limitTo:8" back-img="{{banner.coverImg}}"
+                ui-sref="videoDetail({'id':banner.id})"></li>
+        </ul>
+    </div>
+
+    <div class="video-list-wrap" ng-if="!vm.loading">
+        <div class="ui-border-radius mr-t video-item" ng-class="{'mr-t-0':$index==0}" ng-repeat="item in vm.videoList track by $index"
+             style="width:100%">
+            <!--视频标题部分-->
+            <div class="flex-box-justfy-center">
+                <p class="video-menu-icon "><img ng-src="{{item.teacherImg}}" class="ui-avatar-s"></p>
+                <div class=" ui-flex ui-flex-ver">
+                    <strong class="pd-lr-10" ng-bind="item.teacherName"></strong>
+                    <!--文章摘要-->
+                    <p class="text-justify pd-lr-10" synopsis-pucker ng-model="vm.num[$index]">
+                        <span ng-bind="item.summary|textLimit:vm.num[$index]?1000:30"></span>　
+                        <a class="more-text" ng-bind="vm.num[$index]?'收起':'更多'"></a>
+                    </p>
+                </div>
+            </div>
+            <!--视频信息部分-->
+            <div class="video-cover" ui-sref="videoDetail({'id':item.id})">
+                <div class="video-cover-shade ui-txt-white flex-box-center ">
+                    <h1 class="text-center-pre " ng-bind="item.title|newLine:10"></h1>
+                    <p class="pd-tb-20" ng-bind="item.duration"></p>
+                    <p class="video-play">立即观看</p>
+                    <img class="video-play-icon font-white" src="../../images/videoVIP_03.png" ng-if="item.charge==1">
+                </div>
+                <img class="ui-border-radius" ng-src="{{item.cutImg}}">
+            </div>
+            <!--视频点赞信息-->
+            <div class="flex-box-justfy-center font-size-12 font-dis">
+                <p class="ui-flex-align-center ui-col pd-5">
+                    <i class="icon-like width-18 mr-r-5"></i>
+                    <span class="mr-r-20" ng-bind="item.love"></span>
+                    <i class="icon-collect width-18 mr-r-5"></i>
+                    <span ng-bind="item.collection"></span>
+                </p>
+                <div>
+                    <p class="text-r-nwrap  update" ng-bind="item.publishAt|dateConvert"></p>
+                </div>
+            </div>
+        </div>
+        <!--&lt;!&ndash;无数据页面&ndash;&gt;-->
+        <div class="no-found" ng-if="vm.notfound" ng-class="{'no-found2':vm.bannerList.length!=0}" >
+            <span class="nocontent-font">页面空空如也~</span>
+        </div>
+
+        <!--加载更多-->
+
+        <div class="pd-10" ng-if="vm.videoList&&vm.videoList.length>0">
+            <div load-more more-data="vm.more()" next-page="vm.nextPage"></div>
+        </div>
+    </div>
+</div>
+<loading ng-if="vm.loaded<2"></loading>
+<!--<div style="width: 100vw;height: 100vh;background-color: #fff;position: absolute;top: 0;z-index: 9999" ng-if="loading">-->
+    <!--<div class="ui-loading-block show loading">-->
+        <!--<div class="ui-loading-cnt">-->
+            <!--<i class="ui-loading-bright"></i>-->
+            <!--<p>正在加载中...</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

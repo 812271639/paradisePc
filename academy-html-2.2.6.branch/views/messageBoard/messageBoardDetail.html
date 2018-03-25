@@ -1,0 +1,96 @@
+<div style="min-height: 100vh" move-more="vm.loadMore()" load-statu="vm.loading">
+    <div class="mb-detail-header flex-box-vrtical-center flex-box-justfy-center" id="header">
+        <div class="back-btn flex-box-vrtical-center" ng-click="vm.back()"></div>
+        <p ng-bind="vm.grade|gradeType" style="color:#fff;font-size:5.6vw"></p>
+        <div class="mb-detail-del flex-box-vrtical-center" ng-if="vm.currentUser" ng-click="vm.deletePosts()"></div>
+    </div>
+    <p class="mb-detail-title" ng-bind="vm.params.title" id="title"></p>
+    <div class="mb-detail-content-wrap" id="content" style="color: #868686;">
+        <div class="flex-box-justfy-start">
+            <img class="mb-detail-content-img" ng-src="{{vm.params.img}}" alt="" ui-sref="identity({userId:vm.params.uid})">
+            <div class="flex-box-vertical-sc" style="flex-grow: 1;font-size: 3vw">
+                <p><span ng-bind="vm.params.author|limitTo:5" ui-sref="identity({userId:vm.params.uid})"></span></p>
+                <p ng-bind="vm.params.createAt|dateConvert"></p>
+            </div>
+            <div class="flex-box-vertical-sc">
+                <!--<p style="text-align: right;" ng-if="vm.currentUser">-->
+                    <!--<span style="background: #d9ab7f;color:#fff;padding-left: 4px;padding-right: 4px;font-size: 3vw">楼主</span>-->
+                <!--</p>-->
+                <p class="view">
+                    <span class="mb-posts-read" ng-bind="vm.params.readCount"></span>
+                    <span class="mb-posts-reply" ng-bind="vm.params.repliesCount"></span>
+                </p>
+            </div>
+        </div>
+        <!--帖子内容-->
+        <div class="pd-t-20" id="post-content" ng-bind-html="vm.params.content|trust" style="word-break: break-all;color: #a0a0a0;"></div>
+    </div>
+    <!--评论-->
+    <div class="pd-15" id="reply">
+        <div class="flex-box-vrtical-center ">
+            <p style="color:#d9ab7f">全部评论:({{vm.total}}条)</p>
+        </div>
+        <div ng-repeat="item in vm.list" ng-switch="item.deleteStatus">
+            <!--有评论的内容-->
+            <div class="mb-detail-reply-list" ng-switch-default>
+                <span class="storey">{{item.floor}}楼</span>
+                <div class="flex-box-justfy-start">
+                    <img class="mb-detail-content-img" ui-sref="identity({userId:item.uid})" ng-src="{{item.img}}" alt="">
+                    <div class="flex-box-vertical-sc" style="flex-grow: 1;position: relative; color: #b5b5b5;font-size: 3vw">
+                        <p><span ng-bind="item.author|limitTo:5" ui-sref="identity({userId:item.uid})"></span></p>
+                        <p ng-bind="item.createAt|dateConvert"></p>
+                        <span style="background: #d9ab7f;color:#fff;position: absolute;left:20vw;top:0;padding-left: 4px;padding-right: 4px"
+                              ng-if="vm.uid==item.uid">楼主</span>
+                    </div>
+                </div>
+                <div class="flex-box-justfy-between">
+                    <p class="text-pre-in pd-t-5" style="color: #868686;padding-left: 13vw" ng-bind="item.content.text"></p>
+                    <img src="../../images/delete2.png" style="height: 4.5vw;height: 4vw;margin-top: 5px;margin-right: 7px" alt="" ng-click="vm.delete(item)" ng-if="vm.currentUser||item.uid==vm.currentUid">
+
+                    <!--<button class="ui-btn ui-btn-danger" ng-click="vm.delete(item)"-->
+                            <!--ng-if="vm.currentUser||item.uid==vm.currentUid">删除-->
+                    <!--</button>-->
+                </div>
+                <div class="img-view" ng-show="item.content.imgList && item.content.imgList.length>0">
+                    <div class="item" ng-repeat="img in item.content.imgList track by $index" show-url="vm.imgUrl">
+                        <img ng-src="{{img}}" alt="" >
+                    </div>
+                </div>
+            </div>
+            <!--被删除的内容-->
+            <div class="mb-detail-reply-list" ng-class="{'mb-detail-reply-del':item.deleteStatus==2}" ng-switch-when="2">
+                <span class="storey">{{item.floor}}楼</span>
+                <p style="color: #b5b5b5;font-size: 3vw">该评论已删除!</p>
+            </div>
+            <!--无评论-->
+        </div>
+        <div ng-if="vm.total==0" class="noreply">沙发小能手就是你呀~</div>
+        <div style="width: 100%;height: 27vw"></div>
+    </div>
+    <div class="reply-wrap bg-e5cbb2">
+        <div class="mb-detail-reply-toolBar">
+            <img src="../../images/imgBtn.png" class="insert-btn" alt="插入图片" ng-click="vm.openImgView()">
+            <textarea id="textarea" rows="1" ng-focus="vm.restScroll()" placeholder="输入评论......" maxlength="350" ng-model="vm.replyContent"></textarea>
+            <button  ng-click="vm.sendReply()">发送</button>
+        </div>
+        <div class="img-view" ng-show="vm.imgViewShow">
+            <div class="item" ng-repeat="item in vm.imgList track by $index">
+                <img ng-src="{{item}}" alt="" >
+                <i class="del-item" ng-click="vm.rmItem($index)">x</i>
+            </div>
+            <img class="add-item" src="../../images/add-btn.png" alt="" ng-click="vm.insertImage()" ng-hide="vm.imgList.length == 3">
+            <p class="img-num">{{vm.imgList.length||0}}/3</p>
+        </div>
+    </div>
+
+</div>
+<!--回帖大图展示-->
+<div class="img-shade" ng-show="vm.imgUrl" ng-click="vm.imgHide()" ng-cloak>
+    <img ng-src="{{vm.imgUrl}}" alt="">
+</div>
+
+<!--加载更多-->
+<div id="loading" style=" height:11vw;width:100%;position:fixed;display: none;bottom: 0;background:rgba(229,203,178,.5);text-align: center;z-index: 9999">
+    <i class="bottom-loading"></i>
+</div>
+<loading ng-if="vm.loaded<2"></loading>

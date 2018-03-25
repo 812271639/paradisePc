@@ -1,0 +1,31 @@
+<div class="mb-detail-header-tree flex-box-vrtical-center flex-box-justfy-center" style="z-index: 2">
+    <div class="back-btn flex-box-vrtical-center" ng-click="vm.back()"></div>
+    <p style="color:#fff;font-size:5.6vw">树洞</p>
+    <div class="mb-detail-del flex-box-vrtical-center" ng-if="vm.currentUser" ng-click="vm.deletePosts()"></div>
+</div>
+<div class="tree-hole-bg">
+
+    <div class="card-container-1 " touch-move="vm.showRandom()">
+        <div class="card textarea-wrap" ng-repeat="item in vm.leaves" style="word-break: break-all">
+            <p class="leaves-content" ng-bind="item.content"></p>
+        </div>
+    </div>
+    <div class="tree-hole-bar">
+        <div class="commend">
+            <img src="../../images/down.png" alt="" ng-click="vm.commend(0,vm.leaves[0])" ng-if="vm.type==1">
+            <p ng-if="vm.type==2" style="color: #cdcdcd;font-size: 5.6vw;height: 5.6vw;line-height: 5.6vw;margin-bottom: 4vw">踩</p>
+            <p ng-bind="vm.leaves[0].downCount" style="color: #cdcdcd;font-size: 5.6vw;height: 5.6vw;line-height: 5.6vw" ></p>
+        </div>
+        <div class="leaves-add" ui-sref="leaves"><img src="../../images/tree-hole-add.png" alt=""></div>
+        <div class="commend">
+            <img src="../../images/up.png" alt="" ng-click="vm.commend(1,vm.leaves[0])" ng-if="vm.type==1">
+            <p ng-if="vm.type==2" style="color: #cdcdcd;font-size: 5.6vw;height: 5.6vw;line-height: 5.6vw;margin-bottom: 4vw">顶</p>
+            <p ng-bind="vm.leaves[0].bumpCount" style="color: #cdcdcd;font-size: 5.6vw;height: 5.6vw;line-height: 5.6vw"></p>
+        </div>
+    </div>
+    <div class="tree-hole-btn-wrap">
+        <button class="hot-leaves-btn" style="margin-top: " ng-click="vm.getHot()" ng-if="vm.type==1">最热树叶</button>
+        <button class="tree-hole-btn-back" ng-click="vm.back()" ng-if="vm.type==2">返回</button>
+    </div>
+</div>
+<loading ng-if="(vm.type==1&&vm.loaded<3)||(vm.type==2&&vm.loaded<1)"></loading>

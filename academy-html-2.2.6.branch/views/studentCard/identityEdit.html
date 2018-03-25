@@ -1,0 +1,46 @@
+<div class="identity-back " ng-if="vm.identityDetail">
+    <!--学生卡-->
+    <div class="identity-info-wrap ui-border-b ">
+        <div class="identity-info-box">
+            <img class="identity-title" src="../../images/icard.png" alt="">
+        <div class="identity-info">
+            <!--头像-->
+            <div class="position-par identity-avatar" ng-click="vm.useCamere()">
+                <div class="shade-black--ab identity-avatar-text">换头像</div>
+                <img ng-src="{{vm.identityDetail.img}}">
+            </div>
+            <div class="identity-detail flex-col-bt">
+                <!--姓名-->
+                <div class="flex-box-vrtical-center">
+                    <span class="idendity-key flex-align-start">姓名：</span>
+                    <div class="identity-value">
+                        <textarea type="text" ng-model="vm.identityDetail.alias"
+                                  onkeypress="return  /^[a-zA-Z\u4e00-\u9fa5]+$/g.test(String.fromCharCode(window.event.keyCode))"
+                                  ondragenter="return false" rows="2" maxlength="14"></textarea>
+                    </div>
+                </div>
+                <!--年级-->
+                <div class="flex-box-vrtical-center mr-t-5" n>
+                    <span class="idendity-key">年级：</span>
+                    <div class="identity-value">
+                        <select class="scroll-menu clear-b" ng-model="vm.identityDetail.grade" scroll-menu
+                                ng-options="item.type as item.name for item in vm.identityData.grade"
+                                ng-hide="true"></select>
+                    </div>
+                </div>
+
+                <!--逆袭豆-->
+                <div class="">
+                    <span class="idendity-key">逆袭豆：</span>
+                    <span class="identity-value">{{vm.identityDetail.score}}颗</span>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        </div>
+    </div>
+    <!--设置条-->
+    <button class=" btn-save " ng-click="vm.saveChange()">保存修改</button>
+
+</div>
+<loading ng-if="vm.loaded<1"></loading>

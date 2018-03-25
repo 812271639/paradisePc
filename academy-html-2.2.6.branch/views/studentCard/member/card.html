@@ -1,0 +1,12 @@
+<div class="buyMember bg-ffffff ">
+    <div class="buyMember-title">
+        <img src="../../../images/back.png" alt="" ng-click="vm.goBack()">
+        <span>学生会</span>
+    </div>
+    <input type="text" class="card-input" placeholder="输入卡号" ng-model="vm.params.number">
+    <input type="password" class="card-input2" placeholder="输入卡密码" ng-model="vm.params.pwd">
+    <button class="card-button" type="button" ng-click="vm.card()">立即激活</button>
+</div>
+<div class="buyMember-shadow" ng-if="vm.result==1" ng-click="vm.goBack()">
+    <button class="card-button2">已激活!</button>
+</div>

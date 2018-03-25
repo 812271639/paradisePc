@@ -1,0 +1,37 @@
+<div style="min-height: 100vh;background: #f3f3f3" move-more="vm.loadMore()" load-statu="vm.loading">
+    <div class="mb-detail-header flex-box-vrtical-center flex-box-justfy-center" >
+        <!--<div class="back-btn flex-box-vrtical-center" ui-sref="identity({userId:stateCurrent.params.userId})"></div>-->
+        <div class="back-btn flex-box-vrtical-center" ng-click="vm.back()"></div>
+        <p ng-bind="vm.id?'ta的帖子':'我的帖子'" style="color:#fff;font-size:5.6vw"></p>
+        <!--<div class="mb-detail-del">-->
+            <!--<img class="mb" ng-click="vm.deletePosts()" src="../../images/colltion2.png" alt="删除" ng-if="vm.currentUser">-->
+        <!--</div>-->
+    </div>
+    <ul>
+        <ul>
+            <li class="pd-tb-3-vw bd-b-fff pd-l-6-vw" style="position: relative" ng-repeat="li in vm.postsList" ng-click="vm.messageBoardDetail(li)">
+                <div class="flex-box-justfy-between" style="min-height: 70px">
+                    <p class="text-pre-in pd-t-5 pd-r-15 mb-posts-title" ng-bind="li.title" ></p>
+                    <img class="mb-posts-cover" ng-src="{{li.firstImg}}" alt="" ng-if="li.firstImg">
+                </div>
+                <div class="flex-box-vrtical-center color-868686">
+                    <p class="flex-item-average flex-box-vrtical-center">
+                        <img class="img-round mb-posts-head" ng-src="{{li.img}}" alt="" ng-if="li.img">
+                        <span class="mb-posts-portrait-span" style="padding-left: 10px" ng-bind="li.author|limitTo:5"></span>
+                    </p>
+                    <p class="flex-item-average" ng-bind="li.createAt|dateConvert"></p>
+                    <p class="flex-item-average flex-box-justfy-around">
+                        <span class="mb-posts-read" ng-bind="li.readCount"></span>
+                        <span class="mb-posts-reply" ng-bind="li.repliesCount"></span>
+                    </p>
+                </div>
+                <span class="reddo2" ng-if="li.replyStatus==2&&vm.currentUser"></span>
+            </li>
+        </ul>
+    </ul>
+</div>
+<!--加载更多-->
+<div id="loading" style=" height:11vw;width:100%;position:fixed;display: none;bottom: 0;background:rgba(229,203,178,.5);text-align: center;z-index: 9999">
+    <i class="bottom-loading"></i>
+</div>
+<loading ng-if="vm.loaded<1"></loading>

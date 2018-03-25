@@ -1,0 +1,257 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 625%;
+  min-width: 320px;
+}
+body {
+  font-size: 0.14rem;
+  font-family: "微软雅黑";
+  background-color: #fff;
+  overflow: hidden;
+  height: 100%;
+}
+header {
+  height: 45px;
+  line-height: 45px;
+}
+.page-wrap {
+  position: absolute;
+  margin: 0 auto;
+  overflow-y: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  -webkit-overflow-scrolling: touch;
+}
+.ui-header {
+  position: relative;
+}
+.ui-header > h1 {
+  text-align: left;
+  margin-left: 25px;
+  line-height: 45px;
+}
+.map-wrap {
+  height: 100vh;
+  min-width: 320px;
+}
+.map-block {
+  position: relative;
+  margin: 0 auto;
+  min-width: 169vh;
+  height: 100vh;
+  background: url("../images/map.jpg") no-repeat;
+  background-size: 100% 100%;
+}
+.link-block {
+  position: absolute;
+  border-radius: 50%;
+}
+.site-signin {
+  left: 56%;
+  top: 60%;
+}
+.site-article {
+  left: 10%;
+  top: 55%;
+  width: 25%;
+  height: 38%;
+}
+.site-identity {
+  left: 49%;
+  top: 38%;
+}
+.site-video {
+  left: 31%;
+  top: 7%;
+  width: 25%;
+  height: 42%;
+}
+.site-video1 {
+  left: 0%;
+  top: -9%;
+  width: 12%;
+  height: 45%;
+  position: absolute;
+  transform: rotateZ(-14deg);
+}
+.site-video2 {
+  left: -2%;
+  top: 70%;
+  width: 22%;
+  height: 36%;
+  position: absolute;
+  transform: rotateZ(-56deg);
+}
+.site-video3 {
+  left: -11%;
+  top: 33%;
+  width: 17%;
+  height: 16%;
+  position: absolute;
+  transform: rotateZ(-56deg);
+  border-radius: 50%;
+}
+.site-video4 {
+  left: 84%;
+  top: 20%;
+  width: 28%;
+  height: 21%;
+  position: absolute;
+  transform: rotateZ(-56deg);
+}
+.ui-actionsheet button:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.ui-actionsheet button:not(:first-child) {
+  border-top: 1px solid #e0e0e0;
+}
+.dis-none {
+  display: none;
+}
+.dis-block {
+  display: block;
+}
+.icon-collect {
+  content: url("../images/colltion.png");
+  vertical-align: sub;
+}
+.icon-collected {
+  content: url("../images/colltioned_03.png");
+  vertical-align: sub;
+}
+.icon-like {
+  content: url("../images/like_03.png");
+  vertical-align: sub;
+}
+.icon-liked {
+  content: url("../images/liked_03.png");
+  vertical-align: sub;
+}
+
+
+.speak-box{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.speak-box-word{
+  position: fixed;
+  width: 100vw;
+  height: 30vw;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  border-top:5px solid #3b311b;
+}
+.speak-box-img1{
+  width: 30vw;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.speak-box-img2{
+  width: 42vw;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.speak-box-img3{
+  width: 40vw;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.speak-box-img4{
+  width: 50vw;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.speak-box-word1{
+  position: fixed;
+  left: 30vw;
+  bottom:0;
+  width: 65vw;
+  height: 30vw;
+  padding-top: 5vw;
+}
+.speak-box-word1>p:first-child{
+  color: #ff9537;
+}
+.speak-box-word1>p:nth-child(2){
+  color: white;
+  padding-left: 5vw;
+  padding-top: 3vw;
+  font-size: 0.1rem;
+
+}
+.speak-box-word2{
+  position: fixed;
+  left: 40vw;
+  bottom:0;
+  width: 58vw;
+  height: 30vw;
+  padding-top: 5vw;
+}
+.speak-box-word2>p:first-child{
+  color: #ff9537;
+}
+.speak-box-word2>p:nth-child(2){
+  color: white;
+  padding-left: 2vw;
+  padding-top: 3vw;
+  font-size: 0.1rem;
+
+}
+.speak-box-word3{
+  position: fixed;
+  left: 3vw;
+  bottom:0;
+  width: 56vw;
+  height: 28vw;
+  padding-top: 1vw;
+}
+.speak-box-word3>p:first-child{
+  color: #ff9537;
+}
+.speak-box-word3>p:nth-child(2){
+  color: white;
+  padding-left: 5vw;
+  padding-top: 3vw;
+  font-size: 0.1rem;
+
+}
+.speak-box-word4{
+  position: fixed;
+  left: 37vw;
+  bottom:0;
+  width: 63vw;
+  height: 30vw;
+  padding-top: 5vw;
+}
+.speak-box-word4>p:first-child{
+  color: #ff9537;
+}
+.speak-box-word4>p:nth-child(2){
+  color: white;
+  padding-left: 5vw;
+  padding-top: 3vw;
+  font-size: 0.1rem;
+
+}

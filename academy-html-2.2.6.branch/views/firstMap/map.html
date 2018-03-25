@@ -1,0 +1,115 @@
+
+<div class="bulletin-box" style="display: none;z-index: 100" id="bulletin-box" ng-click="vm.closeBlletin()">
+  <div ng-click="vm.close(); $event.stopPropagation();">
+    <p>最新公告</p>
+    <div>
+      <p ng-style="{'font-size':'{{bulletinData.appFontSize}}px' ,'color' : '{{bulletinData.fontColor}}' }"
+         ng-bind-html=" bulletinData.content "
+         ng-show=" bulletinData.content!=''"></p>
+
+      <p ng-show="bulletinData.content==''" style="text-align: center;line-height: 50vw">暂无公告</p>
+      <button type="button" ng-click="vm.closeBlletin()">关闭</button>
+    </div>
+  </div>
+</div>
+<div ng-if="logined" style="position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden;">
+  <div class="map-wrap" id="mapWrap" map-scroll>
+    <div class="map-block">
+      <!--文学部-->
+      <div id="article" class="link-block site-article"></div>
+      <!--影像部-->
+      <div id="video" class="link-block site-video">
+        <div class="site-video1"></div>
+        <div class="site-video2"></div>
+        <div class="site-video3"></div>
+        <div class="site-video4"></div>
+      </div>
+      <!--体育馆-->
+      <div id="playground" class="link-block playground"></div>
+      <!--&lt;!&ndash;宿舍&ndash;&gt;-->
+      <!--<div id="dormitory" class="link-block dormitory"></div>-->
+      <!--小卖部-->
+      <div id="canteen" class="link-block canteen"></div>
+      <!--留言板-->
+      <div id="messageBoard" class="link-block dormitory"></div>
+      <!--树洞-->
+      <div id="treeHole" class="link-block tree-hole"></div>
+      <!--公告-->
+      <div id="bulletin" class="link-block bulletin">
+        <img src="../../images/bulletinMessage_07.png" alt="" class="link-block-img" ng-if="vm.userDetail.isRead==1">
+    </div>
+      <!--铁柱-->
+      <div id="tieZhu" class="link-block tieZhu" ng-click="vm.choose(1)"></div>
+      <!--张小花-->
+      <div id="zhangXiaoHua" class="link-block zhangXiaoHua" ng-click="vm.choose(2)"></div>
+      <!--大白-->
+      <div id="daBai" class="link-block daBai" ng-click="vm.choose(3)"></div>
+      <!--牛炖-->
+      <div id="niuDun" class="link-block niuDun" ng-click="vm.choose(4)"></div>
+    </div>
+
+
+
+    <div class="speak-box" id="speak-box" ng-if="vm.character!=5" ng-click="vm.character=5;">
+      <div class="speak-box-word">
+
+      </div>
+      <img src="../../images/tiezhu_02.png" alt="" ng-if="vm.character==1" class="speak-box-img1">
+      <div class="speak-box-word1" ng-if="vm.character==1">
+        <p>{{vm.human[0].name}}</p>
+        <p>{{vm.human[0].word}}</p>
+      </div>
+      <img src="../../images/zhangxiaohua_04.png" alt="" ng-if="vm.character==2" class="speak-box-img2">
+      <div class="speak-box-word2" ng-if="vm.character==2">
+        <p>{{vm.human[1].name}}</p>
+        <p>{{vm.human[1].word}}</p>
+      </div>
+      <img src="../../images/dabai_07.png" alt="" ng-if="vm.character==3" class="speak-box-img3">
+      <div class="speak-box-word3" ng-if="vm.character==3">
+        <p>{{vm.human[2].name}}</p>
+        <p>{{vm.human[2].word}}</p>
+      </div>
+      <img src="../../images/niudun_04.png" alt="" ng-if="vm.character==4" class="speak-box-img4">
+      <div class="speak-box-word4" ng-if="vm.character==4">
+        <p>{{vm.human[3].name}}</p>
+        <p>{{vm.human[3].word}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="nav-fix font-20-white text-center" id="nav-sign-menu">
+  <div class="nav-sign pd-tb-20">
+    <p ng-click="vm.signMenu=true">签到</p>
+  </div>
+  <div class="nav-card mr-t-25" ui-sref="identity">
+    <p>学生卡</p>
+  </div>
+  <img src="../../images/studentCardMessage_03.png" alt="" class="nav-card-Message" ng-if="vm.userDetail.userReplyStatus==true">
+</div>
+
+<!--横屏警告-->
+<announcement></announcement>
+<!--签到-->
+<div class="shade-black" ng-show="vm.signMenu||vm.signSuccess">
+  <div class="shade" ng-click="vm.signMenu=false"></div>
+  <!--日历签到-->
+  <calendar sign-total='vm.signTotal' signed-data="vm.signed" count="vm.userDetail.consecutive" start-sign="vm.signIn()" ng-show="vm.signMenu" ng-if="vm.signed"></calendar>
+  <!--签到成功提示-->
+  <div class="sign-v" ng-show="vm.signSuccess">
+    <button class="sign-v-close" type="button" ng-click="vm.signMenu=false;vm.signSuccess=false"></button>
+    <div class="sign-v-msg font-18 font-white">逆袭豆<span class="font-c-y">+{{vm.score}}</span></div>
+  </div>
+
+  <!--<loading ng-if="vm.loaded<2"></loading>-->
+
+  <div ng-if="vm.loaded<2" class="shade" style="z-index: 9999;text-align: center;background: #fff">
+    <div class="shade-black" style="z-index: 9997;"></div>
+    <img src="../../../images/loading.gif" alt="" style="position: absolute;bottom: 0;right: 0;width: 70vw;height: 64vw;">
+    <p style="color:#fff;margin-top: 64vw;position: relative;z-index: 9999">乐园门口排队中...</p>
+  </div>
+
+
+
+</div>

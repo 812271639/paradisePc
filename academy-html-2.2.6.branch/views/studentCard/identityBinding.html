@@ -1,0 +1,83 @@
+<div class="ui-tab background-1">
+    <ul class="ui-row ui-whitespace video-menu video-menu-font flex-box-vrtical-center flex-box-justfy-center"
+        style="height:50px">
+        <li class="ui-col ui-col-50" ng-if="vm.current=='mobile'||vm.both"><span
+                ng-class="{'color-e7':vm.current!=='mobile'}" ng-click="vm.current='mobile'">手机绑定</span></li>
+        <li class="video-menu-separator" ng-if="vm.both"></li>
+        <li class="ui-col ui-col-50" ng-if="vm.current=='mail'||vm.both"><span
+                ng-class="{'color-e7':vm.current!=='mail'}" ng-click="vm.current='mail'">邮箱绑定</span></li>
+    </ul>
+    <div class="flex-box-justfy-center flex-box-vrtical-center ui-whitespace pd-tb-20">
+
+        <img class="icon-size-34" src="../../images/identity-tip.png">
+
+        <div class="ui-list-info pd-lr-10">
+            <h4 class="idendity-key">绑定手机号/邮箱可获得20颗逆袭豆</h4>
+        </div>
+    </div>
+    <!--手机绑定-->
+    <form ng-hide="!(vm.current=='mobile')">
+        <div class="flex-box-vrtical-center flex-box-justfy-center">
+            <label class="idendity-key font-20--like">手机：</label>
+            <!--输入手机号-->
+            <div class="">
+                <input class="input-num" type="text" placeholder="同学，输入一个能接收验证码的手机号" ng-model="vm.mobileParams.openid"
+                       ng-change="vm.setSession(1)" maxlength="11" onkeydown="if(event.keyCode==13)event.keyCode=9"
+                       onkeypress="if ((event.keyCode<48 || event.keyCode>57)) event.returnValue=false">
+            </div>
+        </div>
+        <div class="flex-box-vrtical-center flex-box-justfy-center mr-t-20">
+            <label class="idendity-key font-20--like">验证：</label>
+            <div class="position-par">
+                <!--验证手机号以及获取验证码-->
+                <button class="code-btn" countdown="60" account="vm.mobileParams.openid" verify-fn="vm.verify(1)"
+                        success-fn="vm.getCode(1)" options="vm.mobileOptions">获取验证码
+                </button>
+                <!--输入验证码-->
+                <input class="input-num input-num-code" type="text" placeholder="请输入手机验证码"
+                       ng-model="vm.mobileParams.verify" maxlength="6" onkeydown="if(event.keyCode==13)event.keyCode=9"
+                       onkeypress="if ((event.keyCode<48 || event.keyCode>57)) event.returnValue=false">
+            </div>
+        </div>
+        <div class="dialog-mid"></div>
+        <div class="ui-btn-wrap flex-box-justfy-center mr-t-75">
+            <button class="ui-btn btn-save " ng-click="vm.binding(1)">绑定</button>
+        </div>
+    </form>
+    <!--邮箱绑定-->
+    <form ng-hide="!(vm.current=='mail')">
+        <div class="flex-box-vrtical-center flex-box-justfy-center">
+            <label class="idendity-key font-20--like">邮箱：</label>
+            <!--输入邮箱号-->
+            <div class="">
+                <input class="input-num" type="text" placeholder="请输入真实的邮箱账号" ng-model="vm.mailParams.openid"
+                       ng-change="vm.setSession(2)">
+            </div>
+        </div>
+        <div class="flex-box-vrtical-center flex-box-justfy-center mr-t-20">
+            <label class="idendity-key font-20--like">验证：</label>
+            <div class="position-par">
+                <!--验证邮箱号发送验证码-->
+                <button class="code-btn" countdown="60" account="vm.mailParams.openid" verify-fn="vm.verify(2)"
+                        success-fn="vm.getCode(2)" options="vm.mailOptions">获取验证码
+                </button>
+                <!--输入验证码-->
+                <input class="input-num input-num-code" type="text" placeholder="请输入邮箱验证码"
+                       ng-model="vm.mailParams.verify" maxlength="6" onkeydown="if(event.keyCode==13)event.keyCode=9"
+                       onkeypress="if ((event.keyCode<48 || event.keyCode>57)) event.returnValue=false">
+            </div>
+        </div>
+        <div class="dialog-mid"></div>
+        <div class="ui-btn-wrap flex-box-justfy-center mr-t-75">
+            <button class="ui-btn btn-save " ng-click="vm.binding(2)">绑定</button>
+        </div>
+    </form>
+
+
+</div>
+<div class="shade-black" ng-show="vm.bindSuccess" ng-click="vm.bindSuccess=false">
+    <!--绑定成功提示-->
+    <div class="sign-v-b" ng-show="vm.bindSuccess">
+        <div class="sign-v-msg font-18 font-white">逆袭豆<span class="font-c-y">+20</span></div>
+    </div>
+</div>

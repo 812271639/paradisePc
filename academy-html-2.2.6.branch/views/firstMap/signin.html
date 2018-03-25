@@ -1,0 +1,64 @@
+<div class="ui-row-flex ui-whitespace signin-info">
+    <div class="ui-col ui-col-1">
+        <div class="ui-avatar  ui-flex ui-flex-align-center">
+            <img class="width-full" ng-src="{{vm.userDetail.img}}">
+        </div>
+    </div>
+    <div class="ui-col ui-col-2  ui-flex ui-flex-ver ui-flex-pack-center ui-flex-align-start">
+        <p ng-bind="vm.userDetail.alias"></p>
+        <p>逆袭豆:{{vm.userDetail.score}}</p>
+    </div>
+    <div class="ui-col ui-col-1 ui-flex ui-flex-align-center ui-flex-pack-end">
+        <button type="button" class="ui-btn" ng-click="vm.signIn();vm.isChange(0)"
+                ng-disabled="vm.isSigned||!!vm.signDetail.webDayList[vm.today-1].sign"
+                ng-bind="vm.signDetail.webDayList[vm.today-1]|paramConvert:vm.signinData:'sign'"></button>
+    </div>
+</div>
+<div>
+</div>
+<div class="ui-justify ui-whitespace signin-signed-info">
+    <div class="item">
+        <p>已累计签到</p>
+        <p>{{vm.userDetail.consecutive}}天</p>
+    </div>
+    <div class="item">
+        <p>最高连续签到</p>
+        <p>{{vm.userDetail.signHighest}}天</p>
+    </div>
+</div>
+<!----日历----->
+<calendar signed-data="vm.signed"></calendar>
+<!-----日历end---->
+<p class="ui-whitespace rule"><span ng-click="vm.isChange(1)">签到规则</span></p>
+
+<div class="madel-wrap" ng-class="{'madel-wrap-show':vm.show}" madel>
+    <div class="madel-tips">
+        <div class="madel-tips-title">
+            <div class="ui-row title-text">
+                <span class="ui-col ui-col-33 ">1</span>
+                <span class="ui-col ui-col-33">每日签到</span>
+                <span class="ui-icon-close madel-close ui-col ui-col-33" ng-click="vm.hide(0)"></span>
+            </div>
+            <i class=signin-icon ng-repeat="x in vm.score|creatArr"></i>
+        </div>
+        <div class="madel-tips-content ui-flex ui-flex-ver ui-flex-pack-center ui-flex-align-center">
+            <p>签到成功</p>
+            <p>获得逆袭豆+<strong ng-bind="vm.score"></strong>颗</p>
+        </div>
+    </div>
+</div>
+<div class="madel-wrap madel-wrap-rule" ng-class="{'madel-wrap-show':vm.rule}">
+    <div class="madel-tips">
+        <div class="madel-tips-title">
+            <div class="title-text">
+                <span class="">签到领取逆袭豆</span>
+            </div>
+        </div>
+        <div class="madel-tips-content  ui-flex ui-flex-ver ">
+            <p>签到领取逆袭豆，通过消耗逆袭豆可观看付费视频。</p>
+            <p>首日签到可领取1颗逆袭豆，连续签到每日递增1颗。连续签到5天后，逆袭豆每日可领取5颗。</p>
+            <p>签到中断逆袭豆可要重新计算呦~</p>
+        </div>
+    </div>
+    <div class="tips-block" ng-click="vm.hide(1)"></div>
+</div>

@@ -1,0 +1,55 @@
+<div class=" ui-whitespace  wrap-pd-tm font-dis" ng-if="vm.video">
+    <!--页首-->
+    <div class=" ui-flex ui-flex-pack-center">
+        <!--头像-->
+        <div class="teacher-icon"><img ng-src="{{vm.video.teacherImg}}" class="ui-avatar-s"></div>
+        <!--标题-->
+        <div class="ui-flex-ver" style="max-width: 60%;word-break: break-all">
+            <p style="width: 135%;">
+                <strong class=" font-default font-18" ng-bind="vm.video.title"></strong>
+            </p>
+
+            <p class="font-size-12 mr-tb-10 " style="width: 135%;">
+                    <span class="mr-r-20"
+                          ng-bind="vm.video.publishAt|dateConvert|date:'yyyy-MM-dd hh:mm:ss '"></span><span
+                    ng-bind="vm.video.teacherName"></span></p>
+        </div>
+    </div>
+    <!--摘要-->
+    <p class="mr-tb summary" ng-bind="vm.video.summary"></p>
+    <!--视频-->
+    <video class="mr-tb video-player" controls preload="auto" back-img={{vm.video.cutImg}} ng-if="vm.video.charge==2||vm.userDetail.isMember==1">
+        <source ng-src="{{vm.video.url|secService}}" type='video/mp4'/>
+    </video>
+    <div class="mr-tb video-playerBg" ng-if="vm.video.charge==1&&vm.userDetail.isMember==2">
+        <span>开通会员后可观看所有视频</span>
+        <p>"{{vm.member.name}}仅需{{vm.member.price/vm.member.period|fundFilter2}}元/月"</p>
+        <button ui-sref="buyMember">立即开通</button>
+    </div>
+    <!--<iframe class="video_iframe" data-vidtype="1" style="z-index: 1; width: 290px !important; height: 217.5px !important; overflow: hidden;" height="217.5" width="290" frameborder="0" data-src="https://v.qq.com/iframe/preview.html?vid=j0161jqgd03&amp;width=500&amp;height=375&amp;auto=0" allowfullscreen="" src="http://v.qq.com/iframe/player.html?vid=j0161jqgd03&amp;width=290&amp;height=217.5&amp;auto=0" scrolling="no" __idm_frm__="1439" __idm_id__="998885377"></iframe>-->
+    <!--正文-->
+    <div class="mr-tb text-pre-in content" ng-bind-html="vm.video.content|trust"></div>
+    <!--<p class="mr-tb text-pre-in" ng-bind="vm.video.content"></p>-->
+    <!--点赞、收藏-->
+    <div class="flex-box-justfy-center mr-tb pd-5 ">
+        <!--点赞-->
+        <div class="text-center mr-r-50 like">
+            <p class="icon-like h-30" ng-class="{true:'icon-liked',false:icon-like}[vm.video.likeStatus]"
+               ng-click="vm.like()"></p>
+            <p class="font-20-dis mr-t-10" ng-class="{'font-20--like':vm.video.likeStatus}" ng-bind="vm.video.love"></p>
+        </div>
+        <!--收藏-->
+        <div class="text-center position-par collect">
+            <div class="dialog-box" ng-show="vm.tip">
+                <span class="dialog-box-arrow"></span>
+                <span ng-bind="vm.video.collectionStatus?'收藏成功':'取消收藏'"></span>
+            </div>
+            <p class="icon-collect h-30 " ng-class="{'icon-collected':vm.video.collectionStatus}"
+               ng-click="vm.collect()"></p>
+            <p class="mr-t-10 font-20-dis" ng-class="{'font-20--collect':vm.video.collectionStatus}"
+               ng-bind="vm.video.collection"></p>
+        </div>
+    </div>
+</div>
+<loading ng-if="vm.loaded<1"></loading>
+
